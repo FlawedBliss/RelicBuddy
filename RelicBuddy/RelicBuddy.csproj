@@ -8,12 +8,12 @@
     <PackageProjectUrl>https://github.com/goatcorp/SamplePlugin</PackageProjectUrl>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <IsPackable>false</IsPackable>
+    <RootNamespace>RelicBuddy</RootNamespace>
+    <AssemblyVersion>0.1</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\Data\goat.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Visible>false</Visible>
-    </Content>
+    <None Remove="Data\relic_data.json" />
+    <EmbeddedResource Include="Data\relic_data.json" />
   </ItemGroup>
 </Project>

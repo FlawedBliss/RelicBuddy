@@ -1,0 +1,2502 @@
+[
+    {
+        "expansion": "ARR",
+        "name": "Zodiac Weapons",
+        "relics": {
+            "PLD": {
+                "item_ids": [
+                    1675,
+                    6257,
+                    7824,
+                    7834,
+                    7863,
+                    8649,
+                    9491,
+                    10054
+                ]
+            },
+            "WAR": {
+                "item_ids": [
+                    1816,
+                    6259,
+                    7826,
+                    7836,
+                    7865,
+                    8651,
+                    9493,
+                    10056
+                ]
+            },
+            "DRG": {
+                "item_ids": [
+                    1885,
+                    6260,
+                    7827,
+                    7837,
+                    7866,
+                    8652,
+                    9494,
+                    10057
+                ]
+            },
+            "MNK": {
+                "item_ids": [
+                    1746,
+                    6258,
+                    7825,
+                    7835,
+                    7864,
+                    8650,
+                    9492,
+                    10055
+                ]
+            },
+            "NIN": {
+                "item_ids": [
+                    7888,
+                    9250,
+                    9251,
+                    9252,
+                    9253,
+                    9254,
+                    9501,
+                    10064
+                ]
+            },
+            "BRD": {
+                "item_ids": [
+                    1955,
+                    6261,
+                    7828,
+                    7838,
+                    7867,
+                    8653,
+                    9495,
+                    10058
+                ]
+            },
+            "BLM": {
+                "item_ids": [
+                    2140,
+                    6263,
+                    7830,
+                    7840,
+                    7869,
+                    8655,
+                    9497,
+                    10060
+                ]
+            },
+            "SMN": {
+                "item_ids": [
+                    2213,
+                    6264,
+                    7831,
+                    7841,
+                    7870,
+                    8656,
+                    9498,
+                    10061
+                ]
+            },
+            "WHM": {
+                "item_ids": [
+                    2052,
+                    6262,
+                    7829,
+                    7839,
+                    7868,
+                    8654,
+                    9496,
+                    10059
+                ]
+            },
+            "SCH": {
+                "item_ids": [
+                    2214,
+                    6265,
+                    7832,
+                    7842,
+                    7871,
+                    8657,
+                    9499,
+                    10062
+                ]
+            }
+        }
+    },
+    {
+        "expansion": "HW",
+        "name": "Anima Weapons",
+        "relics": {
+            "PLD": {
+                "item_ids": [
+                    13611,
+                    13597,
+                    13223,
+                    14870,
+                    15223,
+                    15237,
+                    15251,
+                    16050
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1406,
+                    1499,
+                    1605,
+                    1667,
+                    1695,
+                    1708
+                ]
+            },
+            "WAR": {
+                "item_ids": [
+                    13613,
+                    13599,
+                    13225,
+                    14872,
+                    15225,
+                    15239,
+                    15253,
+                    16052
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1408,
+                    1501,
+                    1607,
+                    1669,
+                    1697,
+                    1710
+                ]
+            },
+            "DRK": {
+                "item_ids": [
+                    13617,
+                    13603,
+                    13226,
+                    14873,
+                    13229,
+                    14876,
+                    15257,
+                    16056
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1417,
+                    1510,
+                    1616,
+                    1678,
+                    1706,
+                    1719
+                ]
+            },
+            "DRG": {
+                "item_ids": [
+                    13614,
+                    13600,
+                    13226,
+                    14873,
+                    15226,
+                    15240,
+                    15254,
+                    16053
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1409,
+                    1502,
+                    1608,
+                    1670,
+                    1698,
+                    1711
+                ]
+            },
+            "MNK": {
+                "item_ids": [
+                    13612,
+                    13598,
+                    13224,
+                    14871,
+                    15224,
+                    15238,
+                    15252,
+                    16051
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1407,
+                    1500,
+                    1606,
+                    1668,
+                    1696,
+                    1709
+                ]
+            },
+            "NIN": {
+                "item_ids": [
+                    13616,
+                    13602,
+                    13228,
+                    14875,
+                    15228,
+                    15242,
+                    15256,
+                    16055
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1415,
+                    1508,
+                    1614,
+                    1676,
+                    1704,
+                    1717
+                ]
+            },
+            "BRD": {
+                "item_ids": [
+                    13615,
+                    13601,
+                    13227,
+                    14874,
+                    15227,
+                    15241,
+                    15255,
+                    16054
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1410,
+                    1503,
+                    1609,
+                    1671,
+                    1699,
+                    1712
+                ]
+            },
+            "BLM": {
+                "item_ids": [
+                    13620,
+                    13606,
+                    13232,
+                    14879,
+                    15232,
+                    15246,
+                    15260,
+                    16059
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1412,
+                    1505,
+                    1611,
+                    1673,
+                    1701,
+                    1714
+                ]
+            },
+            "SMN": {
+                "item_ids": [
+                    13621,
+                    13607,
+                    13233,
+                    14880,
+                    15233,
+                    15247,
+                    15261,
+                    16060
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1413,
+                    1506,
+                    1612,
+                    1674,
+                    1702,
+                    1715
+                ]
+            },
+            "WHM": {
+                "item_ids": [
+                    13619,
+                    13605,
+                    13231,
+                    14878,
+                    15231,
+                    15245,
+                    15259,
+                    16058
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1411,
+                    1504,
+                    1610,
+                    1672,
+                    1700,
+                    1713
+                ]
+            },
+            "SCH": {
+                "item_ids": [
+                    13622,
+                    13608,
+                    13234,
+                    14881,
+                    15234,
+                    15248,
+                    15262,
+                    16061
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1414,
+                    1507,
+                    1613,
+                    1675,
+                    1703,
+                    1716
+                ]
+            },
+            "AST": {
+                "item_ids": [
+                    13623,
+                    13609,
+                    13235,
+                    14882,
+                    15235,
+                    15249,
+                    15263,
+                    16062
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1418,
+                    1511,
+                    1617,
+                    1679,
+                    1707,
+                    1720
+                ]
+            },
+            "MCH": {
+                "item_ids": [
+                    13618,
+                    13604,
+                    13230,
+                    14877,
+                    15230,
+                    15244,
+                    15258,
+                    16057
+                ],
+                "achievement_ids": [
+                    0,
+                    0,
+                    1416,
+                    1509,
+                    1615,
+                    1677,
+                    1705,
+                    1718
+                ]
+            }
+        },
+        "steps": [
+            {
+                "is_one_time": false,
+                "quest_id_first": 67748,
+                "quest_id_repeating": 67748,
+                "prerequisites": {
+                    "quests": [
+                        67205,
+                        67747
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 13570,
+                            "quantity": 1,
+                            "hint": [
+                                "{icon:60501} {map:215}"
+                            ]
+                        },
+                        {
+                            "item_id": 13571,
+                            "quantity": 1,
+                            "hint": [
+                                "{icon:60501} {map:216}"
+                            ]
+                        },
+                        {
+                            "item_id": 13573,
+                            "quantity": 1,
+                            "hint": [
+                                "{icon:60501} {map:214}"
+                            ]
+                        },
+                        {
+                            "item_id": 13569,
+                            "quantity": 1,
+                            "hint": [
+                                "{icon:60501} {map:211}"
+                            ]
+                        },
+                        {
+                            "item_id": 13572,
+                            "quantity": 1,
+                            "hint": [
+                                "{icon:60501} {map:212}"
+                            ]
+                        },
+                        {
+                            "item_id": 13574,
+                            "quantity": 1,
+                            "hint": [
+                                "{icon:60501} {map:213}"
+                            ]
+                        },
+                        {
+                            "item_id": 13575,
+                            "quantity": 1,
+                            "hint": [
+                                "Trade crystals to {npc:1016289}"
+                            ]
+                        },
+                        {
+                            "item_id": 13576,
+                            "quantity": 1,
+                            "hint": [
+                                "Trade crystals to {npc:1016289}"
+                            ]
+                        }
+                    ]
+                },
+                "hint": "To get started on your Anima weapon, you need to do FATEs in each of the listed zones until you get the corresponding Luminous Crystal. Once you have all the crystals, turn them in to {npc:1016289} for your upgrade materials."
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 67749,
+                "quest_id_repeating": 67749,
+                "prerequisites": {
+                },
+                "requirements": {
+                },
+                "hint": "Complete the duties given by your quest with the relic weapon equipped. It is sufficient to have the relic weapon equipped when exiting the duty, you can swap to a better weapon while doing it."
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 67750,
+                "quest_id_repeating": 67750,
+                "npc": 1016290,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 13577,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 13578,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 13579,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 13580,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 13582,
+                            "quantity": 10
+                        },
+                        {
+                            "item_id": 13584,
+                            "quantity": 10
+                        },
+                        {
+                            "item_id": 13586,
+                            "quantity": 10
+                        },
+                        {
+                            "item_id": 13588,
+                            "quantity": 10
+                        },
+                        {
+                            "item_id": 13589,
+                            "quantity": 4
+                        },
+                        {
+                            "item_id": 13591,
+                            "quantity": 4
+                        },
+                        {
+                            "item_id": 13593,
+                            "quantity": 4
+                        },
+                        {
+                            "item_id": 13595,
+                            "quantity": 4
+                        }
+                    ]
+                },
+                "hint2": "You need to acquire {item:13577}, {item:13578}, {item:13579} and {item:13580} for this step. You trade for them with these materials: {item:13582}, {item:13584}, {item:13586} and {item:13588} can be bought from tomestone vendors, acquired by trading materials from the first tier of the alexander normal raids, traded for with heavensward tribal tokens or from treasure maps/allied seals. {item:13589},{item:13591},{item:13593} and {item:13595} can be crafted, bought from the market board or bought with grand company seals.",
+                "hints": [
+                    "You have to acquire the following items:",
+                    "{bullet:0} {item:13577}",
+                    "{bullet:0} {item:13578}",
+                    "{bullet:0} {item:13579}",
+                    "{bullet:0} {item:13580}",
+                    "To get them, you have to first get some other items to trade in. You need 10 each of these, bought with tomestones:",
+                    "{bullet:0} {item:13582}",
+                    "{bullet:0} {item:13584}",
+                    "{bullet:0} {item:13586}",
+                    "{bullet:0} {item:13588}",
+                    "And you also need 4 each of these, bought with GC credits, from the marketboard or crafted yourself:",
+                    "{bullet:0} {item:13589}",
+                    "{bullet:0} {item:13591}",
+                    "{bullet:0} {item:13593}",
+                    "{bullet:0} {item:13595}"
+                ]
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 67820,
+                "quest_id_repeating": 67820,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 14899,
+                            "quantity": 5
+                        }
+                    ]
+                },
+                "hint": "Easy step: Buy 5 {item:14899}, turn them in to upgrade your weapon."
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 67820,
+                "quest_id_repeating": 67820,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 15840,
+                            "quantity": 60
+                        },
+                        {
+                            "item_id": 15841,
+                            "quantity": 60
+                        }
+                    ]
+                },
+                "hint": "For this step, you need to acquire enough {item:15840} and {item:15841} to upgrade your weapon. The exact amount can vary due to RNG, but about 60 of each should do it most of the time. {item:15840} can be directly bought with tomestomes, {item:15841} must be traded for with other items. Your best options for this are trading crafter's or gatherer's scrip tokens, or buying {item:7885} and {item:6268} with tomestomes then trading those for {item:15841}. If using all tomestomes, the total cost for this step is about 11 250."
+            },
+            {
+                "quest_id_first": 67915,
+                "quest_id_repeating": 67915,
+                "is_one_time": false,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 16064,
+                            "quantity": 50
+                        }
+                    ]
+                },
+                "hint": "You can get singing clusters by doing the daily quest {quest:67917}, the weekly quest {quest:67916} or, as per usual, spending tomestones (2000 in this case)."
+            },
+            {
+                "quest_id_first": 67932,
+                "quest_id_repeating": 67932,
+                "is_one_time": false,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 16933,
+                            "quantity": 15
+                        },
+                        {
+                            "item_id": 16932,
+                            "quantity": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "quest_id_first": 67940,
+                "quest_id_repeating": 67940,
+                "is_one_time": false,
+                "prerequisites": {
+                    "quests": [
+                        67934,
+                        67939
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 16934,
+                            "quantity": 1
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "expansion": "SB",
+        "name": "Eurekan Weapons",
+        "relics": {
+            "PLD": {
+                "item_ids": [
+                    17817,
+                    21942,
+                    21958,
+                    21974,
+                    21990,
+                    22925,
+                    22941,
+                    22957,
+                    24039,
+                    24055,
+                    24071,
+                    24643,
+                    24659,
+                    24675,
+                    24691,
+                    24707
+                ],
+                "achievement_ids": [
+                    0,
+                    2030,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2082,
+                    0,
+                    0,
+                    2143,
+                    0,
+                    0,
+                    0,
+                    2212,
+                    0
+                ]
+            },
+            "WAR": {
+                "item_ids": [
+                    17819,
+                    21944,
+                    21960,
+                    21976,
+                    21992,
+                    22927,
+                    22943,
+                    22959,
+                    24041,
+                    24057,
+                    24073,
+                    24645,
+                    24661,
+                    24677,
+                    24693,
+                    24709
+                ],
+                "achievement_ids": [
+                    0,
+                    2031,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2083,
+                    0,
+                    0,
+                    2144,
+                    0,
+                    0,
+                    0,
+                    2213,
+                    0
+                ]
+            },
+            "DRK": {
+                "item_ids": [
+                    17823,
+                    21948,
+                    21964,
+                    21980,
+                    21996,
+                    22931,
+                    22947,
+                    22963,
+                    24045,
+                    24061,
+                    24077,
+                    24649,
+                    24665,
+                    24681,
+                    24697,
+                    24713
+                ],
+                "achievement_ids": [
+                    0,
+                    2032,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2084,
+                    0,
+                    0,
+                    2145,
+                    0,
+                    0,
+                    0,
+                    2214,
+                    0
+                ]
+            },
+            "DRG": {
+                "item_ids": [
+                    17820,
+                    21945,
+                    21961,
+                    21977,
+                    21993,
+                    22928,
+                    22944,
+                    22960,
+                    24042,
+                    24058,
+                    24074,
+                    24646,
+                    24662,
+                    24678,
+                    24694,
+                    24710
+                ],
+                "achievement_ids": [
+                    0,
+                    2033,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2085,
+                    0,
+                    0,
+                    2146,
+                    0,
+                    0,
+                    0,
+                    2215,
+                    0
+                ]
+            },
+            "MNK": {
+                "item_ids": [
+                    17818,
+                    21943,
+                    21959,
+                    21975,
+                    21991,
+                    22926,
+                    22942,
+                    22958,
+                    24040,
+                    24056,
+                    24072,
+                    24644,
+                    24660,
+                    24676,
+                    24692,
+                    24708
+                ],
+                "achievement_ids": [
+                    0,
+                    2034,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2086,
+                    0,
+                    0,
+                    2147,
+                    0,
+                    0,
+                    0,
+                    2216,
+                    0
+                ]
+            },
+            "SAM": {
+                "item_ids": [
+                    17830,
+                    21955,
+                    21971,
+                    21987,
+                    22003,
+                    22938,
+                    22954,
+                    22970,
+                    24052,
+                    24068,
+                    24084,
+                    24656,
+                    24672,
+                    24688,
+                    24704,
+                    24720
+                ],
+                "achievement_ids": [
+                    0,
+                    2036,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2088,
+                    0,
+                    0,
+                    2149,
+                    0,
+                    0,
+                    0,
+                    2218,
+                    0
+                ]
+            },
+            "NIN": {
+                "item_ids": [
+                    17822,
+                    21947,
+                    21963,
+                    21979,
+                    21995,
+                    22930,
+                    22946,
+                    22962,
+                    24044,
+                    24060,
+                    24076,
+                    24648,
+                    24664,
+                    24680,
+                    24696,
+                    24712
+                ],
+                "achievement_ids": [
+                    0,
+                    2035,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2087,
+                    0,
+                    0,
+                    2148,
+                    0,
+                    0,
+                    0,
+                    2217,
+                    0
+                ]
+            },
+            "BRD": {
+                "item_ids": [
+                    17821,
+                    21946,
+                    21962,
+                    21978,
+                    21994,
+                    22929,
+                    22945,
+                    22961,
+                    24043,
+                    24059,
+                    24075,
+                    24647,
+                    24663,
+                    24679,
+                    24695,
+                    24711
+                ],
+                "achievement_ids": [
+                    0,
+                    2037,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2089,
+                    0,
+                    0,
+                    2150,
+                    0,
+                    0,
+                    0,
+                    2219,
+                    0
+                ]
+            },
+            "MCH": {
+                "item_ids": [
+                    17824,
+                    21949,
+                    21965,
+                    21981,
+                    21997,
+                    22932,
+                    22948,
+                    22964,
+                    24046,
+                    24062,
+                    24078,
+                    24650,
+                    24666,
+                    24682,
+                    24698,
+                    24714
+                ],
+                "achievement_ids": [
+                    0,
+                    2038,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2090,
+                    0,
+                    0,
+                    2151,
+                    0,
+                    0,
+                    0,
+                    2220,
+                    0
+                ]
+            },
+            "BLM": {
+                "item_ids": [
+                    17826,
+                    21951,
+                    21967,
+                    21983,
+                    21999,
+                    22934,
+                    22950,
+                    22966,
+                    24048,
+                    24064,
+                    24080,
+                    24652,
+                    24668,
+                    24684,
+                    24700,
+                    24716
+                ],
+                "achievement_ids": [
+                    0,
+                    2039,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2091,
+                    0,
+                    0,
+                    2152,
+                    0,
+                    0,
+                    0,
+                    2221,
+                    0
+                ]
+            },
+            "SMN": {
+                "item_ids": [
+                    17827,
+                    21952,
+                    21968,
+                    21984,
+                    22000,
+                    22935,
+                    22951,
+                    22967,
+                    24049,
+                    24065,
+                    24081,
+                    24653,
+                    24669,
+                    24685,
+                    24701,
+                    24717
+                ],
+                "achievement_ids": [
+                    0,
+                    2040,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2092,
+                    0,
+                    0,
+                    2153,
+                    0,
+                    0,
+                    0,
+                    2222,
+                    0
+                ]
+            },
+            "RDM": {
+                "item_ids": [
+                    17831,
+                    21956,
+                    21972,
+                    21988,
+                    22004,
+                    22939,
+                    22955,
+                    22971,
+                    24053,
+                    24069,
+                    24085,
+                    24657,
+                    24673,
+                    24689,
+                    24705,
+                    24721
+                ],
+                "achievement_ids": [
+                    0,
+                    2041,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2093,
+                    0,
+                    0,
+                    2154,
+                    0,
+                    0,
+                    0,
+                    2223,
+                    0
+                ]
+            },
+            "WHM": {
+                "item_ids": [
+                    17825,
+                    21950,
+                    21966,
+                    21982,
+                    21998,
+                    22933,
+                    22949,
+                    22965,
+                    24047,
+                    24063,
+                    24079,
+                    24651,
+                    24667,
+                    24683,
+                    24699,
+                    24715
+                ],
+                "achievement_ids": [
+                    0,
+                    2042,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2094,
+                    0,
+                    0,
+                    2155,
+                    0,
+                    0,
+                    0,
+                    2224,
+                    0
+                ]
+            },
+            "SCH": {
+                "item_ids": [
+                    17828,
+                    21953,
+                    21969,
+                    21985,
+                    22001,
+                    22936,
+                    22952,
+                    22968,
+                    24050,
+                    24066,
+                    24082,
+                    24654,
+                    24670,
+                    24686,
+                    24702,
+                    24718
+                ],
+                "achievement_ids": [
+                    0,
+                    2043,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2095,
+                    0,
+                    0,
+                    2156,
+                    0,
+                    0,
+                    0,
+                    2225,
+                    0
+                ]
+            },
+            "AST": {
+                "item_ids": [
+                    17829,
+                    21954,
+                    21970,
+                    21986,
+                    22002,
+                    22937,
+                    22953,
+                    22969,
+                    24051,
+                    24067,
+                    24083,
+                    24655,
+                    24671,
+                    24687,
+                    24703,
+                    24719
+                ],
+                "achievement_ids": [
+                    0,
+                    2044,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2096,
+                    0,
+                    0,
+                    2157,
+                    0,
+                    0,
+                    0,
+                    2226,
+                    0
+                ]
+            }
+        },
+        "steps": [
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "requirements": {},
+                "hint": "You get this weapon by completing your level 70 job quest. If you have lost it, you can buy it again from the {npc:1006004}."
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1025945,
+                "prerequisites": {
+                    "quests": [
+                        68089,
+                        68614
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 21801,
+                            "quantity": 100
+                        }
+                    ]
+                },
+                "hint": "You can get {item:21801} by defeating enemies in Eureka Anemos. You can also speak to {npc:0}[put gerolt here] and trade in {item:21803} for up to 5 Protean Crystals each. Anemos Crystals are obtained by defeating notorious monsters in Eureka.\nYou will need 1300-2200 Protean Crystals in total for the next steps."
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1025945,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 21801,
+                            "quantity": 400
+                        }
+                    ]
+                },
+                "hint": "You got 100, good job! Now Gerolt wants 400 more."
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1025945,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 21801,
+                            "quantity": 800
+                        }
+                    ]
+                },
+                "hint": "400 was too easy, right? Try 800 next."
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1025945,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 21802,
+                            "quantity": 3
+                        }
+                    ]
+                },
+                "hint": "For the last step in Anemos, you need to collect 3 {item:21802}. You have two options to get these: The first is to spawn the Pazuzu notorious monster and defeat it while at rank 19 or above and you will get all 3 feathers. Due to its spawn conditions, it may be a while before you get this option - alternatively you can just buy the feathers for 300 Protean Crystals each from the expedition birdwatcher in the area. Check the table on the right for their location!"
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1025945,
+                "object": 2009555,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 23309,
+                            "quantity": 5
+                        }
+                    ]
+                },
+                "hint": "You continue the relic in Eureka Pagos. After reaching rank 25, speak to Gerolt to acquire the kettle - you need this to obtain {item:23309}s. You can acquire up to 9 charges for your kettle by defeating level-appropriate monsters and notorious monsters. Go to the {object:2009555} to turn the accumulated aether into Frosted Protean Crystals."
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1025945,
+                "object": 2009555,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 23309,
+                            "quantity": 10
+                        },
+                        {
+                            "item_id": 22976,
+                            "quantity": 500
+                        }
+                    ]
+                },
+                "hint": ""
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1025945,
+                "object": 2009555,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 23309,
+                            "quantity": 16
+                        },
+                        {
+                            "item_id": 22975,
+                            "quantity": 5
+                        }
+                    ]
+                },
+                "hint": ""
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1026494,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 24124,
+                            "quantity": 150
+                        }
+                    ]
+                },
+                "hint": "To Pyros!"
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1026494,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 24124,
+                            "quantity": 200
+                        }
+                    ]
+                },
+                "hint": ""
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1026494,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 24124,
+                            "quantity": 300
+                        },
+                        {
+                            "item_id": 24123,
+                            "quantity": 5
+                        }
+                    ]
+                },
+                "hint": ""
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1027118,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 24807,
+                            "quantity": 50
+                        }
+                    ]
+                }
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1027118,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 24807,
+                            "quantity": 100
+                        }
+                    ]
+                }
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1027118,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 24807,
+                            "quantity": 100
+                        },
+                        {
+                            "item_id": 24806,
+                            "quantity": 5
+                        }
+                    ]
+                }
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 0,
+                "quest_id_repeating": 0,
+                "npc": 1027118,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 24808,
+                            "quantity": 100
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "expansion": "SHB",
+        "name": "Resistance Weapons",
+        "relics": {
+            "PLD": {
+                "item_ids": [
+                    30228,
+                    30767,
+                    30785,
+                    32651,
+                    32669,
+                    33462
+                ],
+                "achievement_ids": [
+                    2569,
+                    0,
+                    2694,
+                    0,
+                    2768,
+                    2857
+                ]
+            },
+            "WAR": {
+                "item_ids": [
+                    30230,
+                    30769,
+                    30787,
+                    32653,
+                    32671,
+                    33464
+                ],
+                "achievement_ids": [
+                    2570,
+                    0,
+                    2695,
+                    0,
+                    2769,
+                    2858
+                ]
+            },
+            "DRK": {
+                "item_ids": [
+                    30234,
+                    30773,
+                    30791,
+                    32657,
+                    32675,
+                    33468
+                ],
+                "achievement_ids": [
+                    2571,
+                    0,
+                    2696,
+                    0,
+                    2770,
+                    2859
+                ]
+            },
+            "GNB": {
+                "item_ids": [
+                    30243,
+                    30782,
+                    30800,
+                    32666,
+                    32684,
+                    33477
+                ],
+                "achievement_ids": [
+                    2572,
+                    0,
+                    2697,
+                    0,
+                    2771,
+                    2860
+                ]
+            },
+            "DRG": {
+                "item_ids": [
+                    30231,
+                    30770,
+                    30788,
+                    32654,
+                    32672,
+                    33465
+                ],
+                "achievement_ids": [
+                    2573,
+                    0,
+                    2698,
+                    0,
+                    2772,
+                    2861
+                ]
+            },
+            "MNK": {
+                "item_ids": [
+                    30229,
+                    30768,
+                    30786,
+                    32652,
+                    32670,
+                    33463
+                ],
+                "achievement_ids": [
+                    2574,
+                    0,
+                    2699,
+                    0,
+                    2773,
+                    2862
+                ]
+            },
+            "SAM": {
+                "item_ids": [
+                    30241,
+                    30780,
+                    30798,
+                    32664,
+                    32682,
+                    33475
+                ],
+                "achievement_ids": [
+                    2576,
+                    0,
+                    2671,
+                    0,
+                    2775,
+                    2864
+                ]
+            },
+            "NIN": {
+                "item_ids": [
+                    30233,
+                    30772,
+                    30790,
+                    32656,
+                    32674,
+                    33467
+                ],
+                "achievement_ids": [
+                    2575,
+                    0,
+                    2670,
+                    0,
+                    2774,
+                    2863
+                ]
+            },
+            "BRD": {
+                "item_ids": [
+                    30232,
+                    30771,
+                    30789,
+                    32655,
+                    32673,
+                    33466
+                ],
+                "achievement_ids": [
+                    2577,
+                    0,
+                    2672,
+                    0,
+                    2776,
+                    2865
+                ]
+            },
+            "MCH": {
+                "item_ids": [
+                    30235,
+                    30774,
+                    30792,
+                    32658,
+                    32676,
+                    33469
+                ],
+                "achievement_ids": [
+                    2578,
+                    0,
+                    2673,
+                    0,
+                    2777,
+                    2866
+                ]
+            },
+            "DNC": {
+                "item_ids": [
+                    30244,
+                    30783,
+                    30801,
+                    32667,
+                    32685,
+                    33478
+                ],
+                "achievement_ids": [
+                    2579,
+                    0,
+                    2674,
+                    0,
+                    2778,
+                    2867
+                ]
+            },
+            "BLM": {
+                "item_ids": [
+                    30237,
+                    30776,
+                    30794,
+                    32660,
+                    32678,
+                    33471
+                ],
+                "achievement_ids": [
+                    2580,
+                    0,
+                    2675,
+                    0,
+                    2779,
+                    2868
+                ]
+            },
+            "SMN": {
+                "item_ids": [
+                    30238,
+                    30777,
+                    30795,
+                    32661,
+                    32679,
+                    33472
+                ],
+                "achievement_ids": [
+                    2581,
+                    0,
+                    2676,
+                    0,
+                    2780,
+                    2869
+                ]
+            },
+            "RDM": {
+                "item_ids": [
+                    30242,
+                    30781,
+                    30799,
+                    32665,
+                    32683,
+                    33476
+                ],
+                "achievement_ids": [
+                    2582,
+                    0,
+                    2677,
+                    0,
+                    2781,
+                    2870
+                ]
+            },
+            "WHM": {
+                "item_ids": [
+                    30236,
+                    30775,
+                    30793,
+                    32659,
+                    32677,
+                    33470
+                ],
+                "achievement_ids": [
+                    2583,
+                    0,
+                    2678,
+                    0,
+                    2782,
+                    2871
+                ]
+            },
+            "SCH": {
+                "item_ids": [
+                    30239,
+                    30778,
+                    30796,
+                    32662,
+                    32680,
+                    33473
+                ],
+                "achievement_ids": [
+                    2584,
+                    0,
+                    2679,
+                    0,
+                    2783,
+                    2872
+                ]
+            },
+            "AST": {
+                "item_ids": [
+                    30240,
+                    30779,
+                    30797,
+                    32663,
+                    32681,
+                    33474
+                ],
+                "achievement_ids": [
+                    2585,
+                    0,
+                    2680,
+                    0,
+                    2784,
+                    2873
+                ]
+            }
+        },
+        "steps": [
+            {
+                "is_one_time": false,
+                "quest_id_first": 69380,
+                "quest_id_repeating": 69381,
+                "prerequisites": {
+                    "quests": [
+                        69190,
+                        68725,
+                        69370,
+                        69371,
+                        69372
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 30273,
+                            "quantity": 4
+                        }
+                    ]
+                },
+                "hints": [
+                    "If this is your first Shadowbringers relic, you can get the weapon for free by completing the quest chain beginning with {quest:69370}.",
+                    "Otherwise, buy 4 {item:30273} and trade them for your weapon."
+                ]
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 69506,
+                "quest_id_repeating": 69506,
+                "prerequisites": {
+                    "quests": [
+                        69218,
+                        69477,
+                        69505
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 31573,
+                            "quantity": 20,
+                            "hint": [
+                                "Random drop from enemies, FATEs and critical engagements in zone 1 of the bozjan southern front",
+                                "Guaranteed to drop from FATEs in {map:215} and {map:211}"
+                            ]
+                        },
+                        {
+                            "item_id": 31574,
+                            "quantity": 20,
+                            "hint": [
+                                "Random drop from enemies, FATEs and critical engagements in zone 2 of the bozjan southern front",
+                                "Guaranteed to drop from FATEs in {map:212} and {map:214}"
+                            ]
+                        },
+                        {
+                            "item_id": 31575,
+                            "quantity": 20,
+                            "hint": [
+                                "Random drop from enemies, FATEs and critical engagements in zone 3 of the Bozjan Southern Front",
+                                "Guaranteed to drop from FATEs in {map:216} and {map:213}"
+                            ]
+                        }
+                    ]
+                },
+                "Hints": [
+                    "You need to get 20 of each memory:",
+                    "{bullet:0} 20 {item:31573}",
+                    "{bullet:0} 20 {item:31574}",
+                    "{bullet:0} 20 {item:31575}",
+                    "Farming FATEs in Heavensward zones is the fastest and most consistent way. Note that the quest must be active for you to be able to drop crystals."
+                ]
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 69507,
+                "quest_id_repeating": 69507,
+                "prerequisites": {
+                    "quests": [
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 31576,
+                            "quantity": 6,
+                            "hint": [
+                                "Guaranteed to drop from daily leveling roulette",
+                                "Guaranteed to drop from level 60 dungeons",
+                                "Random drop from enemies in the bozjan southern front"
+                            ]
+                        }
+                    ]
+                },
+                "hints": [
+                    "This step is quite easy - you can go to the beginning of the Bozjan Southern Front, pull as many enemies as you can and beat them down for consistent drops of {item:31576}.",
+                    "A tank using a beast elixir is great for this. The quest must be active for you to be able to get the drops!"
+                ]
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 69574,
+                "quest_id_repeating": 69574,
+                "prerequisites": {
+                    "quests": [
+                        69479,
+                        69480,
+                        69481,
+                        69482,
+                        69483,
+                        69484,
+                        69485,
+                        69486,
+                        69487,
+                        69561,
+                        69562,
+                        69573
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 32956,
+                            "quantity": 15,
+                            "hint": [
+                                "5 from finishing Castrum Lacus Litore",
+                                "1 from clearing any Crystal Tower raid",
+                                "Random drop from critical engagements in the bozjan southern front"
+                            ]
+                        }
+                    ]
+                },
+                "hints": [
+                    "The most consistent way to get {item:32956} is doing the Castrum Lacus Litore engagement in Bozja - which unfortunately only spawns about once per hour.",
+                    "I recommend doing FATEs and spawning CEs in Bozja while waiting, giving you a chance at crystal drops and reducing the cooldown of CLL."
+                ]
+            },
+            {
+                "is_one_time": true,
+                "quest_id_first": 69575,
+                "quest_id_repeating": 69575,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 32957,
+                            "quantity": 18,
+                            "hint": [
+                                "3 from completing any Heavensward alliance raid",
+                                "Random drop from FATEs in {map:367} {map:368} {map:369}"
+                            ]
+                        },
+                        {
+                            "item_id": 32958,
+                            "quantity": 18,
+                            "hint": [
+                                "3 from completing any Stormblood alliance raid",
+                                "Random drop from FATEs in {map:371} {map:372} {map:354}"
+                            ]
+                        }
+                    ]
+                },
+                "hints": [
+                    "One-Time step. Gather these crystals and turn them in:",
+                    "{bullet:0}, 18 {item:32957}",
+                    "{bullet:0}, 18 {item:32958}",
+                    "The dropchance from FATEs is decent and a good option to grind them."
+                ]
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 69576,
+                "quest_id_repeating": 69576,
+                "prerequisites": {},
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 32959,
+                            "quantity": 15,
+                            "hint": [
+                                "Random drop from Palace of the Dead",
+                                "3 from completing Delubrum Reginae"
+                            ]
+                        }
+                    ]
+                },
+                "hints": [
+                    "You have two options to get your {item:32959}:",
+                    "In POTD you only have a disappointing chance to get 1 drop per 10 floors cleared, so I do not recommend it.",
+                    "To run Delubrum Reginae efficiently, open a party finder for 8 players and ensure everybody brings appropriate essences and actions - it will speed up the runs tremendously. Here is a slightly outdated, but still very useful guide to loadouts for Delubrum Reginae: https://imgur.com/y0jNEno",
+                    "Note that after queueing up for Delubrum Reginae via the npc, there is a 10 minute delay before the queue pop thanks to the game trying to party you up with people for a duty nobody runs."
+                ]
+            },
+            {
+                "is_one_time": true,
+                "quest_id_first": 69633,
+                "quest_id_repeating": 69633,
+                "prerequisites": {
+                    "quests": [
+                        69620,
+                        69632
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 33757,
+                            "quantity": 30,
+                            "hint": [
+                                "1 from FATEs in zone 1 of zadnor",
+                                "1 per synced Alexander raid clear (raid 1,2,5,6,9,10)"
+                            ]
+                        },
+                        {
+                            "item_id": 33758,
+                            "quantity": 30,
+                            "hint": [
+                                "2 from critical engagements in zone 1 of zadnor",
+                                "1 per synced Alexander raid clear (raid 3,4,7,8,11,12)"
+                            ]
+                        }
+                    ]
+                },
+                "hints": [
+                    "First, note that this step can be done simultaneously with the other one-time steps. Each requires you to do FATEs and Critical Engagements in one of the Zadnor zones or running specific normal raids.",
+                    "I heartily recommend doing FATEs and CEs in Zadnor instead of going crazy from running 180 old and synced normal raids."
+                ]
+            },
+            {
+                "is_one_time": true,
+                "quest_id_first": 69634,
+                "quest_id_repeating": 69634,
+                "prerequisites": {
+                    "quests": [
+                        69620,
+                        69632
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 33759,
+                            "quantity": 30,
+                            "hint": [
+                                "1 from FATEs in zone 2 of zadnor",
+                                "1 per synced Omega raid clear (raid 1,2,5,6,9,10)"
+                            ]
+                        },
+                        {
+                            "item_id": 33760,
+                            "quantity": 30,
+                            "hint": [
+                                "2 from critical engagements in zone 2 of zadnor",
+                                "1 per synced Omega raid clear (raid 3,4,7,8,11,12)"
+                            ]
+                        }
+                    ]
+                },
+                "hints": [
+                    "First, note that this step can be done simultaneously with the other one-time steps. Each requires you to do FATEs and Critical Engagements in one of the Zadnor zones or running specific normal raids.",
+                    "I heartily recommend doing FATEs and CEs in Zadnor instead of going crazy from running 180 old and synced normal raids."
+                ]
+            },
+            {
+                "is_one_time": true,
+                "quest_id_first": 69635,
+                "quest_id_repeating": 69635,
+                "prerequisites": {
+                    "quests": [
+                        69620,
+                        69632
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 33763,
+                            "quantity": 30,
+                            "hint": [
+                                "1 from FATEs in zone 3 of zadnor",
+                                "1 per synced Eden raid clear (raid 1,2,5,6,9,10)"
+                            ]
+                        },
+                        {
+                            "item_id": 33764,
+                            "quantity": 30,
+                            "hint": [
+                                "2 from critical engagements in zone 3 of zadnor",
+                                "1 per synced Eden raid clear (raid 3,4,7,8,11,12)"
+                            ]
+                        }
+                    ]
+                },
+                "hints": [
+                    "First, note that this step can be done simultaneously with the other one-time steps. Each requires you to do FATEs and Critical Engagements in one of the Zadnor zones or running specific normal raids.",
+                    "I heartily recommend doing FATEs and CEs in Zadnor instead of going crazy from running 180 old and synced normal raids."
+                ]
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 69637,
+                "quest_id_repeating": 69637,
+                "prerequisites": {
+                    "quests": [
+                        69636
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 33767,
+                            "quantity": 15,
+                            "hint": [
+                                "3 from The Dalriada",
+                                "2 from Delubrum Reginae",
+                                "1 from running synced level 70 Stormblood dungeons",
+                                "Random drop from Heaven on High"
+                            ]
+                        }
+                    ]
+                },
+                "hints": [
+                    "The last step! You can choose to either run a bunch of Dalriada (if you are at the end of the Bozja storyline) or hunt more Delubrum Reginae again to get your {item:33767}"
+                ]
+            }
+        ]
+    },
+    {
+        "expansion": "EW",
+        "name": "Manderville Weapons",
+        "relics": {
+            "PLD": {
+                "job": "PLD",
+                "item_ids": [
+                    38400,
+                    39144,
+                    39920,
+                    40932
+                ],
+                "achievement_ids": [
+                    3128,
+                    3224,
+                    3285,
+                    3380
+                ]
+            },
+            "WAR": {
+                "job": "WAR",
+                "item_ids": [
+                    38402,
+                    39146,
+                    39922,
+                    40934
+                ],
+                "achievement_ids": [
+                    3129,
+                    3225,
+                    3286,
+                    3381
+                ]
+            },
+            "DRK": {
+                "job": "DRK",
+                "item_ids": [
+                    38406,
+                    39150,
+                    39926,
+                    40938
+                ],
+                "achievement_ids": [
+                    3130,
+                    3226,
+                    3287,
+                    3382
+                ]
+            },
+            "GNB": {
+                "job": "GNB",
+                "item_ids": [
+                    38415,
+                    39159,
+                    39935,
+                    40947
+                ],
+                "achievement_ids": [
+                    3131,
+                    3227,
+                    3288,
+                    3383
+                ]
+            },
+            "DRG": {
+                "job": "DRG",
+                "item_ids": [
+                    38403,
+                    39147,
+                    39923,
+                    40935
+                ],
+                "achievement_ids": [
+                    3132,
+                    3228,
+                    3289,
+                    3384
+                ]
+            },
+            "RPR": {
+                "job": "RPR",
+                "item_ids": [
+                    38418,
+                    39162,
+                    39938,
+                    40950
+                ],
+                "achievement_ids": [
+                    3136,
+                    3232,
+                    3293,
+                    3388
+                ]
+            },
+            "MNK": {
+                "job": "MNK",
+                "item_ids": [
+                    38401,
+                    39145,
+                    39921,
+                    40933
+                ],
+                "achievement_ids": [
+                    3133,
+                    3229,
+                    3290,
+                    3385
+                ]
+            },
+            "SAM": {
+                "job": "SAM",
+                "item_ids": [
+                    38413,
+                    39157,
+                    39933,
+                    40945
+                ],
+                "achievement_ids": [
+                    3135,
+                    3231,
+                    3292,
+                    3387
+                ]
+            },
+            "NIN": {
+                "job": "NIN",
+                "item_ids": [
+                    38405,
+                    39149,
+                    39925,
+                    40937
+                ],
+                "achievement_ids": [
+                    3134,
+                    3230,
+                    3291,
+                    3386
+                ]
+            },
+            "BRD": {
+                "job": "BRD",
+                "item_ids": [
+                    38404,
+                    39148,
+                    39924,
+                    40936
+                ],
+                "achievement_ids": [
+                    3137,
+                    3233,
+                    3294,
+                    3389
+                ]
+            },
+            "MCH": {
+                "job": "MCH",
+                "item_ids": [
+                    38407,
+                    39151,
+                    39927,
+                    40939
+                ],
+                "achievement_ids": [
+                    3138,
+                    3234,
+                    3295,
+                    3390
+                ]
+            },
+            "DNC": {
+                "job": "DNC",
+                "item_ids": [
+                    38416,
+                    39160,
+                    39936,
+                    40948
+                ],
+                "achievement_ids": [
+                    3139,
+                    3235,
+                    3296,
+                    3391
+                ]
+            },
+            "BLM": {
+                "job": "BLM",
+                "item_ids": [
+                    38409,
+                    39153,
+                    39929,
+                    40941
+                ],
+                "achievement_ids": [
+                    3140,
+                    3236,
+                    3297,
+                    3392
+                ]
+            },
+            "SMN": {
+                "job": "SMN",
+                "item_ids": [
+                    38410,
+                    39154,
+                    39930,
+                    40942
+                ],
+                "achievement_ids": [
+                    3141,
+                    3237,
+                    3298,
+                    3393
+                ]
+            },
+            "RDM": {
+                "job": "RDM",
+                "item_ids": [
+                    38414,
+                    39158,
+                    39934,
+                    40946
+                ],
+                "achievement_ids": [
+                    3142,
+                    3238,
+                    3299,
+                    3394
+                ]
+            },
+            "WHM": {
+                "job": "WHM",
+                "item_ids": [
+                    38408,
+                    39152,
+                    39928,
+                    40940
+                ],
+                "achievement_ids": [
+                    3143,
+                    3239,
+                    3300,
+                    3395
+                ]
+            },
+            "SCH": {
+                "job": "SCH",
+                "item_ids": [
+                    38411,
+                    39155,
+                    39931,
+                    40943
+                ],
+                "achievement_ids": [
+                    3144,
+                    3240,
+                    3301,
+                    3396
+                ]
+            },
+            "AST": {
+                "job": "AST",
+                "item_ids": [
+                    38412,
+                    39156,
+                    39932,
+                    40944
+                ],
+                "achievement_ids": [
+                    3145,
+                    3241,
+                    3302,
+                    3397
+                ]
+            },
+            "SGE": {
+                "job": "SGE",
+                "item_ids": [
+                    38417,
+                    39161,
+                    39937,
+                    40949
+                ],
+                "achievement_ids": [
+                    3146,
+                    3242,
+                    3303,
+                    3398
+                ]
+            }
+        },
+        "steps": [
+            {
+                "is_one_time": false,
+                "quest_id_first": 70188,
+                "quest_id_repeating": 70189,
+                "prerequisites": {
+                    "quests": [
+                        70000,
+                        70178
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 38420,
+                            "quantity": 3
+                        }
+                    ]
+                },
+                "hint": "Buy the required items from the vendor to upgrade your relic."
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 70261,
+                "quest_id_repeating": 70262,
+                "prerequisites": {
+                    "quests": [
+                        70255
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 38940,
+                            "quantity": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 70307,
+                "quest_id_repeating": 70308,
+                "prerequisites": {
+                    "quests": [
+                        70291
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 40322,
+                            "quantity": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 70342,
+                "quest_id_repeating": 70343,
+                "prerequisites": {
+                    "quests": [
+                        70336
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 41032,
+                            "quantity": 3
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]
