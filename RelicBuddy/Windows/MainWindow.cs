@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
