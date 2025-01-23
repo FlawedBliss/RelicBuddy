@@ -87,21 +87,7 @@ public class MainWindow : Window, IDisposable
 
     private void DrawDetailColumn()
     {
-        FGui.DrawSeparatorText("Job");
-        ImGui.Spacing();
-        ImGui.PushItemWidth(ImGui.GetColumnWidth() - 16);
-        if (ImGui.Combo("", ref selectedJob, selectableJobs.ToArray(), selectableJobs.Count))
-        {
-            //todo so duplicated can I just UpdateGlobals()?
-            resetQuestingColumn = true;
-            weaponData = expansionData.Relics[selectableJobs[selectedJob]];
-            relicQuestStage = ProgressHelper.GetCurrentRelicQuestStage(weaponData, expansionData);
-            displayedStep = relicQuestStage;
-            plugin.Configuration.SelectedJob = selectedJob;
-            plugin.Configuration.Save();
-        }
-
-        ImGui.PopItemWidth();
+        DrawJobSelector();
 
         FGui.DrawSeparatorText($"Current Step: {displayedStep + 1}/{expansionData.Steps.Count}");
 
@@ -155,6 +141,19 @@ public class MainWindow : Window, IDisposable
         // {
         //     new WrappedTextSegment("I did not find the relic in any of your inventories.").Draw();
         // }
+    }
+
+    private void DrawJobSelector()
+    {
+        FGui.DrawSeparatorText("Job");
+        ImGui.Spacing();
+        ImGui.PushItemWidth(ImGui.GetColumnWidth() - 16);
+        if (ImGui.Combo("", ref selectedJob, selectableJobs.ToArray(), selectableJobs.Count))
+        {
+            UpdateGlobals();
+        }
+
+        ImGui.PopItemWidth();
     }
 
     private void DrawQuestColumn()
@@ -403,6 +402,9 @@ public class MainWindow : Window, IDisposable
         weaponData = expansionData.Relics[selectableJobs[selectedJob]];
         relicQuestStage = ProgressHelper.GetCurrentRelicQuestStage(weaponData, expansionData);
         displayedStep = relicQuestStage;
+        plugin.Configuration.SelectedExpansion = selectedExpansion;
+        plugin.Configuration.SelectedJob = selectedJob;
+        plugin.Configuration.Save();
         resetQuestingColumn = true;
     }
 
