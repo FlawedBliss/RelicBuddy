@@ -84,7 +84,7 @@ public class MainWindow : Window, IDisposable
                 plugin.Configuration.SelectedExpansion = selectedExpansion;
                 plugin.Configuration.Save();
                 UpdateGlobals();
-                expansionData = plugin.RelicData.First(d => d.Expansion == selectedExpansion);
+                expansionData = plugin.RelicData.First(d2 => d2.Expansion == selectedExpansion);
             }
         }
     }
