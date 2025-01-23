@@ -52,6 +52,7 @@ public class MainWindow : Window, IDisposable
     public override void Draw()
     {
         ImGui.Columns(3);
+        ImGui.SetColumnWidth(0, 200);
         DrawExpansionColumn();
 
         DrawColumnSeparator();
