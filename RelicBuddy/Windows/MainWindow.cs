@@ -36,6 +36,9 @@ public class MainWindow : Window, IDisposable
         selectedExpansion = plugin.Configuration.SelectedExpansion;
         selectedJob = plugin.Configuration.SelectedJob;
         UpdateGlobals();
+
+        Size = new(1280, 720);
+        SizeCondition = ImGuiCond.FirstUseEver;
     }
 
     public void Dispose() { }
