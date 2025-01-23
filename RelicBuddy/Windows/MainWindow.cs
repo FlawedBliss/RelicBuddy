@@ -54,7 +54,7 @@ public class MainWindow : Window, IDisposable
     {
         if (!InventoryHelper.SaddlebagLoaded)
         {
-            DrawWarningText("Saddlebag is not loaded. Please open it to include saddlebag content in inventory info.");
+            FGui.DrawWarningText("Saddlebag is not loaded. Please open it to include saddlebag content in inventory info.");
         }
         ImGui.Columns(3);
         ImGui.SetColumnWidth(0, 200);
@@ -71,7 +71,7 @@ public class MainWindow : Window, IDisposable
         ImGui.SetCursorPosX((w * 0.5f) - 64);
         ImGui.Image(ItemHelper.GetItemIcon(40949).ImGuiHandle, new Vector2(128, 128));
 
-        DrawSeparatorText("Expansion");
+        FGui.DrawSeparatorText("Expansion");
         foreach (var d in plugin.RelicData)
         {
             ImGui.Selectable($"{d.Name} ({d.Expansion})", selectedExpansion == d.Expansion);
@@ -88,7 +88,7 @@ public class MainWindow : Window, IDisposable
 
     private void DrawDetailColumn()
     {
-        DrawSeparatorText("Job");
+        FGui.DrawSeparatorText("Job");
         ImGui.Spacing();
         ImGui.PushItemWidth(ImGui.GetColumnWidth() - 16);
         if (ImGui.Combo("", ref selectedJob, selectableJobs.ToArray(), selectableJobs.Count))
@@ -103,8 +103,8 @@ public class MainWindow : Window, IDisposable
         }
 
         ImGui.PopItemWidth();
-        
-        DrawSeparatorText($"Current Step: {displayedStep + 1}/{expansionData.Steps.Count}");
+
+        FGui.DrawSeparatorText($"Current Step: {displayedStep + 1}/{expansionData.Steps.Count}");
 
         if (ImGui.Button("< Prev"))
         {
@@ -118,7 +118,7 @@ public class MainWindow : Window, IDisposable
         }
         //todo what did this todo mean ?? 
         // TODO temp
-        DrawSeparatorText("Details");
+        FGui.DrawSeparatorText("Details");
         if (displayedStep < expansionData.Steps.Count) {
             // ImGui.TextWrapped(StringsDict.expansionData.Steps[relicQuestStage].Hint ??
             //                   "No description has been set for this step.");
@@ -203,7 +203,7 @@ public class MainWindow : Window, IDisposable
                 {
                     if (questStep.Requirements.Item.Count > 0)
                     {
-                        DrawSeparatorText("Required Items");
+                        FGui.DrawSeparatorText("Required Items");
                         ImGui.Spacing();
                         DrawItemTable(questStep.Requirements.Item, i);
                     }
@@ -214,40 +214,6 @@ public class MainWindow : Window, IDisposable
                 ImGui.PopStyleColor();
             }
         }
-    }
-
-    private static void DrawColumnSeparator()
-    {
-        var drawList = ImGui.GetWindowDrawList();
-        var p = ImGui.GetCursorScreenPos();
-        drawList.AddLine(p with { X = p.X - 9999 }, p with { X = p.X + 9999 }, ImGui.GetColorU32(ImGuiCol.Border));
-    }
-
-    private static void DrawSeparatorText(string str)
-    {
-        str = $"[{str}]";
-        var textSize = ImGui.CalcTextSize(str);
-        var width = ImGui.GetColumnWidth() - 16; //-16 needed for spacing so it matches left side
-        var cursor = ImGui.GetCursorScreenPos();
-        var pStart = cursor with { Y = cursor.Y + (textSize.Y * 0.5f) };
-        var p25 = pStart with { X = pStart.X + (width * 0.5f) - (textSize.X * 0.5f) };
-        var pText = p25 with { Y = p25.Y - (textSize.Y * 0.5f) };
-        var p75 = p25 with { X = p25.X + textSize.X };
-        var pEnd = pStart with { X = cursor.X + width };
-        var drawList = ImGui.GetWindowDrawList();
-
-        drawList.AddLine(pStart, p25, ImGui.GetColorU32(ImGuiCol.Border));
-        drawList.AddText(pText, ImGui.GetColorU32(ImGuiCol.Text), str);
-        drawList.AddLine(p75, pEnd, ImGui.GetColorU32(ImGuiCol.Border));
-        ImGui.SetCursorPosY(ImGui.GetCursorPosY() + textSize.Y);
-        
-        ImGui.PushTextWrapPos();
-    }
-
-    private static void CenteredText(string str)
-    {
-        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ((ImGui.GetColumnWidth() - ImGui.CalcTextSize(str).X) * 0.5f));
-        ImGui.TextUnformatted(str);
     }
 
     private void DrawItemTable(List<ItemQuantity> items, int i)
@@ -325,21 +291,21 @@ public class MainWindow : Window, IDisposable
     {
         if (step.Prerequsites.Quests.Count > 0)
         {
-            DrawSeparatorText("Prerequisite Quests");
+            FGui.DrawSeparatorText("Prerequisite Quests");
             foreach (var quest in step.Prerequsites.Quests)
             {
                 DrawQuestLink(quest);
             }
         }
 
-        DrawSeparatorText("Relic Quest");
+        FGui.DrawSeparatorText("Relic Quest");
         DrawQuestLink(QuestManager.IsQuestComplete(step.QuestIdFirst) ? step.QuestIdRepeating : step.QuestIdFirst);
     }
 
     private static void DrawNpcInfo(RelicStep step, int i)
     {
         if (step.Npc is null && step.Object is null) return;
-        DrawSeparatorText("Location");
+        FGui.DrawSeparatorText("Location");
         ImGui.BeginTable($"LocationTable#LTableStep{i}", 3, ImGuiTableFlags.SizingStretchProp);
         ImGui.TableSetupColumn("Link");
         ImGui.TableSetupColumn("Name");
@@ -457,15 +423,4 @@ public class MainWindow : Window, IDisposable
             FGui.DrawItemShopRow(itemId, npcs[0], false);
         }
     }
-
-    private void DrawWarningText(string text)
-    {
-        var p = ImGui.GetCursorScreenPos();
-        var p2 = ImGui.GetItemRectMax();
-        p2.Y += 30;
-        ImGui.GetWindowDrawList().AddRectFilled(p, p2, ImGui.GetColorU32(ImGuiColors.DalamudRed));
-        CenteredText(text);
-    }
-    
-    
 }

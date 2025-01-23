@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Numerics;
 using Dalamud.Interface;
+using Dalamud.Interface.Colors;
 using Dalamud.Interface.Textures;
 using ImGuiNET;
 using Lumina.Excel.Sheets;
@@ -67,5 +68,48 @@ public class FGui
 
             ImGui.SameLine();
         }
+    }
+
+    public static void CenteredText(string str)
+    {
+        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ((ImGui.GetColumnWidth() - ImGui.CalcTextSize(str).X) * 0.5f));
+        ImGui.TextUnformatted(str);
+    }
+
+    public static void DrawSeparatorText(string str)
+    {
+        str = $"[{str}]";
+        var textSize = ImGui.CalcTextSize(str);
+        var width = ImGui.GetColumnWidth() - 16; //-16 needed for spacing so it matches left side
+        var cursor = ImGui.GetCursorScreenPos();
+        var pStart = cursor with { Y = cursor.Y + (textSize.Y * 0.5f) };
+        var p25 = pStart with { X = pStart.X + (width * 0.5f) - (textSize.X * 0.5f) };
+        var pText = p25 with { Y = p25.Y - (textSize.Y * 0.5f) };
+        var p75 = p25 with { X = p25.X + textSize.X };
+        var pEnd = pStart with { X = cursor.X + width };
+        var drawList = ImGui.GetWindowDrawList();
+
+        drawList.AddLine(pStart, p25, ImGui.GetColorU32(ImGuiCol.Border));
+        drawList.AddText(pText, ImGui.GetColorU32(ImGuiCol.Text), str);
+        drawList.AddLine(p75, pEnd, ImGui.GetColorU32(ImGuiCol.Border));
+        ImGui.SetCursorPosY(ImGui.GetCursorPosY() + textSize.Y);
+        
+        ImGui.PushTextWrapPos();
+    }
+
+    private static void DrawColumnSeparator()
+    {
+        var drawList = ImGui.GetWindowDrawList();
+        var p = ImGui.GetCursorScreenPos();
+        drawList.AddLine(p with { X = p.X - 9999 }, p with { X = p.X + 9999 }, ImGui.GetColorU32(ImGuiCol.Border));
+    }
+
+    public static void DrawWarningText(string text)
+    {
+        var p = ImGui.GetCursorScreenPos();
+        var p2 = ImGui.GetItemRectMax();
+        p2.Y += 30;
+        ImGui.GetWindowDrawList().AddRectFilled(p, p2, ImGui.GetColorU32(ImGuiColors.DalamudRed));
+        FGui.CenteredText(text);
     }
 }
