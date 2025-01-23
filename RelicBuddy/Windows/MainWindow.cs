@@ -205,7 +205,7 @@ public class MainWindow : Window, IDisposable
                 DrawNpcInfo(questStep, i);
                 if (questStep.Requirements is not null)
                 {
-                    if (questStep.Requirements.Item?.Count > 0)
+                    if (questStep.Requirements.Item.Count > 0)
                     {
                         DrawSeparatorText("Required Items");
                         ImGui.Spacing();
@@ -354,7 +354,7 @@ public class MainWindow : Window, IDisposable
         {
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
-            var npc = NpcHelper.GetNpc(step.Npc!.Value)!;
+            var npc = NpcHelper.GetNpc(step.Npc!.Value);
             FGui.DrawAetheryteLink(NpcHelper.GetNpcLevel(npc));
             ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().ImGuiHandle,
                         new Vector2(24, 24));
@@ -411,10 +411,10 @@ public class MainWindow : Window, IDisposable
         if (ImGui.IsItemHovered())
         {
             ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-            var map = MapUtil.WorldToMap(new Vector2(location.X, location.Z), location.Map.Value!.OffsetX,
-                                         location.Map.Value!.OffsetY, location.Map.Value!.SizeFactor);
+            var map = MapUtil.WorldToMap(new Vector2(location.X, location.Z), location.Map.Value.OffsetX,
+                                         location.Map.Value.OffsetY, location.Map.Value.SizeFactor);
             ImGui.SetTooltip(
-                $"{location.Territory.Value!.PlaceName.Value!.Name} ({Math.Round(map.X, 2)} {Math.Round(map.Y, 2)})");
+                $"{location.Territory.Value.PlaceName.Value.Name} ({Math.Round(map.X, 2)} {Math.Round(map.Y, 2)})");
         }
 
         if (ImGui.IsItemClicked())
