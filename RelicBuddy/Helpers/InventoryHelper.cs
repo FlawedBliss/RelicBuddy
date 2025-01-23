@@ -14,6 +14,8 @@ public class InventoryHelper
     public static InventoryHelper Instance => _instance ??= new InventoryHelper();
     public const ushort InventorySize = 35;
 
+    public bool SaddlebagLoaded { private set; get; } = false;
+    
     private InventoryHelper()
     {
         allInventories = playerInventories.Concat(saddlebagInventories).Concat(gearchestInventories).ToArray();
@@ -53,6 +55,11 @@ public class InventoryHelper
     public unsafe int GetSaddlebagItemCount(uint itemId)
     {
         if (Plugin.ClientState.LocalPlayer is null) return 0;
+        if (inventoryManager->GetInventoryContainer(saddlebagInventories[0])->Loaded == 0)
+        {
+            return 0;
+        }
+        if(!SaddlebagLoaded) SaddlebagLoaded = true;
         var sum = 0;
         foreach (var saddlebagInventory in saddlebagInventories)
         {

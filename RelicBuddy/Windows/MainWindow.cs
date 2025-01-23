@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Interface;
+using Dalamud.Interface.Colors;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
@@ -11,7 +12,6 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using ImGuiNET;
 using RelicBuddy.Helpers;
 using RelicBuddy.Helpers.FGui;
-using RelicBuddy.Helpers.Segment;
 using RelicBuddy.Helpers.Strings;
 using RelicBuddy.Models;
 
@@ -32,6 +32,8 @@ public class MainWindow : Window, IDisposable
     public MainWindow(Plugin plugin) : base("RelicBuddy##rb_mw")
     {
         this.plugin = plugin;
+        Flags |= ImGuiWindowFlags.AlwaysVerticalScrollbar;
+        
         selectedExpansion = plugin.Configuration.SelectedExpansion;
         selectedJob = plugin.Configuration.SelectedJob;
         UpdateGlobals();
@@ -50,20 +52,17 @@ public class MainWindow : Window, IDisposable
 
     public override void Draw()
     {
+        if (!InventoryHelper.SaddlebagLoaded)
+        {
+            DrawWarningText("Saddlebag is not loaded. Please open it to include saddlebag content in inventory info.");
+        }
         ImGui.Columns(3);
         ImGui.SetColumnWidth(0, 200);
         DrawExpansionColumn();
-
-        DrawColumnSeparator();
         ImGui.NextColumn();
-
         DrawDetailColumn();
         ImGui.NextColumn();
-
         DrawQuestColumn();
-
-        // var pos = ImGui.GetMousePos();
-        // ImGui.Text($"mouse {pos.X} {pos.Y}");
     }
 
     private void DrawExpansionColumn()
@@ -73,7 +72,6 @@ public class MainWindow : Window, IDisposable
         ImGui.Image(ItemHelper.GetItemIcon(40949).ImGuiHandle, new Vector2(128, 128));
 
         DrawSeparatorText("Expansion");
-
         foreach (var d in plugin.RelicData)
         {
             ImGui.Selectable($"{d.Name} ({d.Expansion})", selectedExpansion == d.Expansion);
@@ -459,4 +457,15 @@ public class MainWindow : Window, IDisposable
             FGui.DrawItemShopRow(itemId, npcs[0], false);
         }
     }
+
+    private void DrawWarningText(string text)
+    {
+        var p = ImGui.GetCursorScreenPos();
+        var p2 = ImGui.GetItemRectMax();
+        p2.Y += 30;
+        ImGui.GetWindowDrawList().AddRectFilled(p, p2, ImGui.GetColorU32(ImGuiColors.DalamudRed));
+        CenteredText(text);
+    }
+    
+    
 }
