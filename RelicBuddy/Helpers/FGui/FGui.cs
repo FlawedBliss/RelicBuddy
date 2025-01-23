@@ -97,7 +97,7 @@ public class FGui
         ImGui.PushTextWrapPos();
     }
 
-    private static void DrawColumnSeparator()
+    public static void DrawColumnSeparator()
     {
         var drawList = ImGui.GetWindowDrawList();
         var p = ImGui.GetCursorScreenPos();
