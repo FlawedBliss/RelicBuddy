@@ -45,7 +45,6 @@ public class MainWindow : Window, IDisposable
     private RelicWeapon weaponData;
     private List<string> selectableJobs = [];
     private bool resetQuestingColumn = true;
-    private int relicItemStage;
     private int relicQuestStage;
     private int displayedStep = 0;
 
@@ -99,7 +98,6 @@ public class MainWindow : Window, IDisposable
             //todo so duplicated can I just UpdateGlobals()?
             resetQuestingColumn = true;
             weaponData = expansionData.Relics[selectableJobs[selectedJob]];
-            relicItemStage = ProgressHelper.GetCurrentRelicItemStage(weaponData);
             relicQuestStage = ProgressHelper.GetCurrentRelicQuestStage(weaponData, expansionData);
             displayedStep = relicQuestStage;
             plugin.Configuration.SelectedJob = selectedJob;
@@ -440,7 +438,6 @@ public class MainWindow : Window, IDisposable
         }
 
         weaponData = expansionData.Relics[selectableJobs[selectedJob]];
-        relicItemStage = ProgressHelper.GetCurrentRelicItemStage(weaponData);
         relicQuestStage = ProgressHelper.GetCurrentRelicQuestStage(weaponData, expansionData);
         displayedStep = relicQuestStage;
         resetQuestingColumn = true;
