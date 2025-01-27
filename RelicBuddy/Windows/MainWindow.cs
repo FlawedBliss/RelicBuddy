@@ -241,6 +241,17 @@ public class MainWindow : Window, IDisposable
             ImGui.TextUnformatted($"{ItemHelper.GetItemName(item.ItemId)}");
             ImGui.TableNextColumn();
             ImGui.TextWrapped($"{InventoryHelper.GetItemCount(item.ItemId)}");
+            if (ImGui.IsItemHovered())
+            {
+                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                ImGui.SetTooltip("Search");
+            }
+
+            if (ImGui.IsItemClicked())
+            {
+                plugin.ItemLocationWindow.DisplayItem = item.ItemId;
+                plugin.ItemLocationWindow.IsOpen = true;
+            }
             ImGui.TableNextColumn();
             ImGui.TextWrapped($"{item.Quantity}");
             ImGui.TableNextColumn();

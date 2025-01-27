@@ -101,19 +101,44 @@ public class InventoryHelper
                             .Sum(loc => loc.Count);
     }
 
-    public unsafe List<InventoryLocation> GetItemLocations(uint itemId)
+    public IEnumerable<InventoryLocation> GetItemLocations(uint itemId)
+    {
+       return new List<InventoryLocation>(GetInventoryItemLocations(itemId)).Concat(GetRetainerItemLocations(itemId));
+    }
+
+    public unsafe List<InventoryLocation> GetInventoryItemLocations(uint itemId)
     {
         if (Plugin.ClientState.LocalPlayer is null) return [];
         var locations = new List<InventoryLocation>();
-        foreach (var invType in allInventories)
+        foreach (var invType in playerInventories)
         {
             if (inventoryManager->GetItemCountInContainer(itemId, invType) > 0)
             {
                 for (var i = 0; i < inventoryManager->GetInventoryContainer(invType)->Size; ++i)
                 {
-                    if (inventoryManager->GetInventorySlot(invType, i)->ItemId == itemId)
+                    var slot = inventoryManager->GetInventorySlot(invType, i);
+                    if (slot->ItemId == itemId)
                     {
-                        locations.Add(new InventoryLocation(invType, i));
+                        locations.Add(new InventoryLocation(invType, i, itemId, slot->Quantity));
+                    }
+                }
+            }
+        }
+        return locations;
+    }
+
+    public List<InventoryLocation> GetRetainerItemLocations(uint itemId)
+    {
+        var locations = new List<InventoryLocation>();
+        foreach (var retainer in RetainerCache)
+        {
+            foreach (var page in retainer.Value)
+            {
+                foreach (var item in page.Value)
+                {
+                    if (item.ItemId == itemId)
+                    {
+                        locations.Add(item);
                     }
                 }
             }
@@ -121,7 +146,6 @@ public class InventoryHelper
 
         return locations;
     }
-
     public unsafe void UpdateRetainerInventory(AddonEvent type, AddonArgs args)
     {
         if (inventoryManager->GetInventoryContainer(InventoryType.RetainerPage1)->Loaded == 0)
@@ -134,11 +158,24 @@ public class InventoryHelper
             for (var i = 0; i < container->Size; ++i)
             {
                 var loc = new InventoryLocation(inventory, i, container->GetInventorySlot(i)->ItemId,
-                                                container->GetInventorySlot(i)->Quantity);
+                                                container->GetInventorySlot(i)->Quantity, retainerManager->LastSelectedRetainerId);
                 retainerInventory[inventory].Add(loc);
             }
         }
 
         RetainerCache[retainerManager->LastSelectedRetainerId] = retainerInventory;
+    }
+
+    public unsafe string GetRetainerName(ulong retainerId)
+    {
+        for (var i = 0; i < ActiveRetainers; ++i)
+        {
+            if (retainerManager->Retainers[i].RetainerId == retainerId)
+            {
+                return retainerManager->Retainers[i].NameString;
+            }
+        }
+
+        return "unknown retainer";
     }
 }

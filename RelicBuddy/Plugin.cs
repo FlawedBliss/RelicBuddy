@@ -53,6 +53,7 @@ public sealed class Plugin : IDalamudPlugin
     private TextWindow TextWindow { get; init; }
     
     internal ItemSourceWindow ItemSourceWindow { get; init; }
+    internal ItemLocationWindow ItemLocationWindow { get; init; }
 
     public List<RelicData> RelicData { get; set; } = [];
 
@@ -63,11 +64,13 @@ public sealed class Plugin : IDalamudPlugin
         StringsDict.Instance.Init(this);
         DebugWindow = new DebugWindow(this);
         ItemSourceWindow = new ItemSourceWindow(this);
+        ItemLocationWindow = new ItemLocationWindow(this);
         MainWindow = new MainWindow(this);
         TextWindow = new TextWindow(this);
 
         WindowSystem.AddWindow(DebugWindow);
         WindowSystem.AddWindow(ItemSourceWindow);
+        WindowSystem.AddWindow(ItemLocationWindow);
         WindowSystem.AddWindow(MainWindow);
         WindowSystem.AddWindow(TextWindow);
         CommandManager.AddHandler(RelicBuddyCommandName, new CommandInfo(OnRelicBuddyCommand)
@@ -116,6 +119,7 @@ public sealed class Plugin : IDalamudPlugin
         DebugWindow.Dispose();
         MainWindow.Dispose();
         ItemSourceWindow.Dispose();
+        ItemLocationWindow.Dispose();
         TextWindow.Dispose();
         CommandManager.RemoveHandler(RelicBuddyCommandName);
         CommandManager.RemoveHandler(RelicBuddyDebugCommandName);
