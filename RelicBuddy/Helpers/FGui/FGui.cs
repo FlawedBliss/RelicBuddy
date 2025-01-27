@@ -108,8 +108,8 @@ public class FGui
     {
         var p = ImGui.GetCursorScreenPos();
         var p2 = ImGui.GetItemRectMax();
-        p2.Y += 30;
-        ImGui.GetWindowDrawList().AddRectFilled(p, p2, ImGui.GetColorU32(ImGuiColors.DalamudRed));
+        p2 = p2 with { X = p.X + ImGui.GetWindowWidth(), Y = p.Y + 25 };
+        ImGui.GetWindowDrawList().AddRectFilled(p, p2, ImGui.GetColorU32(ImGuiColors.DalamudGrey));
         FGui.CenteredText(text);
     }
 }

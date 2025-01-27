@@ -57,11 +57,13 @@ public class MainWindow : Window, IDisposable
         if (!InventoryHelper.SaddlebagLoaded)
         {
             FGui.DrawWarningText("Saddlebag is not loaded. Please open it to include saddlebag content in inventory info.");
+            ImGui.Spacing();
         }
 
         if (!InventoryHelper.RetainersLoaded)
         {
             FGui.DrawWarningText($"{InventoryHelper.ActiveRetainers - InventoryHelper.RetainerCache.Count} Retainer inventories are not loaded. Please access each retainer at a bell to load their inventories.");
+            ImGui.Spacing();
         }
         ImGui.Columns(3);
         ImGui.SetColumnWidth(0, 200);
