@@ -44,7 +44,7 @@ public class InventoryHelper
 
     public static InventoryHelper Instance => _instance ??= new InventoryHelper();
 
-    public unsafe bool SaddlebagLoaded => inventoryManager->GetInventoryContainer(saddlebagInventories[0])->Loaded == 0;
+    public unsafe bool SaddlebagLoaded => inventoryManager->GetInventoryContainer(saddlebagInventories[0])->Loaded == 1;
     public bool RetainersLoaded => RetainerCache.Count == ActiveRetainers;
 
     public Dictionary<ulong, Dictionary<InventoryType, List<InventoryLocation>>> RetainerCache { get; private set; } = new();
