@@ -59,7 +59,6 @@ public class MainWindow : Window, IDisposable
             FGui.DrawWarningText("Saddlebag is not loaded. Please open it to include saddlebag content in inventory info.");
             ImGui.Spacing();
         }
-
         if (!InventoryHelper.RetainersLoaded)
         {
             FGui.DrawWarningText($"{InventoryHelper.ActiveRetainers - InventoryHelper.RetainerCache.Count} Retainer inventories are not loaded. Please access each retainer at a bell to load their inventories.");
@@ -69,9 +68,21 @@ public class MainWindow : Window, IDisposable
         ImGui.SetColumnWidth(0, 200);
         DrawExpansionColumn();
         ImGui.NextColumn();
-        DrawDetailColumn();
+        if (selectedJob == 0)
+        {
+            DrawExpansionOverviewColumn();
+        } else {
+            DrawDetailColumn();
+        }
         ImGui.NextColumn();
-        DrawQuestColumn();
+        if (selectedJob == 0)
+        {
+            DrawItemTable(ProgressHelper.GetAllMissingItemsForExpansion(expansionData), 999);
+        }
+        else
+        {
+            DrawQuestColumn();
+        }
     }
 
     private void DrawExpansionColumn()
@@ -87,14 +98,54 @@ public class MainWindow : Window, IDisposable
             if (ImGui.IsItemClicked())
             {
                 selectedExpansion = d.Expansion;
-                plugin.Configuration.SelectedExpansion = selectedExpansion;
-                plugin.Configuration.Save();
                 UpdateGlobals();
-                expansionData = plugin.RelicData.First(d2 => d2.Expansion == selectedExpansion);
             }
         }
     }
 
+    private void DrawExpansionOverviewColumn()
+    {
+        DrawJobSelector();
+        FGui.DrawColumnSeparator();
+
+        var relicStages = new Dictionary<string, int>();
+        foreach (var relic in expansionData.Relics)
+        {
+            var stage = 0;
+            for (var i = 0; i < relic.Value.ItemIds.Count; i++)
+            {
+                var itemId = relic.Value.ItemIds[i];
+                if (InventoryHelper.GetItemCount(itemId) > 0)
+                {
+                    stage = i+1;
+                }
+            }
+            relicStages[relic.Key] = stage;
+        }
+
+        var stepCount = expansionData.Steps.Count(i => !i.IsOneTime);
+        var finishedRelics = relicStages.Where(s => s.Value == stepCount).ToList();
+        var newRelics = relicStages.Where(s => s.Value == 0).ToList();
+        var wipRelics = relicStages.Where(s => s.Value > 0 && s.Value < stepCount).ToList();
+        
+        ImGui.TextUnformatted($"You have finished {finishedRelics.Count} relics.");
+        if (finishedRelics.Count > 0 && ImGui.IsItemHovered())
+        {
+            ImGui.SetTooltip(string.Join(" ", finishedRelics.Select(s => s.Key)));
+        }
+        ImGui.TextUnformatted($"You have not started {newRelics.Count} relics.");
+        if (ImGui.IsItemHovered())
+        {
+            ImGui.SetTooltip($"{string.Join(" ", newRelics.Select(s => s.Key))}");
+        }
+        ImGui.TextUnformatted($"The following relics are in progress: ");
+        foreach(var job in wipRelics)
+        {
+            ImGui.BulletText($"{job.Key} {relicStages[job.Key]}/{expansionData.Steps.Count(s => !s.IsOneTime)}");
+        }
+        ImGui.Spacing();
+        ImGui.TextUnformatted("The table on the right shows how many items you still need to finish all relics of this expansion.");
+    }
     private void DrawDetailColumn()
     {
         DrawJobSelector();
@@ -412,6 +463,8 @@ public class MainWindow : Window, IDisposable
 
     private void UpdateGlobals()
     {
+        
+        // load the relic data for the selected expansion
         expansionData = plugin.RelicData.First(d => d.Expansion == selectedExpansion);
         if (plugin.RelicData.Count == 0) return;
         selectableJobs = expansionData.Relics.Keys.ToList();
@@ -419,6 +472,7 @@ public class MainWindow : Window, IDisposable
         {
             selectedJob = 0;
         }
+        selectableJobs.Insert(0, "ALL");
 
         weaponData = expansionData.Relics[selectableJobs[selectedJob]];
         relicQuestStage = ProgressHelper.GetCurrentRelicQuestStage(weaponData, expansionData);
