@@ -5,11 +5,11 @@ using Dalamud.IoC;
 using Dalamud.Plugin;
 using System.IO;
 using System.Reflection;
-using Dalamud.Configuration;
-using Dalamud.Interface;
+using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
 using Newtonsoft.Json;
+using RelicBuddy.Helpers;
 using RelicBuddy.Helpers.Strings;
 using RelicBuddy.Models;
 using RelicBuddy.Windows;
@@ -92,6 +92,8 @@ public sealed class Plugin : IDalamudPlugin
         // // Adds another button that is doing the same but for the main ui of the plugin
         // PluginInterface.UiBuilder.OpenMainUi += ToggleMainUI;
         
+        AddonLifecycle.RegisterListener(AddonEvent.PostSetup, "SelectString", InventoryHelper.Instance.UpdateRetainerInventory);
+        
     }
 
     private void InitRelicData()
@@ -117,6 +119,8 @@ public sealed class Plugin : IDalamudPlugin
         TextWindow.Dispose();
         CommandManager.RemoveHandler(RelicBuddyCommandName);
         CommandManager.RemoveHandler(RelicBuddyDebugCommandName);
+        
+        AddonLifecycle.UnregisterListener(AddonEvent.PostSetup, "SelectString", InventoryHelper.Instance.UpdateRetainerInventory);
     }
 
     private void OnRelicBuddyCommand(string command, string args)
