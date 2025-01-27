@@ -110,6 +110,7 @@ public sealed class Plugin : IDalamudPlugin
         using var reader = new StreamReader(stream);
         var json = reader.ReadToEnd();
         RelicData = JsonConvert.DeserializeObject<List<RelicData>>(json)!;
+        PopulateCache(RelicData);
     }
 
     public void Dispose()
@@ -138,4 +139,18 @@ public sealed class Plugin : IDalamudPlugin
     }
 
     private void DrawUI() => WindowSystem.Draw();
+
+    private void PopulateCache(List<RelicData> relicData)
+    {
+        foreach (var expansion in relicData)
+        {
+            foreach (var step in expansion.Steps)
+            {
+                foreach (var item in step.Requirements?.Item ?? [])
+                {
+                    ShopHelper.Instance.GetNpcsWithItem(item.ItemId);
+                }
+            }
+        }
+    }
 }
