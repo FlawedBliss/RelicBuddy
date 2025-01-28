@@ -39,7 +39,21 @@ public class InventoryHelper
 
     private readonly unsafe InventoryManager* inventoryManager = InventoryManager.Instance();
     private readonly unsafe RetainerManager* retainerManager = RetainerManager.Instance();
-    public int ActiveRetainers { get; private init; }
+
+    private int _activeRetainers = -1;
+
+    public int ActiveRetainers
+    {
+        get
+        {
+            if (_activeRetainers == -1)
+            {
+                UpdateActiveRetainers();
+            }
+            return _activeRetainers;
+        }
+    }
+
     private static InventoryHelper? _instance = null;
 
     public static InventoryHelper Instance => _instance ??= new InventoryHelper();
@@ -51,15 +65,23 @@ public class InventoryHelper
 
     private unsafe InventoryHelper()
     {
-        for (int i = 0; i < retainerManager->Retainers.Length; i++)
+        allInventories = playerInventories.Concat(saddlebagInventories).Concat(gearchestInventories).ToArray();
+    }
+
+    private unsafe void UpdateActiveRetainers()
+    {
+        if (retainerManager->Ready == 0)
+        {
+            return;
+        }
+        for (var i = 0; i < retainerManager->Retainers.Length; i++)
         {
             if (!retainerManager->Retainers[i].Available)
             {
-                ActiveRetainers = i;
+                _activeRetainers = i;
                 break;
             }
         }
-        allInventories = playerInventories.Concat(saddlebagInventories).Concat(gearchestInventories).ToArray();
     }
 
     public int GetItemCount(uint itemId)
