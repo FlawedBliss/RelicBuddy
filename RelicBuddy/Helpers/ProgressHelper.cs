@@ -19,16 +19,16 @@ public class ProgressHelper
         {
             if (inventoryHelper.GetItemCount(relicWeapon.ItemIds[i]) > 0)
             {
-                return i;
+                return i+1;
             }
         }
 
-        return -1;
+        return 0;
     }
 
     public int GetCurrentRelicQuestStage(RelicWeapon relicWeapon, RelicData expansionData)
     {
-        var currentQuestStage = GetCurrentRelicItemStage(relicWeapon)+1;
+        var currentQuestStage = GetCurrentRelicItemStage(relicWeapon);
         for (var i = 0; i < expansionData.Steps.Count; ++i)
         {
             // Plugin.PluginLog.Debug($"{currentQuestStage} >= {i}");

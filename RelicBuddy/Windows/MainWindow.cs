@@ -50,6 +50,7 @@ public class MainWindow : Window, IDisposable
     private List<string> selectableJobs = [];
     private bool resetQuestingColumn = true;
     private int relicQuestStage;
+    private int relicItemStage;
     private int displayedStep = 0;
 
     public override void Draw()
@@ -165,9 +166,7 @@ public class MainWindow : Window, IDisposable
         //todo what did this todo mean ?? 
         // TODO temp
         FGui.DrawSeparatorText("Details");
-        if (displayedStep < expansionData.Steps.Count) {
-            // ImGui.TextWrapped(StringsDict.expansionData.Steps[relicQuestStage].Hint ??
-            //                   "No description has been set for this step.");
+        if(relicItemStage < weaponData.ItemIds.Count-1) {
             var hints = expansionData.Steps[displayedStep].Hints;
             if (hints is not null)
             {
@@ -183,7 +182,10 @@ public class MainWindow : Window, IDisposable
                     renderer?.Render();
                 }
             }
-            
+        }
+        else
+        {
+            ImGui.TextUnformatted("You have finished this relic!");
         }
 
         // if (relicItemStage != -1)
@@ -486,7 +488,8 @@ public class MainWindow : Window, IDisposable
 
         weaponData = expansionData.Relics[selectableJobs[selectedJob]];
         relicQuestStage = ProgressHelper.GetCurrentRelicQuestStage(weaponData, expansionData);
-        displayedStep = relicQuestStage;
+        relicItemStage = ProgressHelper.GetCurrentRelicItemStage(weaponData);
+        displayedStep = Math.Min(relicQuestStage, expansionData.Steps.Count-1);
         plugin.Configuration.SelectedExpansion = selectedExpansion;
         plugin.Configuration.SelectedJob = selectedJob;
         plugin.Configuration.Save();
