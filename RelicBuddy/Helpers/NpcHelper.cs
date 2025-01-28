@@ -2,6 +2,7 @@
 using System.Linq;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
+using Lumina.Extensions;
 
 namespace RelicBuddy.Helpers;
 
@@ -16,7 +17,7 @@ public class NpcHelper
     private readonly ExcelSheet<EObj> objSheet;
     private readonly ExcelSheet<EObjName> objNameSheet;
 
-    private Dictionary<uint, Level> npcLevelCache = new();
+    private Dictionary<uint, Level?> npcLevelCache = new();
     private Dictionary<uint, Level> objLevelCache = new();
     public NpcHelper()
     {
@@ -49,13 +50,13 @@ public class NpcHelper
     }
     
 
-    public Level GetNpcLevel(ENpcResident npc)
+    public Level? GetNpcLevel(ENpcResident npc)
     {
         if (npcLevelCache.TryGetValue(npc.RowId, value: out var level))
         {
             return level;
         }
-        npcLevelCache[npc.RowId] = levelSheet.First(l => l.Object.RowId == npc.RowId);
+        npcLevelCache[npc.RowId] = levelSheet.FirstOrNull(l => l.Object.RowId == npc.RowId);
         return npcLevelCache[npc.RowId];
     }
 

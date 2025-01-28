@@ -387,24 +387,34 @@ public class MainWindow : Window, IDisposable
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
             var npc = NpcHelper.GetNpc(step.Npc!.Value);
-            FGui.DrawAetheryteLink(NpcHelper.GetNpcLevel(npc));
+            var level = NpcHelper.GetNpcLevel(npc);
+            if(level is not null) {
+                FGui.DrawAetheryteLink(level.Value);
+            }
             ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().ImGuiHandle,
                         new Vector2(24, 24));
-            
-            if (ImGui.IsItemHovered())
-            {
-                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-            }
+            if(level is not null) {
+                if (ImGui.IsItemHovered())
+                {
+                    ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                }
 
-            if (ImGui.IsItemClicked())
-            {
-                MapHelper.ShowFlag(NpcHelper.GetNpcLevel(npc));
+                if (ImGui.IsItemClicked())
+                {
+                    MapHelper.ShowFlag(level.Value);
+                }
             }
 
             ImGui.TableNextColumn();
             ImGui.TextWrapped(npc.Singular.ExtractText());
             ImGui.TableNextColumn();
-            ImGui.TextWrapped(NpcHelper.GetNpcLevel(npc).Map.Value.PlaceName.Value.Name.ExtractText());
+            if(level is not null) {
+                ImGui.TextWrapped(level.Value.Map.Value.PlaceName.Value.Name.ExtractText());
+            }
+            else
+            {
+                ImGui.TextWrapped("Unknown");
+            }
         }
 
         if (step.Object is not null)

@@ -1,9 +1,7 @@
 ﻿using System.Numerics;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Textures;
-using Dalamud.Interface.Textures.TextureWraps;
 using ImGuiNET;
-using Lumina;
 
 namespace RelicBuddy.Helpers.Segment;
 
@@ -34,16 +32,19 @@ public class NpcSegment : BaseSegment
     {
         if (GetAvailableSpace() < CalcWidth())
             ImGui.NewLine();
-        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(60453)).GetWrapOrEmpty().ImGuiHandle, new Vector2(iconSize, iconSize));
-        if(ImGui.IsItemHovered())
-        {
-            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+        var level = NpcHelper.GetNpcLevel(NpcHelper.GetNpc(NpcId));
+        if(level is not null) {
+            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(60453)).GetWrapOrEmpty().ImGuiHandle, new Vector2(iconSize, iconSize));
+            if(ImGui.IsItemHovered())
+            {
+                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+            }
+            if (ImGui.IsItemClicked())
+            {
+                MapHelper.ShowFlag(level.Value);
+            }
+            ImGui.SameLine();
         }
-        if (ImGui.IsItemClicked())
-        {
-            MapHelper.ShowFlag(NpcHelper.GetNpcLevel(NpcHelper.GetNpc(NpcId)));
-        }
-        ImGui.SameLine();
         ImGui.PushStyleColor(ImGuiCol.Text, textColor);
         npcNameSegment.Draw();
         ImGui.PopStyleColor();
