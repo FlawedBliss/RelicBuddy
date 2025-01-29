@@ -9,7 +9,7 @@
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <IsPackable>false</IsPackable>
     <RootNamespace>RelicBuddy</RootNamespace>
-    <AssemblyVersion>0.1.0.3</AssemblyVersion>
+    <AssemblyVersion>0.1.0.4</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
