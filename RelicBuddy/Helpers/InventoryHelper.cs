@@ -58,7 +58,18 @@ public class InventoryHelper
 
     public static InventoryHelper Instance => _instance ??= new InventoryHelper();
 
-    public unsafe bool SaddlebagLoaded => inventoryManager->GetInventoryContainer(saddlebagInventories[0])->Loaded == 1;
+    public unsafe bool SaddlebagLoaded
+    {
+        get
+        {
+            if (inventoryManager->GetInventoryContainer(saddlebagInventories[0]) == null)
+            {
+                return false;
+            }
+            return inventoryManager->GetInventoryContainer(saddlebagInventories[0])->Loaded == 1;
+        }
+    }
+
     public bool RetainersLoaded => RetainerCache.Count == ActiveRetainers;
 
     public Dictionary<ulong, Dictionary<InventoryType, List<InventoryLocation>>> RetainerCache { get; private set; } = new();
@@ -98,11 +109,7 @@ public class InventoryHelper
 
     public unsafe int GetSaddlebagItemCount(uint itemId)
     {
-        if (Plugin.ClientState.LocalPlayer is null) return 0;
-        if (inventoryManager->GetInventoryContainer(saddlebagInventories[0])->Loaded == 0)
-        {
-            return 0;
-        }
+        if (Plugin.ClientState.LocalPlayer is null || !SaddlebagLoaded) return 0;
 
         var sum = 0;
         foreach (var saddlebagInventory in saddlebagInventories)
