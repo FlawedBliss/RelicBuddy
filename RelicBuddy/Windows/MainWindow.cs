@@ -486,11 +486,13 @@ public class MainWindow : Window, IDisposable
             selectedJob = 0;
         }
         selectableJobs.Insert(0, "ALL");
-
-        weaponData = expansionData.Relics[selectableJobs[selectedJob]];
-        relicQuestStage = ProgressHelper.GetCurrentRelicQuestStage(weaponData, expansionData);
-        relicItemStage = ProgressHelper.GetCurrentRelicItemStage(weaponData);
-        displayedStep = Math.Min(relicQuestStage, expansionData.Steps.Count-1);
+        
+        if(selectedJob > 0) {
+            weaponData = expansionData.Relics[selectableJobs[selectedJob]];
+            relicQuestStage = ProgressHelper.GetCurrentRelicQuestStage(weaponData, expansionData);
+            relicItemStage = ProgressHelper.GetCurrentRelicItemStage(weaponData);
+            displayedStep = Math.Min(relicQuestStage, expansionData.Steps.Count-1);
+        }
         plugin.Configuration.SelectedExpansion = selectedExpansion;
         plugin.Configuration.SelectedJob = selectedJob;
         plugin.Configuration.Save();
