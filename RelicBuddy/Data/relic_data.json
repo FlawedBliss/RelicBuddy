@@ -643,8 +643,8 @@
                     ]
                 },
                 "hints": [
-                    "Accept your quest and as instructed, complete [Sohm Al (Hard)], [The Great Gubal Library (Hard)] and [The Lost City of Ampdapor (Hard)] as your corresponding job with the weapon either equipped or in your inventory.",
-                    "Next, you must farm aetheric density which is gained via most activities that involve combat such as completing FATEs, trials, dungeons or raids with your weapon equipped. An efficient method is to farm [Alexander - The Eyes of the Creator (Savage)] unsynced 20 times.",
+                    "Accept your quest and as instructed, complete {duty:221}, {duty:196} and {duty:140} as your corresponding job with the weapon either equipped or in your inventory.",
+                    "Next, you must farm aetheric density which is gained via most activities that involve combat such as completing FATEs, trials, dungeons or raids with your weapon equipped. An efficient method is to farm {duty:190} unsynced 20 times.",
                     "Lastly, you need to acquire a {item:16932} from the {npc:1018340} by trading it 15 {item:16933} which are bought with tomestones or GC seals."
                 ]
             },

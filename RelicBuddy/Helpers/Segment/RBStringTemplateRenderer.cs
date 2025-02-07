@@ -60,6 +60,9 @@ public partial class RBStringTemplateRenderer
                 case "object":
                     segments.Add(new ObjectSegment(uint.Parse(value)));
                     break;
+                case "duty":
+                    segments.Add(new DutySegment(uint.Parse(value)));
+                    break;
                 default:
                     Plugin.PluginLog.Warning($"Missing renderer for template type: {type}");
                     segments.Add(new WrappedTextSegment($"unknown type: {type}"));

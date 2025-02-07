@@ -38,7 +38,10 @@ public sealed class Plugin : IDalamudPlugin
     internal static IAddonEventManager AddonEventManager { get; private set; } = null!;
     
     [PluginService]
-    internal static IAddonLifecycle AddonLifecycle { get; private set; } = null!;
+    internal static IAddonLifecycle AddonLifecycle { get; private set; } = null!;    
+    
+    [PluginService]
+    internal static ICondition Condition { get; private set; } = null!;
     
     private const string RelicBuddyCommandName = "/rb";
     private const string RelicBuddyDebugCommandName = "/rbd";
