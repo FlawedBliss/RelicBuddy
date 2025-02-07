@@ -1275,7 +1275,7 @@
                         }
                     ]
                 },
-                "hint": "You can get {item:21801} by defeating enemies in Eureka Anemos. You can also speak to {npc:0}[put gerolt here] and trade in {item:21803} for up to 5 Protean Crystals each. Anemos Crystals are obtained by defeating notorious monsters in Eureka.\nYou will need 1300-2200 Protean Crystals in total for the next steps."
+                "hint": "You can get {item:21801} by defeating enemies in Eureka Anemos. You can also speak to {npc:1025047} and trade in {item:21803} for up to 5 Protean Crystals each. Anemos Crystals are obtained by defeating notorious monsters in Eureka.\nYou will need 1300-2200 Protean Crystals in total for the next steps."
             },
             {
                 "is_one_time": false,
