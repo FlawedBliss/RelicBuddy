@@ -167,7 +167,7 @@ public class MainWindow : Window, IDisposable
         //todo what did this todo mean ?? 
         // TODO temp
         FGui.DrawSeparatorText("Details");
-        if(relicItemStage < weaponData.ItemIds.Count-1) {
+        if(relicItemStage <= weaponData.ItemIds.Count-1) {
             var hints = expansionData.Steps[displayedStep].Hints;
             if (hints is not null)
             {
