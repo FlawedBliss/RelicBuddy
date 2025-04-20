@@ -109,7 +109,7 @@ public class InventoryHelper
 
     public unsafe int GetSaddlebagItemCount(uint itemId)
     {
-        if (Plugin.ClientState.LocalPlayer is null || !SaddlebagLoaded) return 0;
+        if (!SaddlebagLoaded) return 0;
 
         var sum = 0;
         foreach (var saddlebagInventory in saddlebagInventories)
