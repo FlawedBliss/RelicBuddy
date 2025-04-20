@@ -66,7 +66,7 @@ public class InventoryHelper
             {
                 return false;
             }
-            return inventoryManager->GetInventoryContainer(saddlebagInventories[0])->Loaded == 1;
+            return inventoryManager->GetInventoryContainer(saddlebagInventories[0])->IsLoaded;
         }
     }
 
@@ -81,7 +81,7 @@ public class InventoryHelper
 
     private unsafe void UpdateActiveRetainers()
     {
-        if (retainerManager->Ready == 0)
+        if (retainerManager->IsReady)
         {
             return;
         }
@@ -177,7 +177,7 @@ public class InventoryHelper
     }
     public unsafe void UpdateRetainerInventory(AddonEvent type, AddonArgs args)
     {
-        if (inventoryManager->GetInventoryContainer(InventoryType.RetainerPage1)->Loaded == 0)
+        if (inventoryManager->GetInventoryContainer(InventoryType.RetainerPage1)->IsLoaded)
             return;
         var retainerInventory = new Dictionary<InventoryType, List<InventoryLocation>>();
         foreach (var inventory in retainerInventories)

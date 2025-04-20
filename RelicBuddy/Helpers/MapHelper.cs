@@ -57,7 +57,7 @@ public class MapHelper
 
     public unsafe void ShowFlag(uint territoryType, uint map, float x, float y)
     {
-        AgentMap.Instance()->IsFlagMarkerSet = 0;
+        AgentMap.Instance()->IsFlagMarkerSet = false;
         AgentMap.Instance()->SetFlagMapMarker(territoryType, map, x, y);
         AgentMap.Instance()->OpenMap(map, territoryType);
     }

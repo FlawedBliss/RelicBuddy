@@ -241,7 +241,7 @@ public class DebugWindow : Window, IDisposable
 
     private unsafe void MapMarkerStatus()
     {
-        if (AgentMap.Instance()->IsFlagMarkerSet != 0)
+        if (AgentMap.Instance()->IsFlagMarkerSet)
         {
             var marker = AgentMap.Instance()->FlagMapMarker;
             ImGui.TextUnformatted($"MapMarker: {marker.XFloat} {marker.YFloat}");
