@@ -177,7 +177,7 @@ public class InventoryHelper
     }
     public unsafe void UpdateRetainerInventory(AddonEvent type, AddonArgs args)
     {
-        if (inventoryManager->GetInventoryContainer(InventoryType.RetainerPage1)->IsLoaded)
+        if (!inventoryManager->GetInventoryContainer(InventoryType.RetainerPage1)->IsLoaded)
             return;
         var retainerInventory = new Dictionary<InventoryType, List<InventoryLocation>>();
         foreach (var inventory in retainerInventories)
