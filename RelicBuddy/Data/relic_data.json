@@ -432,49 +432,49 @@
                         {
                             "item_id": 13570,
                             "quantity": 1,
-                            "hint": [
+                            "hints": [
                                 "{icon:60501} {map:215}"
                             ]
                         },
                         {
                             "item_id": 13571,
                             "quantity": 1,
-                            "hint": [
+                            "hints": [
                                 "{icon:60501} {map:216}"
                             ]
                         },
                         {
                             "item_id": 13573,
                             "quantity": 1,
-                            "hint": [
+                            "hints": [
                                 "{icon:60501} {map:214}"
                             ]
                         },
                         {
                             "item_id": 13569,
                             "quantity": 1,
-                            "hint": [
+                            "hints": [
                                 "{icon:60501} {map:211}"
                             ]
                         },
                         {
                             "item_id": 13572,
                             "quantity": 1,
-                            "hint": [
+                            "hints": [
                                 "{icon:60501} {map:212}"
                             ]
                         },
                         {
                             "item_id": 13574,
                             "quantity": 1,
-                            "hint": [
+                            "hints": [
                                 "{icon:60501} {map:213}"
                             ]
                         },
                         {
                             "item_id": 13575,
                             "quantity": 1,
-                            "hint": [
+                            "hints": [
                                 "Trade crystals to {npc:1016289}"
                             ]
                         },
@@ -487,7 +487,9 @@
                         }
                     ]
                 },
-                "hint": "To get started on your Anima weapon, you need to do FATEs in each of the listed zones until you get the corresponding Luminous Crystal. Once you have all the crystals, turn them in to {npc:1016289} for your upgrade materials."
+                "hints": [
+                    "To get started on your Anima weapon, you need to do FATEs in each of the listed zones until you get the corresponding Luminous Crystal. Once you have all the crystals, turn them in to {npc:1016289} for your upgrade materials."
+                ]
             },
             {
                 "is_one_time": false,
@@ -497,7 +499,9 @@
                 },
                 "requirements": {
                 },
-                "hint": "Complete the duties given by your quest with the relic weapon equipped. It is sufficient to have the relic weapon equipped when exiting the duty, you can swap to a better weapon while doing it."
+                "hints": [
+                    "Complete the duties given by your quest with the relic weapon equipped. It is sufficient to have the relic weapon equipped when exiting the duty, you can swap to a better weapon while doing it."
+                ]
             },
             {
                 "is_one_time": false,
@@ -589,7 +593,9 @@
                         }
                     ]
                 },
-                "hint": "Easy step: Buy 5 {item:14899}, turn them in to upgrade your weapon."
+                "hints": [
+                    "Easy step: Buy 5 {item:14899}, turn them in to upgrade your weapon."
+                ]
             },
             {
                 "is_one_time": false,
@@ -608,7 +614,9 @@
                         }
                     ]
                 },
-                "hint": "For this step, you need to acquire enough {item:15840} and {item:15841} to upgrade your weapon. The exact amount can vary due to RNG, but about 60 of each should do it most of the time. {item:15840} can be directly bought with tomestomes, {item:15841} must be traded for with other items. Your best options for this are trading crafter's or gatherer's scrip tokens, or buying {item:7885} and {item:6268} with tomestomes then trading those for {item:15841}. If using all tomestomes, the total cost for this step is about 11 250."
+                "hints": [
+                    "For this step, you need to acquire enough {item:15840} and {item:15841} to upgrade your weapon. The exact amount can vary due to RNG, but about 60 of each should do it most of the time. {item:15840} can be directly bought with tomestomes, {item:15841} must be traded for with other items. Your best options for this are trading crafter's or gatherer's scrip tokens, or buying {item:7885} and {item:6268} with tomestomes then trading those for {item:15841}. If using all tomestomes, the total cost for this step is about 11 250."
+                ]
             },
             {
                 "quest_id_first": 67915,
@@ -623,7 +631,9 @@
                         }
                     ]
                 },
-                "hint": "You can get singing clusters by doing the daily quest {quest:67917}, the weekly quest {quest:67916} or, as per usual, spending tomestones (2000 in this case)."
+                "hints": [
+                    "You can get singing clusters by doing the daily quest {quest:67917}, the weekly quest {quest:67916} or, as per usual, spending tomestones (2000 in this case)."
+                ]
             },
             {
                 "quest_id_first": 67932,
@@ -1254,7 +1264,9 @@
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
                 "requirements": {},
-                "hint": "You get this weapon by completing your level 70 job quest. If you have lost it, you can buy it again from the {npc:1006004}."
+                "hints": [
+                    "You get this weapon by completing your level 70 job quest. If you have lost it, you can buy it again from the {npc:1006004}."
+                ]
             },
             {
                 "is_one_time": false,
@@ -1275,7 +1287,9 @@
                         }
                     ]
                 },
-                "hint": "You can get {item:21801} by defeating enemies in Eureka Anemos. You can also speak to {npc:1025047} and trade in {item:21803} for up to 5 Protean Crystals each. Anemos Crystals are obtained by defeating notorious monsters in Eureka.\nYou will need 1300-2200 Protean Crystals in total for the next steps."
+                "hints": [
+                    "You can get {item:21801} by defeating enemies in Eureka Anemos. You can also speak to {npc:1025047} and trade in {item:21803} for up to 5 Protean Crystals each. Anemos Crystals are obtained by defeating notorious monsters in Eureka.\nYou will need 1300-2200 Protean Crystals in total for the next steps."
+                ]
             },
             {
                 "is_one_time": false,
@@ -1291,7 +1305,9 @@
                         }
                     ]
                 },
-                "hint": "You got 100, good job! Now Gerolt wants 400 more."
+                "hints": [
+                    "You got 100, good job! Now Gerolt wants 400 more."
+                ]
             },
             {
                 "is_one_time": false,
@@ -1307,7 +1323,9 @@
                         }
                     ]
                 },
-                "hint": "400 was too easy, right? Try 800 next."
+                "hints": [
+                    "400 was too easy, right? Try 800 next."
+                ]
             },
             {
                 "is_one_time": false,
@@ -1323,7 +1341,9 @@
                         }
                     ]
                 },
-                "hint": "For the last step in Anemos, you need to collect 3 {item:21802}. You have two options to get these: The first is to spawn the Pazuzu notorious monster and defeat it while at rank 19 or above and you will get all 3 feathers. Due to its spawn conditions, it may be a while before you get this option - alternatively you can just buy the feathers for 300 Protean Crystals each from the expedition birdwatcher in the area. Check the table on the right for their location!"
+                "hints": [
+                    "For the last step in Anemos, you need to collect 3 {item:21802}. You have two options to get these: The first is to spawn the Pazuzu notorious monster and defeat it while at rank 19 or above and you will get all 3 feathers. Due to its spawn conditions, it may be a while before you get this option - alternatively you can just buy the feathers for 300 Protean Crystals each from the expedition birdwatcher in the area. Check the table on the right for their location!"
+                ]
             },
             {
                 "is_one_time": false,
@@ -1340,7 +1360,9 @@
                         }
                     ]
                 },
-                "hint": "You continue the relic in Eureka Pagos. After reaching rank 25, speak to Gerolt to acquire the kettle - you need this to obtain {item:23309}s. You can acquire up to 9 charges for your kettle by defeating level-appropriate monsters and notorious monsters. Go to the {object:2009555} to turn the accumulated aether into Frosted Protean Crystals."
+                "hints": [
+                    "You continue the relic in Eureka Pagos. After reaching rank 25, speak to Gerolt to acquire the kettle - you need this to obtain {item:23309}s. You can acquire up to 9 charges for your kettle by defeating level-appropriate monsters and notorious monsters. Go to the {object:2009555} to turn the accumulated aether into Frosted Protean Crystals."
+                ]
             },
             {
                 "is_one_time": false,
@@ -1360,8 +1382,7 @@
                             "quantity": 500
                         }
                     ]
-                },
-                "hint": ""
+                }
             },
             {
                 "is_one_time": false,
@@ -1381,8 +1402,7 @@
                             "quantity": 5
                         }
                     ]
-                },
-                "hint": ""
+                }
             },
             {
                 "is_one_time": false,
@@ -1398,7 +1418,9 @@
                         }
                     ]
                 },
-                "hint": "To Pyros!"
+                "hints": [
+                    "To Pyros!"
+                ]
             },
             {
                 "is_one_time": false,
@@ -1413,8 +1435,7 @@
                             "quantity": 200
                         }
                     ]
-                },
-                "hint": ""
+                }
             },
             {
                 "is_one_time": false,
@@ -1433,8 +1454,7 @@
                             "quantity": 5
                         }
                     ]
-                },
-                "hint": ""
+                }
             },
             {
                 "is_one_time": false,
@@ -1856,7 +1876,7 @@
                         {
                             "item_id": 31573,
                             "quantity": 20,
-                            "hint": [
+                            "hints": [
                                 "Random drop from enemies, FATEs and critical engagements in zone 1 of the bozjan southern front",
                                 "Guaranteed to drop from FATEs in {map:215} and {map:211}"
                             ]
@@ -1864,7 +1884,7 @@
                         {
                             "item_id": 31574,
                             "quantity": 20,
-                            "hint": [
+                            "hints": [
                                 "Random drop from enemies, FATEs and critical engagements in zone 2 of the bozjan southern front",
                                 "Guaranteed to drop from FATEs in {map:212} and {map:214}"
                             ]
@@ -1872,14 +1892,14 @@
                         {
                             "item_id": 31575,
                             "quantity": 20,
-                            "hint": [
+                            "hints": [
                                 "Random drop from enemies, FATEs and critical engagements in zone 3 of the Bozjan Southern Front",
                                 "Guaranteed to drop from FATEs in {map:216} and {map:213}"
                             ]
                         }
                     ]
                 },
-                "Hints": [
+                "hints": [
                     "You need to get 20 of each memory:",
                     "{bullet:0} 20 {item:31573}",
                     "{bullet:0} 20 {item:31574}",
@@ -1900,7 +1920,7 @@
                         {
                             "item_id": 31576,
                             "quantity": 6,
-                            "hint": [
+                            "hints": [
                                 "Guaranteed to drop from daily leveling roulette",
                                 "Guaranteed to drop from level 60 dungeons",
                                 "Random drop from enemies in the bozjan southern front"
@@ -1938,7 +1958,7 @@
                         {
                             "item_id": 32956,
                             "quantity": 15,
-                            "hint": [
+                            "hints": [
                                 "5 from finishing Castrum Lacus Litore",
                                 "1 from clearing any Crystal Tower raid",
                                 "Random drop from critical engagements in the bozjan southern front"
@@ -1961,7 +1981,7 @@
                         {
                             "item_id": 32957,
                             "quantity": 18,
-                            "hint": [
+                            "hints": [
                                 "3 from completing any Heavensward alliance raid",
                                 "Random drop from FATEs in {map:367} {map:368} {map:369}"
                             ]
@@ -1969,7 +1989,7 @@
                         {
                             "item_id": 32958,
                             "quantity": 18,
-                            "hint": [
+                            "hints": [
                                 "3 from completing any Stormblood alliance raid",
                                 "Random drop from FATEs in {map:371} {map:372} {map:354}"
                             ]
@@ -1993,7 +2013,7 @@
                         {
                             "item_id": 32959,
                             "quantity": 15,
-                            "hint": [
+                            "hints": [
                                 "Random drop from Palace of the Dead",
                                 "3 from completing Delubrum Reginae"
                             ]
@@ -2022,7 +2042,7 @@
                         {
                             "item_id": 33757,
                             "quantity": 30,
-                            "hint": [
+                            "hints": [
                                 "1 from FATEs in zone 1 of zadnor",
                                 "1 per synced Alexander raid clear (raid 1,2,5,6,9,10)"
                             ]
@@ -2030,7 +2050,7 @@
                         {
                             "item_id": 33758,
                             "quantity": 30,
-                            "hint": [
+                            "hints": [
                                 "2 from critical engagements in zone 1 of zadnor",
                                 "1 per synced Alexander raid clear (raid 3,4,7,8,11,12)"
                             ]
@@ -2057,7 +2077,7 @@
                         {
                             "item_id": 33759,
                             "quantity": 30,
-                            "hint": [
+                            "hints": [
                                 "1 from FATEs in zone 2 of zadnor",
                                 "1 per synced Omega raid clear (raid 1,2,5,6,9,10)"
                             ]
@@ -2065,7 +2085,7 @@
                         {
                             "item_id": 33760,
                             "quantity": 30,
-                            "hint": [
+                            "hints": [
                                 "2 from critical engagements in zone 2 of zadnor",
                                 "1 per synced Omega raid clear (raid 3,4,7,8,11,12)"
                             ]
@@ -2092,7 +2112,7 @@
                         {
                             "item_id": 33763,
                             "quantity": 30,
-                            "hint": [
+                            "hints": [
                                 "1 from FATEs in zone 3 of zadnor",
                                 "1 per synced Eden raid clear (raid 1,2,5,6,9,10)"
                             ]
@@ -2100,7 +2120,7 @@
                         {
                             "item_id": 33764,
                             "quantity": 30,
-                            "hint": [
+                            "hints": [
                                 "2 from critical engagements in zone 3 of zadnor",
                                 "1 per synced Eden raid clear (raid 3,4,7,8,11,12)"
                             ]
@@ -2126,7 +2146,7 @@
                         {
                             "item_id": 33767,
                             "quantity": 15,
-                            "hint": [
+                            "hints": [
                                 "3 from The Dalriada",
                                 "2 from Delubrum Reginae",
                                 "1 from running synced level 70 Stormblood dungeons",
@@ -2450,7 +2470,9 @@
                         }
                     ]
                 },
-                "hint": "Buy the required items from the vendor to upgrade your relic."
+                "hints": [
+                    "Buy the required items from the vendor to upgrade your relic."
+                ]
             },
             {
                 "is_one_time": false,

@@ -175,13 +175,6 @@ public class MainWindow : Window, IDisposable
                 {
                     StringsDict.GetTemplateRenderer(se)?.Render();
                 }
-            } else {
-                var hint = expansionData.Steps[displayedStep].Hint;
-                if (hint != null)
-                {
-                    var renderer = StringsDict.GetTemplateRenderer(hint);
-                    renderer?.Render();
-                }
             }
         }
         else

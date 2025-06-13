@@ -16,9 +16,6 @@ public class RelicStep
 
     [JsonProperty("requirements")]
     public RelicStepRequirements? Requirements { get; set; } = new();
-
-    [JsonProperty("hint")]
-    public string? Hint { get; set; } = null;
     
     [JsonProperty("hints")]
     public string[]? Hints { get; set; } = null;

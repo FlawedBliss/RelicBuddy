@@ -16,15 +16,6 @@ public class StringsDict
         {
             expansion.Steps.ForEach(step =>
             {
-                if (step.Hint != null)
-                {
-                    if (dict.ContainsKey(step.Hint))
-                        return;
-                    var template = new RBStringTemplateRenderer();
-                    template.ProcessTemplate(step.Hint);
-                    dict.Add(step.Hint, template);
-                }
-
                 if (step.Hints != null)
                 {
                     foreach (var hint in step.Hints)
