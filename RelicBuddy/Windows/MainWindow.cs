@@ -166,6 +166,24 @@ public class MainWindow : Window, IDisposable
             displayedStep = Math.Max(displayedStep - 1, 0);
         }
         ImGui.SameLine();
+        ImGui.PushFont(UiBuilder.IconFont);
+        if (ImGui.Button(FontAwesomeIcon.Search.ToIconString()))
+        {
+            if (relicItemStage > 0)  {
+                plugin.ItemLocationWindow.DisplayItem = weaponData.ItemIds[relicItemStage-1];
+                plugin.ItemLocationWindow.IsOpen = true;
+            }
+        }
+        ImGui.PopFont();
+        if (ImGui.IsItemHovered())
+        {
+            ImGui.SetTooltip("Click to search for your relic");
+        }
+        ImGui.SameLine();
+        ImGui.Image(ItemHelper.GetItemIcon(weaponData.ItemIds[displayedStep]).ImGuiHandle, new Vector2(24, 24));
+        ImGui.SameLine();
+        ImGui.TextUnformatted(ItemHelper.GetItemName(weaponData.ItemIds[displayedStep]));
+        ImGui.SameLine();
         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetContentRegionAvail().X - ImGui.CalcTextSize("Next >").X - 16);
         if (ImGui.Button("Next >"))
         {

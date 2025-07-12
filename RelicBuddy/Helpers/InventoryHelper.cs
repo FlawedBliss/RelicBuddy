@@ -140,7 +140,7 @@ public class InventoryHelper
     {
         if (Plugin.ClientState.LocalPlayer is null) return [];
         var locations = new List<InventoryLocation>();
-        foreach (var invType in playerInventories)
+        foreach (var invType in playerInventories.Concat(gearchestInventories))
         {
             if (inventoryManager->GetItemCountInContainer(itemId, invType) > 0)
             {
