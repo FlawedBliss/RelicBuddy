@@ -8,7 +8,7 @@
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <IsPackable>false</IsPackable>
     <RootNamespace>RelicBuddy</RootNamespace>
-    <AssemblyVersion>0.1.0.5</AssemblyVersion>
+    <AssemblyVersion>0.1.0.8</AssemblyVersion>
     <TargetFramework>net9.0-windows</TargetFramework>
   </PropertyGroup>
 
