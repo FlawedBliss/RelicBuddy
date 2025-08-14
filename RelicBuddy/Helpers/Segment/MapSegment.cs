@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Textures;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 
 namespace RelicBuddy.Helpers.Segment;
 
@@ -31,7 +31,7 @@ public class MapSegment : BaseSegment
     {
         if (GetAvailableSpace() < CalcWidth())
             ImGui.NewLine();
-        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(60453)).GetWrapOrEmpty().ImGuiHandle, new Vector2(iconSize, iconSize));
+        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(60453)).GetWrapOrEmpty().Handle, new Vector2(iconSize, iconSize));
         if(ImGui.IsItemHovered())
         {
             ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);

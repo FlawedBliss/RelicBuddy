@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices.JavaScript;
 using Dalamud.Interface.Textures;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 
 namespace RelicBuddy.Helpers.Segment;
 
@@ -27,7 +27,7 @@ public class QuestSegment : BaseSegment
 
     public override void Draw()
     {
-        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(Icons.QuestSquare)).GetWrapOrEmpty().ImGuiHandle, new(iconSize, iconSize));
+        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(Icons.QuestSquare)).GetWrapOrEmpty().Handle, new(iconSize, iconSize));
         ImGui.SameLine();
         questNameSegment.Draw();
     }

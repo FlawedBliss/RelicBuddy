@@ -1,7 +1,7 @@
 ﻿using System;
 using Dalamud.Interface.Windowing;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using RelicBuddy.Helpers;
 
 namespace RelicBuddy.Windows;

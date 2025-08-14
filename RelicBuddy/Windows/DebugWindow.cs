@@ -18,7 +18,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Common.Lua;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using RelicBuddy.Helpers;
@@ -98,7 +98,7 @@ public class DebugWindow : Window, IDisposable
                 foreach (var itemId in relic.Value.ItemIds)
                 {
                     ImGui.TableNextColumn();
-                    ImGui.Image(itemHelper.GetItemIcon(itemId).ImGuiHandle, new Vector2(32, 32));
+                    ImGui.Image(itemHelper.GetItemIcon(itemId).Handle, new Vector2(32, 32));
                     if (ImGui.IsItemHovered())
                     {
                         ImGui.SetTooltip($"{itemHelper.GetItemName(itemId)}\nClick to link this item in chat");
@@ -150,7 +150,7 @@ public class DebugWindow : Window, IDisposable
             {
                 var item = step.Requirements.Item[j];
                 ImGui.TableNextColumn();
-                ImGui.Image(itemHelper.GetItemIcon(item.ItemId).ImGuiHandle, new Vector2(24, 24));
+                ImGui.Image(itemHelper.GetItemIcon(item.ItemId).Handle, new Vector2(24, 24));
                 ImGui.SameLine();
                 ImGui.Text($"{itemHelper.GetItemName(item.ItemId)}");
                 ImGui.TableNextColumn();
@@ -164,7 +164,7 @@ public class DebugWindow : Window, IDisposable
                     var npcs = shopHelper.GetShopNpcs(shop.RowId);
                     foreach (var npc in npcs)
                     {
-                        ImGui.Image(shopHelper.GetCurrencyTypeIcon(shop.UseCurrencyType).GetWrapOrEmpty().ImGuiHandle,
+                        ImGui.Image(shopHelper.GetCurrencyTypeIcon(shop.UseCurrencyType).GetWrapOrEmpty().Handle,
                                     new Vector2(20, 20));
                         if (ImGui.IsItemClicked())
                         {
@@ -241,16 +241,18 @@ public class DebugWindow : Window, IDisposable
 
     private unsafe void MapMarkerStatus()
     {
-        if (AgentMap.Instance()->IsFlagMarkerSet)
+        if (AgentMap.Instance()->FlagMapMarkers.Length > 0)
         {
-            var marker = AgentMap.Instance()->FlagMapMarker;
-            ImGui.TextUnformatted($"MapMarker: {marker.XFloat} {marker.YFloat}");
+            var markers = AgentMap.Instance()->FlagMapMarkers;
+            foreach(var marker in markers) {
+                ImGui.TextUnformatted($"MapMarker: {marker.XFloat} {marker.YFloat}");
+            }
         }
     }
 
     private void HoverQuestLink(uint id)
     {
-        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().ImGuiHandle,
+        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().Handle,
                     new Vector2(24, 24));
         if (ImGui.IsItemHovered())
         {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Dalamud.Plugin.Internal.Types.Manifest;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using RelicBuddy.Helpers.Segment;
 
 namespace RelicBuddy.Helpers.Strings;

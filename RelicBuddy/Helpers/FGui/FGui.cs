@@ -3,7 +3,7 @@ using System.Numerics;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Textures;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using Lumina.Excel.Sheets;
 using RelicBuddy.Models;
 
@@ -36,7 +36,7 @@ public class FGui
                 ImGui.TextUnformatted($"{costItem.CurrencyCost.ToString(),3}");
                 Plugin.PluginInterface.UiBuilder.MonoFontHandle.Pop();
                 ImGui.SameLine();
-                ImGui.Image(ItemHelper.GetItemIcon(currencyItem).ImGuiHandle, new(16, 16));
+                ImGui.Image(ItemHelper.GetItemIcon(currencyItem).Handle, new(16, 16));
                 ImGui.SameLine();
                 ImGui.TextUnformatted($"{ItemHelper.GetItemName(currencyItem)}");
             }
@@ -50,7 +50,7 @@ public class FGui
         var aetheryte = MapHelper.FindClosestAetheryte(level);
         if (aetheryte is not null)
         {
-            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(Icons.Aetheryte)).GetWrapOrEmpty().ImGuiHandle,
+            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(Icons.Aetheryte)).GetWrapOrEmpty().Handle,
                         new Vector2(24, 24));
 
             var pos = MapHelper.GetAetherytePosition(aetheryte.Value);

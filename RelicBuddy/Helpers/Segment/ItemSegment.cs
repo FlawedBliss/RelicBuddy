@@ -1,6 +1,6 @@
 ﻿using Dalamud.Interface.Colors;
 using FFXIVClientStructs.FFXIV.Common.Math;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 
 namespace RelicBuddy.Helpers.Segment;
 
@@ -31,7 +31,7 @@ public class ItemSegment : BaseSegment
     {
         if (GetAvailableSpace() < CalcWidth())
             ImGui.NewLine();
-        ImGui.Image(ItemHelper.GetItemIcon(ItemId).ImGuiHandle, new Vector2(iconSize, iconSize));
+        ImGui.Image(ItemHelper.GetItemIcon(ItemId).Handle, new Vector2(iconSize, iconSize));
         ImGui.SameLine();
         ImGui.PushStyleColor(ImGuiCol.Text, textColor);
         itemNameSegment.Draw();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 using Dalamud.Interface.Windowing;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using Lumina.Excel.Sheets;
 using RelicBuddy.Helpers;
 using RelicBuddy.Helpers.FGui;
@@ -38,14 +38,14 @@ public class ItemSourceWindow : Window, IDisposable
 
     public override void Draw()
     {
-        ImGui.Image(ItemHelper.GetItemIcon(displayItem).ImGuiHandle, new Vector2(16, 16));
+        ImGui.Image(ItemHelper.GetItemIcon(displayItem).Handle, new Vector2(16, 16));
         ImGui.SameLine();
         ImGui.TextUnformatted(ItemHelper.GetItemName(displayItem));
         ImGui.Separator();
         foreach(var shop in this.shopInfos) {
             FGui.DrawItemShopRow(displayItem, shop);
             // ImGui.Image(
-            //     ShopHelper.GetCurrencyTypeIcon(shop.SpecialShop.UseCurrencyType).GetWrapOrEmpty().ImGuiHandle,
+            //     ShopHelper.GetCurrencyTypeIcon(shop.SpecialShop.UseCurrencyType).GetWrapOrEmpty().Handle,
             //     new Vector2(20, 20));
             // if (ImGui.IsItemClicked())
             // {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 
 namespace RelicBuddy.Helpers.Segment;
 

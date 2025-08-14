@@ -1,5 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 
 namespace RelicBuddy.Helpers;
 

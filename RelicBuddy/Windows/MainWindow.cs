@@ -8,7 +8,7 @@ using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using RelicBuddy.Helpers;
 using RelicBuddy.Helpers.FGui;
 using RelicBuddy.Helpers.Strings;
@@ -91,7 +91,7 @@ public class MainWindow : Window, IDisposable
     {
         var w = ImGui.GetColumnWidth();
         ImGui.SetCursorPosX((w * 0.5f) - 64);
-        ImGui.Image(ItemHelper.GetItemIcon(40949).ImGuiHandle, new Vector2(128, 128));
+        ImGui.Image(ItemHelper.GetItemIcon(40949).Handle, new Vector2(128, 128));
 
         FGui.DrawSeparatorText("Expansion");
         foreach (var d in plugin.RelicData)
@@ -283,7 +283,7 @@ public class MainWindow : Window, IDisposable
         {
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
-            ImGui.Image(ItemHelper.GetItemIcon(item.ItemId).ImGuiHandle, new Vector2(20, 20));
+            ImGui.Image(ItemHelper.GetItemIcon(item.ItemId).Handle, new Vector2(20, 20));
             ImGui.SameLine();
             ImGui.TextUnformatted($"{ItemHelper.GetItemName(item.ItemId)}");
             ImGui.TableNextColumn();
@@ -332,7 +332,7 @@ public class MainWindow : Window, IDisposable
             {
                 DrawItemSourceCol(item.ItemId);
                 // ImGui.Image(
-                //     ShopHelper.GetCurrencyTypeIcon(shop.SpecialShop.UseCurrencyType).GetWrapOrEmpty().ImGuiHandle,
+                //     ShopHelper.GetCurrencyTypeIcon(shop.SpecialShop.UseCurrencyType).GetWrapOrEmpty().Handle,
                 //     new Vector2(20, 20));
                 // if (ImGui.IsItemClicked())
                 // {
@@ -387,7 +387,7 @@ public class MainWindow : Window, IDisposable
             if(level is not null) {
                 FGui.DrawAetheryteLink(level.Value);
             }
-            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().ImGuiHandle,
+            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().Handle,
                         new Vector2(24, 24));
             if(level is not null) {
                 if (ImGui.IsItemHovered())
@@ -417,7 +417,7 @@ public class MainWindow : Window, IDisposable
         {
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
-            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().ImGuiHandle,
+            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().Handle,
                         new Vector2(24, 24));
             var obj = NpcHelper.GetObj(step.Object!.Value)!;
             if (ImGui.IsItemHovered())
@@ -444,7 +444,7 @@ public class MainWindow : Window, IDisposable
         var location = QuestHelper.GetQuestLocation(id);
         FGui.DrawAetheryteLink(location);
 
-        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().ImGuiHandle,
+        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().Handle,
                     new Vector2(24, 24));
         if (ImGui.IsItemHovered())
         {

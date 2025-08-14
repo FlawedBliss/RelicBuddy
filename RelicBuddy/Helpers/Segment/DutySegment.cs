@@ -1,6 +1,6 @@
 ﻿using Dalamud.Interface.Colors;
 using Dalamud.Interface.Textures;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using Lumina.Excel.Sheets;
 
 namespace RelicBuddy.Helpers.Segment;
@@ -25,7 +25,7 @@ public class DutySegment : BaseSegment
 
     public override void Draw()
     {
-        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(condition.ContentType.Value.Icon)).GetWrapOrDefault()!.ImGuiHandle, new(iconSize, iconSize));
+        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(condition.ContentType.Value.Icon)).GetWrapOrDefault()!.Handle, new(iconSize, iconSize));
         if (ImGui.IsItemHovered())
         {
             ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);

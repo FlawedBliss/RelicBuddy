@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Interface.Windowing;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using Lumina.Excel.Sheets;
 using RelicBuddy.Helpers;
 using RelicBuddy.Helpers.FGui;
@@ -40,7 +40,7 @@ public class ItemLocationWindow : Window, IDisposable
 
     public override void Draw()
     {
-        ImGui.Image(ItemHelper.GetItemIcon(displayItem).ImGuiHandle, new Vector2(16, 16));
+        ImGui.Image(ItemHelper.GetItemIcon(displayItem).Handle, new Vector2(16, 16));
         ImGui.SameLine();
         ImGui.TextUnformatted(ItemHelper.GetItemName(displayItem));
         ImGui.Separator();
