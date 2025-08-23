@@ -20,6 +20,6 @@ public class ItemQuantity
     [JsonProperty("quantity")]
     public uint Quantity { get; set; }
 
-    [JsonProperty("hint")]
+    [JsonProperty("hints")]
     public List<string> Hints { get; set; } = [];
 }
