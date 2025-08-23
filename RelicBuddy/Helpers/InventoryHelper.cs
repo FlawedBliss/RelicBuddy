@@ -81,7 +81,7 @@ public class InventoryHelper
 
     private unsafe void UpdateActiveRetainers()
     {
-        if (retainerManager->IsReady)
+        if (!retainerManager->IsReady)
         {
             return;
         }
