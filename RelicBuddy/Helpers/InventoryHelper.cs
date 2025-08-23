@@ -93,6 +93,7 @@ public class InventoryHelper
                 break;
             }
         }
+        _activeRetainers = retainerManager->Retainers.Length;
     }
 
     public int GetItemCount(uint itemId)
