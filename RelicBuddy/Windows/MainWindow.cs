@@ -66,17 +66,23 @@ public class MainWindow : Window, IDisposable
             FGui.DrawWarningText($"{(num == -1 ? "" : num)} Retainer inventories are not loaded. Please access each retainer at a bell to load their inventories.");
             ImGui.Spacing();
         }
-        ImGui.Columns(3);
-        ImGui.SetColumnWidth(0, 200);
+        ImGui.BeginTable("a##rbmw", 3, ImGuiTableFlags.BordersInner | ImGuiTableFlags.Resizable);
+        ImGui.TableSetupColumn("Expansion", ImGuiTableColumnFlags.NoResize | ImGuiTableColumnFlags.WidthFixed, 200);
+        ImGui.TableSetupColumn("Detail");
+        ImGui.TableSetupColumn("Step");
+        ImGui.TableNextRow();
+        ImGui.TableNextColumn();
         DrawExpansionColumn();
+        ImGui.TableNextColumn();
         ImGui.NextColumn();
-        if (selectedJob == 0)
-        {
-            DrawExpansionOverviewColumn();
-        } else {
-            DrawDetailColumn();
-        }
-        ImGui.NextColumn();
+         if (selectedJob == 0)
+         {
+             DrawExpansionOverviewColumn();
+         } else {
+             DrawDetailColumn();
+         }
+         ImGui.NextColumn();
+        ImGui.TableNextColumn();
         if (selectedJob == 0)
         {
             DrawItemTable(ProgressHelper.GetAllMissingItemsForExpansion(expansionData), 999);
@@ -85,6 +91,7 @@ public class MainWindow : Window, IDisposable
         {
             DrawQuestColumn();
         }
+        ImGui.EndTable();
     }
 
     private void DrawExpansionColumn()
@@ -159,7 +166,7 @@ public class MainWindow : Window, IDisposable
             displayedStep = Math.Max(displayedStep - 1, 0);
         }
         ImGui.SameLine();
-        ImGui.SetCursorPosX(ImGui.GetColumnOffset()+ImGui.GetColumnWidth() - ImGui.CalcTextSize("Next >").X - 16);
+        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetContentRegionAvail().X - ImGui.CalcTextSize("Next >").X - 16);
         if (ImGui.Button("Next >"))
         {
             displayedStep = Math.Min(displayedStep +1, expansionData.Steps.Count-1);

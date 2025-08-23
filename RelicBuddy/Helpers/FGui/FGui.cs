@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Numerics;
-using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Textures;
 using Dalamud.Bindings.ImGui;
@@ -80,7 +79,7 @@ public class FGui
     {
         str = $"[{str}]";
         var textSize = ImGui.CalcTextSize(str);
-        var width = ImGui.GetColumnWidth() - 16; //-16 needed for spacing so it matches left side
+        var width = ImGui.GetColumnWidth();
         var cursor = ImGui.GetCursorScreenPos();
         var pStart = cursor with { Y = cursor.Y + (textSize.Y * 0.5f) };
         var p25 = pStart with { X = pStart.X + (width * 0.5f) - (textSize.X * 0.5f) };
