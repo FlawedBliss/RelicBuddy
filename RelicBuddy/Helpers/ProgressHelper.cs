@@ -26,7 +26,7 @@ public class ProgressHelper
         return 0;
     }
 
-    public int GetCurrentRelicQuestStage(RelicWeapon relicWeapon, RelicData expansionData)
+    public int GetCurrentRelicQuestStage(RelicWeapon relicWeapon, RelicData expansionData, string? job = null)
     {
         var currentQuestStage = GetCurrentRelicItemStage(relicWeapon);
         for (var i = 0; i < expansionData.Steps.Count; ++i)
@@ -38,7 +38,7 @@ public class ProgressHelper
                 if (expansionData.Steps[i].IsOneTime)
                 {
                     // Plugin.PluginLog.Debug($"{QuestManager.IsQuestComplete(expansionData.Steps[i].QuestIdFirst)}");
-                    if (!QuestManager.IsQuestComplete(expansionData.Steps[i].QuestIdFirst))
+                    if (!QuestManager.IsQuestComplete(QuestHelper.Instance.GetQuestIdForStep(expansionData.Steps[i], job)))
                     {
                         break;
                     }

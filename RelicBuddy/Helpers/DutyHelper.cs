@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.Design;
+﻿using System.Collections.Generic;
 using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
+using Lumina.Extensions;
 
 namespace RelicBuddy.Helpers;
 
@@ -13,6 +14,9 @@ public class DutyHelper
     public static DutyHelper Instance => _instance ??= new DutyHelper();
 
     private ExcelSheet<ContentFinderCondition> contentSheet;
+
+    private Dictionary<string, uint?> nameToIdMap = new();
+    
     private DutyHelper()
     {
         contentSheet = Plugin.DataManager.GetExcelSheet<ContentFinderCondition>();
@@ -37,5 +41,28 @@ public class DutyHelper
     public ContentFinderCondition GetContentFinderCondition(uint dutyId)
     {
         return contentSheet.GetRow(dutyId);
+    }
+    
+    public ContentFinderCondition? GetContentFinderConditionByName(string name)
+    {
+        if (nameToIdMap.TryGetValue(name, out var value))
+        {
+
+            return contentSheet.GetRowOrDefault(value ?? 0);
+        }
+        // some duties have "the" in the content finder condition and the place name.
+        // some duties have "the" in the content finder condition but not in the place name.
+        // some duties have no "the" in the content finder condition but have it in the place name.
+        // sigh
+        var nameToSearch = name.ToLowerInvariant().Replace("the ", "");
+        var row = contentSheet.FirstOrNull(entry => entry.Name.ExtractText().Replace("the ", "").ToLowerInvariant().Equals(nameToSearch));
+        if (row is null)
+        {
+            Plugin.PluginLog.Warning($"GetContentFinderConditionByName: No duty found with name '{nameToSearch}'");
+            nameToIdMap[name] = null;
+            return null;
+        }
+        nameToIdMap[name] = row.Value.RowId;
+        return row;
     }
 }

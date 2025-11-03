@@ -46,6 +46,9 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService]
     internal static IObjectTable ObjectTable { get; private set; } = null!;
     
+    [PluginService]
+    internal static IObjectTable ObjectTable { get; private set; } = null!;
+    
     private const string RelicBuddyCommandName = "/rb";
     private const string RelicBuddyDebugCommandName = "/rbd";
 

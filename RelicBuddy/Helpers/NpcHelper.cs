@@ -34,6 +34,16 @@ public class NpcHelper
         return residentSheet.GetRow(npcId);
     }
 
+    public ENpcResident? GetNpcFromLevel(Level level)
+    {
+        if(residentSheet.TryGetRow(level.Object.RowId, out var npc))
+        {
+            return npc;
+        }
+        Plugin.PluginLog.Warning($"Failed to find NPC for level {level.RowId} with object {level.Object.RowId}");
+        return null;
+    }
+
     public EObj? GetObj(uint objId)
     {
         return objSheet.GetRow(objId);

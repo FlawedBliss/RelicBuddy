@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Numerics;
-using Dalamud.Game.Text.SeStringHandling.Payloads;
-using Dalamud.Plugin.Services;
-using Dalamud.Utility;
-using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
-using Achievement = FFXIVClientStructs.FFXIV.Client.Game.UI.Achievement;
+using Lumina.Extensions;
 using Map = Lumina.Excel.Sheets.Map;
 
 namespace RelicBuddy.Helpers;
@@ -24,6 +19,8 @@ public class MapHelper
     private readonly ExcelSheet<Aetheryte> aetheryteSheet;
     private readonly SubrowExcelSheet<MapMarker> mapMarkerSheet;
     private readonly ExcelSheet<Map> mapSheet;
+
+    private Dictionary<uint, uint> mapByPlaceNameId = new();
 
     
     public static MapHelper Instance => _instance ??= new MapHelper();
@@ -40,6 +37,22 @@ public class MapHelper
     public String GetMapName(uint map)
     {
         return mapSheet.GetRow(map).PlaceName.Value.Name.ExtractText();
+    }
+
+    public Map GetMapByPlaceNameId(uint placeNameId)
+    {
+        if (mapByPlaceNameId.TryGetValue(placeNameId, out var mapId))
+        {
+            return mapSheet.GetRow(mapId);
+        }
+        var map = mapSheet.FirstOrNull(entry => entry.PlaceName.RowId == placeNameId && !entry.IsEvent);
+        if (map is null)
+        {
+            Plugin.PluginLog.Warning("Failed to find map for place name id {placeNameId}");
+            map = mapSheet.GetRow(0);
+        }
+        mapByPlaceNameId[placeNameId] = map.Value.RowId;
+        return map.Value;
     }
 
 

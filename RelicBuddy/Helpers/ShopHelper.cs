@@ -16,6 +16,8 @@ public class ShopHelper
 
     private ExcelSheet<ENpcBase> npcSheet;
     private ExcelSheet<SpecialShop> shopSheet;
+    private ExcelSheet<GCShop> gcShopSheet;
+    private SubrowExcelSheet<GCScripShopItem> gcScripShopItemSheet;
     private ExcelSheet<Level> levelSheet;
     
     private static Dictionary<uint, uint> tomeMap = new() {
@@ -37,6 +39,8 @@ public class ShopHelper
         npcSheet = Plugin.DataManager.GetExcelSheet<ENpcBase>()!;
         shopSheet = Plugin.DataManager.GetExcelSheet<SpecialShop>()!;
         levelSheet = Plugin.DataManager.GetExcelSheet<Level>()!;
+        // gcShopSheet = Plugin.DataManager.GetExcelSheet<GCShop>()!;
+        // gcScripShopItemSheet = Plugin.DataManager.GetSubrowExcelSheet<GCScripShopItem>()!;
     }
 
     public List<SpecialShop> GetShopsForItem(uint itemId)
@@ -83,7 +87,7 @@ public class ShopHelper
         {
             foreach (var shop in shops)
             {
-                foreach (var npc in npcs)
+                foreach (var npc in npcSheet)
                 {
                     foreach (var data in npc.ENpcData) 
                     {
@@ -168,7 +172,9 @@ public class ShopHelper
         {
             return cached;
         }
-        var shops = shopSheet.Where(shop => shop.Item.Any(data => data.ReceiveItems.Any(i => i.Item.RowId == itemId))).ToList();
+
+        var shops = shopSheet
+                    .Where(shop => shop.Item.Any(data => data.ReceiveItems.Any(i => i.Item.RowId == itemId))).ToList();
         itemShopCache[itemId] = shops;
         return shops;
     }

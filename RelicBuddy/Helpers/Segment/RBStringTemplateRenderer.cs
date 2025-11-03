@@ -13,12 +13,8 @@ public partial class RBStringTemplateRenderer
     private const string pattern = @"\{([^}]+):([^}]+)\}";
     [GeneratedRegex(pattern)]
     private static partial Regex ReferenceRegex();
-
-    private bool logThis = false;
     public void ProcessTemplate(string str)
     {
-        if (str.StartsWith("You need to acquire"))
-            logThis = true;
         var matches = ReferenceRegex().Matches(str);
         if (matches.Count == 0)
         {

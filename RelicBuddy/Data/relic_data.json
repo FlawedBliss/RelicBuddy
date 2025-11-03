@@ -126,8 +126,227 @@
         },
         "steps": [
             {
+                "quest_id_job": {
+                    "WAR": 66655,
+                    "PLD": 66656,
+                    "MNK": 66657,
+                    "DRG": 66658,
+                    "BLM": 66659,
+                    "WHM": 66660,
+                    "BRD": 66661,
+                    "SMN": 66662,
+                    "SCH": 66663,
+                    "NIN": 66664
+                },
+                "prerequisites": {
+                    "quests": [
+                        70058,
+                        66241
+                    ]
+                },
                 "hints": [
-                    ""
+                    "To start your Zodiac weapon, you need to have finished A Realm Reborn's main story questline and all of your job's job quests up to level 50.",
+                    "This quest involves many steps, most of which are easily completes by following the questline.",
+                    "{bullet:0} Loot a treasure coffer indicated by your quest",
+                    "{bullet:0} Buy or craft the Barbarian's weapon or your job",
+                    "{bullet:0} Enhance the weapon with two grade 3 materia of the type given by your quest",
+                    "{bullet:0} Complete {duty:74} as your chosen job",
+                    "{bullet:0} Complete {duty:14} as your chosen job",
+                    "murder stuff",
+                    "do arr: the hydra",
+                    "do trials",
+                    "tome oil"
+                ]
+            },
+            {
+                "objects": [
+                    2002555
+                ],
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 6268,
+                            "quantity": 3
+                        }
+                    ]
+                },
+                "hints": [
+                    "Buy three {item:6268} and use it to upgrade your weapon by interacting with {obj:2002555}"
+                ]
+            },
+            {
+                "prerequisites": {
+                    "quest": [
+                        66971
+                    ]
+                },
+                "npcs": [
+                    1008948
+                ],
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 7858,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:30}"
+                            ]
+                        },
+                        {
+                            "item_id": 7853,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:19}"
+                            ]
+                        },
+                        {
+                            "item_id": 7856,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:15}"
+                            ]
+                        },
+                        {
+                            "item_id": 7862,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:18}"
+                            ]
+                        },
+                        {
+                            "item_id": 7859,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:16}"
+                            ]
+                        },
+                        {
+                            "item_id": 7855,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:22}"
+                            ]
+                        },
+                        {
+                            "item_id": 7861,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:21}"
+                            ]
+                        },
+                        {
+                            "item_id": 7857,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:20}"
+                            ]
+                        },
+                        {
+                            "item_id": 7852,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:23}"
+                            ]
+                        },
+                        {
+                            "item_id": 7860,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:7}"
+                            ]
+                        },
+                        {
+                            "item_id": 7854,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:5}"
+                            ]
+                        },
+                        {
+                            "item_id": 7851,
+                            "quantity": 1,
+                            "hints": [
+                                "{icon:60501} {map:4}"
+                            ]
+                        }
+                    ]
+                },
+                "hints": [
+                    "Farm {icon:60501} FATEs in each of the zones until you get the corresponding atma. You must have your relic equipped!",
+                    "Once you have all 12 atma, turn them in to {npc:1008948}"
+                ]
+            },
+            {
+                "prerequisites": {
+                    "quests": [
+                        66972
+                    ]
+                },
+                "npcs": [
+                    1006976
+                ],
+                "hints": [
+                    "The infamous books. You will need 900 {item:28} for this step.",
+                    "Complete 9 books, each bought for 100 poetics. Each book contains 10 monsters to kill aswell as 3 dungeons, levequests and FATEs to complete each.",
+                    "Books must be completed one at a time. After you finish a book, return to {npc:1006976} to buy the next one.",
+                    "Some notes:",
+                    "{bullet:0} When doing dungeons, you only need to have the relic equipped when defeating the final boss",
+                    "{bullet:0} When doing levequests, you only need to have the relic equipped when turning in the quest",
+                    "When done, return to {npc:1008948} to proceed"
+                ]
+            },
+            {
+                "quest_ids": [
+                    {
+                        "id": 66998
+                    },
+                    {
+                        "id": 66676
+                    },
+                    {
+                        "id": 67000
+                    }
+                ],
+                "prerequisites": {
+                    "quests": [
+                        66747
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 7885,
+                            "quantity": 3
+                        },
+                        {
+                            "item_id": 7883,
+                            "quantity": 75
+                        }
+                    ]
+                },
+                "npcs": [
+                    1008948,
+                    1009151
+                ],
+                "hints": [
+                    "After completing {quest:Celestial Radiance}, you need to trade 3 {item:7885} to exchange for a scroll from {npc:1009151}. You can then continue with {quest:66676} and {quest:67000}.",
+                    "You will need 75 {item:7883} to infuse 75 materia into the scroll. You need to infuse grade 1 to 4 materia, the exact amount can vary depending on your luck.",
+                    "The alexandrite can be gained from various means, check the table on the right for more information. {item:7884} are the recommended way to get them quickly.",
+                    "After you have completed the infusion, return to {npc:1008948} to upgrade your weapon."
+                ]
+            },
+            {
+                "quest_ids": [
+                    {
+                        "id": 65742
+                    }
+                ],
+                "npcs": [
+                    1008948
+                ],
+                "hints": [
+                    "After completing the quest, talk to {npc:1008948} to soulglaze your relic. As paladin, make sure to soulglaze your offhand aswell!",
+                    "With your soulglazed weapon, you "
                 ]
             }
         ]
@@ -488,7 +707,7 @@
                         {
                             "item_id": 13576,
                             "quantity": 1,
-                            "hint": [
+                            "hints": [
                                 "Trade crystals to {npc:1016289}"
                             ]
                         }
@@ -514,7 +733,9 @@
                 "is_one_time": false,
                 "quest_id_first": 67750,
                 "quest_id_repeating": 67750,
-                "npc": 1016290,
+                "npcs": [
+                    1016290
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -568,7 +789,6 @@
                         }
                     ]
                 },
-                "hint2": "You need to acquire {item:13577}, {item:13578}, {item:13579} and {item:13580} for this step. You trade for them with these materials: {item:13582}, {item:13584}, {item:13586} and {item:13588} can be bought from tomestone vendors, acquired by trading materials from the first tier of the alexander normal raids, traded for with heavensward tribal tokens or from treasure maps/allied seals. {item:13589},{item:13591},{item:13593} and {item:13595} can be crafted, bought from the market board or bought with grand company seals.",
                 "hints": [
                     "You have to acquire the following items:",
                     "{bullet:0} {item:13577}",
@@ -1279,7 +1499,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1025945,
+                "npcs": [
+                    1025945
+                ],
                 "prerequisites": {
                     "quests": [
                         68089,
@@ -1302,7 +1524,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1025945,
+                "npcs": [
+                    1025945
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1320,7 +1544,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1025945,
+                "npcs": [
+                    1025945
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1338,7 +1564,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1025945,
+                "npcs": [
+                    1025945
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1356,8 +1584,12 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1025945,
-                "object": 2009555,
+                "npcs": [
+                    1025945
+                ],
+                "objects": [
+                    2009555
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1375,8 +1607,12 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1025945,
-                "object": 2009555,
+                "npcs": [
+                    1025945
+                ],
+                "objects": [
+                    2009555
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1395,8 +1631,12 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1025945,
-                "object": 2009555,
+                "npcs": [
+                    1025945
+                ],
+                "objects": [
+                    2009555
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1415,7 +1655,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1026494,
+                "npcs": [
+                    1026494
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1433,7 +1675,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1026494,
+                "npcs": [
+                    1026494
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1448,7 +1692,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1026494,
+                "npcs": [
+                    1026494
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1467,7 +1713,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1027118,
+                "npcs": [
+                    1027118
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1482,7 +1730,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1027118,
+                "npcs": [
+                    1027118
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1497,7 +1747,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1027118,
+                "npcs": [
+                    1027118
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [
@@ -1516,7 +1768,9 @@
                 "is_one_time": false,
                 "quest_id_first": 0,
                 "quest_id_repeating": 0,
-                "npc": 1027118,
+                "npcs": [
+                    1027118
+                ],
                 "prerequisites": {},
                 "requirements": {
                     "item": [

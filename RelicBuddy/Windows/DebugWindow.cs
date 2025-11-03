@@ -1,34 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Net.Quic;
 using System.Numerics;
-using System.Reflection;
-using System.Runtime.InteropServices.ComTypes;
+using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.Interface;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
-using Dalamud.IoC;
-using Dalamud.Plugin.Services;
+using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using FFXIVClientStructs.FFXIV.Common.Lua;
 using Dalamud.Bindings.ImGui;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using RelicBuddy.Helpers;
 using RelicBuddy.Models;
+using RelicNote = FFXIVClientStructs.FFXIV.Client.Game.UI.RelicNote;
 
 namespace RelicBuddy.Windows;
 
 public class DebugWindow : Window, IDisposable
 {
-
     private ExcelSheet<Aetheryte> aetheryteSheet;
     public DebugWindow(Plugin plugin) : base("RelicBuddy Debug")
     {
@@ -54,6 +47,171 @@ public class DebugWindow : Window, IDisposable
 
     public override void Draw()
     {
+        var expansions = Plugin.RelicData.Select(d => d.Expansion).Distinct().ToArray();
+        ImGui.Combo("Expansion", ref expansionChoice, expansions, expansions.Length);
+        var expansionData = Plugin.RelicData.First(d => d.Expansion == expansions[expansionChoice]);
+
+        ImGui.Spacing();
+        MapMarkerStatus();
+        var pos = Plugin.ClientState.LocalPlayer?.Position ?? new(0, 0, 0);
+        ImGui.TextUnformatted($"PlayerPos: {pos.X} {pos.Y} {pos.Z}");
+        ImGui.Spacing();
+        DrawRelicNoteInfo();
+
+        if (ImGui.CollapsingHeader("Map"))
+        {
+            DrawMapInfo();
+        }
+
+        DrawLeveInfo();
+        DrawObjectTable();
+        
+    }
+
+    private ExcelSheet<SpecialShop> shopSheet = RelicBuddy.Plugin.DataManager.GetExcelSheet<SpecialShop>();
+    
+    private unsafe void DrawRelicNoteInfo()
+    {
+        if (ImGui.CollapsingHeader("RelicNote"))
+        {
+            var noteInfo = RelicNoteHelper.Instance.GetCurrentNoteData();
+            if (noteInfo is null) return;
+            var note = RelicNote.Instance();
+            if (note is null) return;
+            ImGui.BeginTable("RelicNote##Dungeon", 2, ImGuiTableFlags.SizingFixedFit);
+            ImGui.TableSetupColumn("DutyFinderCondition");
+            ImGui.TableSetupColumn("Completion");
+            ImGui.TableHeadersRow();
+            for (var i=0; i < noteInfo.Value.MonsterNoteTargetNM.Count; ++i)
+            {
+                var nm = noteInfo.Value.MonsterNoteTargetNM[i];
+                ImGui.TableNextRow();
+                ImGui.TableNextColumn();
+                var condition = DutyHelper.Instance.GetContentFinderConditionByName(
+                    nm.Value.PlaceNameLocation.First().Value.Name.ExtractText());
+                if(condition is not null) {
+                    if (ImGui.Button(condition.Value.Name.ExtractText()))
+                    {
+                        DutyHelper.Instance.OpenDutyFinder(condition.Value.RowId);
+                    }
+                }
+                else
+                {
+                    ImGui.TextUnformatted(nm.Value.PlaceNameLocation.First().Value.Name.ExtractText());
+                }
+
+                ImGui.TableNextColumn();
+                ImGui.TextUnformatted($"{note->IsDungeonComplete(i)}");
+                
+            }
+            ImGui.EndTable();
+
+            ImGui.BeginTable("RelicNote##Monsters", 3, ImGuiTableFlags.SizingFixedFit);
+            ImGui.TableSetupColumn("Name");
+            ImGui.TableSetupColumn("Location");
+            ImGui.TableSetupColumn("Progress");
+            ImGui.TableHeadersRow();
+            for (var i = 0; i < noteInfo.Value.MonsterNoteTargetCommon.Count; ++i)
+            {
+                var monster = noteInfo.Value.MonsterNoteTargetCommon[i];
+                ImGui.TableNextRow();
+                ImGui.TableNextColumn();
+                ImGui.TextUnformatted($"{monster.Value.BNpcName.Value.Singular.ExtractText()}");
+                ImGui.TableNextColumn();
+                //ImGui.TextUnformatted($"{monster.Value.PlaceNameLocation.First().Value.Name.ExtractText()}, {monster.Value.PlaceNameZone.First().Value.Name.ExtractText()} ({monster.Value.PlaceNameZone.First().Value.RowId})");
+                if (ImGui.Button($"{monster.Value.PlaceNameLocation.First().Value.Name.ExtractText()}"))
+                {
+                    mapHelper.OpenMap(mapHelper.GetMapByPlaceNameId(monster.Value.PlaceNameZone.First().Value.RowId).RowId);
+                }
+                ImGui.TableNextColumn();
+                ImGui.TextUnformatted($"{note->GetMonsterProgress(i)} / {noteInfo.Value.MonsterCount[i]}");
+            } //mark them on map
+            ImGui.EndTable();
+            ImGui.TextUnformatted($"ObjectveProress: {note->ObjectiveProgress}");
+        }
+    }
+
+    private unsafe void DrawLeveInfo()
+    {
+        if (ImGui.CollapsingHeader("Leve Info"))
+        {
+            var noteInfo = RelicNoteHelper.Instance.GetCurrentNoteData();
+            if (noteInfo is null) return;
+            var note = RelicNote.Instance();
+            if (note is null) return;
+
+            ImGui.BeginTable("LeveTable", 4, ImGuiTableFlags.SizingFixedFit);
+            ImGui.TableSetupColumn("Name");
+            ImGui.TableSetupColumn("Location");
+            ImGui.TableSetupColumn("Issuer");
+            ImGui.TableSetupColumn("Completion");
+            ImGui.TableHeadersRow();
+            for (var i = 0; i < noteInfo.Value.Leve.Count; ++i)
+            {
+                ImGui.TableNextRow();
+                ImGui.TableNextColumn();
+                ImGui.TextUnformatted($"{noteInfo.Value.Leve[i].Value.Name.ExtractText()}");
+                ImGui.TableNextColumn();
+                ImGui.TextUnformatted($"{noteInfo.Value.Leve[i].Value.PlaceNameIssued.Value.Name.ExtractText()}");
+                ImGui.TableNextColumn();
+                ImGui.PushFont(UiBuilder.IconFont);
+                if (ImGui.Button($"\uf0ac##levebtn{noteInfo.Value.Leve[i].RowId}")) 
+                {
+                    mapHelper.ShowFlag(noteInfo.Value.Leve[i].Value.LevelLevemete.Value);
+                }
+                ImGui.PopFont();
+                ImGui.SameLine();
+                ImGui.TextUnformatted($"{NpcHelper.GetNpcFromLevel(noteInfo.Value.Leve[i].Value.LevelLevemete.Value)?.Singular.ExtractText() ?? "Unknown NPC"}");
+                ImGui.TableNextColumn();
+                ImGui.TextUnformatted($"{note->IsLeveComplete(i)}");
+            }
+
+            ImGui.EndTable();
+        }
+    }
+
+    private unsafe void DrawObjectTable()
+    {
+        var target = Plugin.ClientState.LocalPlayer?.TargetObject;
+        if (target is not null)
+        {
+            ImGui.TextUnformatted(target.Name.TextValue);
+            ImGui.TextUnformatted($"{target.DataId}");
+            ImGui.TextUnformatted($"{target.ObjectKind}");
+            ImGui.TextUnformatted($"{target.GetType()}");
+            if (target is IBattleNpc bnpc)
+            {
+                ImGui.TextUnformatted($"{bnpc}");
+            }
+        }
+    }
+    private unsafe void DrawMapInfo()
+    {
+        ImGui.BeginTable("minimap##", 1, ImGuiTableFlags.SizingFixedFit);
+        ImGui.TableSetupColumn("Entry");
+        ImGui.TableHeadersRow();
+        ImGui.TextUnformatted($"Count: {AgentMap.Instance()->MiniMapMarkers.Length}");
+
+        foreach(var marker in AgentMap.Instance()->EventMarkers)
+        {
+            ImGui.TableNextRow();
+            ImGui.TableNextColumn();
+            // ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(marker.IconId).GetWrapOrDefault().ImGuiHandle, new(32, 32));
+            // ImGui.SameLine();
+            ImGui.TextUnformatted($"{marker.GetType()} | {marker.IconId} | {marker.TooltipString->StringPtr.ExtractText()}");
+        }
+        foreach (var marker in AgentMap.Instance()->MiniMapMarkers)
+        {
+            ImGui.TableNextRow();
+            ImGui.TableNextColumn();
+            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(marker.MapMarker.IconId).GetWrapOrDefault().Handle, new(32, 32));
+            ImGui.SameLine();
+            ImGui.TextUnformatted($"{marker.MapMarker.GetType()} | {marker.MapMarker.X},{marker.MapMarker.Y} | {marker.MapMarker.IconId} | {marker.MapMarker.Subtext.ExtractText()}");
+        }
+        ImGui.EndTable();
+    }
+    private void DrawRelicOverview()
+    {
         ImGui.BeginTable("relic data by expansion", 4);
         ImGui.TableSetupColumn("Expansion");
         ImGui.TableSetupColumn("Series");
@@ -72,7 +230,7 @@ public class DebugWindow : Window, IDisposable
             ImGui.TableNextColumn();
             ImGui.Text(data.Relics.Count == 0 ? "0" : $"{data.Relics.First().Value.ItemIds.Count}");
         }
-        
+
         ImGui.EndTable();
         ImGui.Text($"Total: {Plugin.RelicData.Count}");
         ImGui.Spacing();
@@ -117,6 +275,10 @@ public class DebugWindow : Window, IDisposable
         }
 
         ImGui.Spacing();
+    }
+
+    private void DrawRelicSteps(RelicData expansionData)
+    {
         const int tableSize = 7;
         ImGui.BeginTable("Steps", tableSize, ImGuiTableFlags.SizingFixedFit);
         ImGui.TableSetupColumn("#");
@@ -134,11 +296,7 @@ public class DebugWindow : Window, IDisposable
             ImGui.TableNextColumn();
             ImGui.Text($"{i + 1}"); // step#
             ImGui.TableNextColumn();
-            var questId = step.QuestIdFirst;
-            if (QuestManager.IsQuestComplete(questId))
-            {
-                questId = step.QuestIdRepeating;
-            }
+            var questId = QuestHelper.Instance.GetQuestIdForStep(step, null);
             HoverQuestLink(questId);
             ImGui.TableNextColumn();
             for (var j = 0; j < step.Prerequsites.Quests.Count; ++j)
@@ -203,9 +361,49 @@ public class DebugWindow : Window, IDisposable
         ImGui.Spacing();
     }
 
-    private ExcelSheet<SpecialShop> shopSheet = RelicBuddy.Plugin.DataManager.GetExcelSheet<SpecialShop>();
+    private void DrawRelicList(RelicData expansionData)
+    {
+        if (ImGui.CollapsingHeader("Relic List"))
+        {
+            ImGui.BeginTable("Expansion Details", expansionData.Relics.First().Value.ItemIds.Count + 1,
+                             ImGuiTableFlags.SizingFixedFit);
+            ImGui.TableSetupColumn("Job");
 
-    
+            for (var i = 0; i < expansionData.Relics.First().Value.ItemIds.Count; ++i)
+            {
+                ImGui.TableSetupColumn($"Stage {i + 1}");
+            }
+
+            ImGui.TableHeadersRow();
+            foreach (var relic in expansionData.Relics)
+            {
+                ImGui.TableNextRow();
+                ImGui.TableNextColumn();
+                ImGui.Text(relic.Key);
+                foreach (var itemId in relic.Value.ItemIds)
+                {
+                    ImGui.TableNextColumn();
+                    ImGui.Image(itemHelper.GetItemIcon(itemId).Handle, new Vector2(32, 32));
+                    if (ImGui.IsItemHovered())
+                    {
+                        ImGui.SetTooltip($"{itemHelper.GetItemName(itemId)}\nClick to link this item in chat");
+                    }
+
+                    if (ImGui.IsItemClicked())
+                    {
+                        Plugin.ChatGui.Print(new XivChatEntry
+                        {
+                            Type = XivChatType.Echo,
+                            Message = SeString.CreateItemLink(itemId)
+                        });
+                    }
+                }
+            }
+
+            ImGui.EndTable();
+        }
+    }
+
     private unsafe void AetheryteTable()
     {
         ImGui.BeginTable("DebugAetherTable", 7);
@@ -235,8 +433,8 @@ public class DebugWindow : Window, IDisposable
             ImGui.TableNextColumn();
             ImGui.TextUnformatted($"{a.Level[3].RowId}");
         }
-        ImGui.EndTable();
 
+        ImGui.EndTable();
     }
 
     private unsafe void MapMarkerStatus()

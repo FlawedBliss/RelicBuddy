@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using Dalamud.Game.Text;
+using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Interface;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Colors;
+using Dalamud.Interface.Utility.Raii;
 using RelicBuddy.Helpers;
 using RelicBuddy.Helpers.FGui;
 using RelicBuddy.Helpers.Strings;
@@ -52,6 +57,7 @@ public class MainWindow : Window, IDisposable
     private int relicQuestStage;
     private int relicItemStage;
     private int displayedStep = 0;
+    private bool showSearchFailedHint = false;
 
     public override void Draw()
     {
@@ -172,6 +178,10 @@ public class MainWindow : Window, IDisposable
             if (relicItemStage > 0)  {
                 plugin.ItemLocationWindow.DisplayItem = weaponData.ItemIds[relicItemStage-1];
                 plugin.ItemLocationWindow.IsOpen = true;
+                showSearchFailedHint = false;
+            } else
+            {
+                showSearchFailedHint = true;
             }
         }
         ImGui.PopFont();
@@ -180,10 +190,32 @@ public class MainWindow : Window, IDisposable
             ImGui.SetTooltip("Click to search for your relic");
         }
         ImGui.SameLine();
-        ImGui.Image(ItemHelper.GetItemIcon(weaponData.ItemIds[displayedStep]).ImGuiHandle, new Vector2(24, 24));
+        if (showSearchFailedHint)
+        {
+            ImGui.TextColored(ImGuiColors.DalamudRed, "The relic was not found in any loaded inventory.");
+        }
         ImGui.SameLine();
-        ImGui.TextUnformatted(ItemHelper.GetItemName(weaponData.ItemIds[displayedStep]));
-        ImGui.SameLine();
+        //TODO figure out which relic to display
+        //idea: instead of separate relic item ids, add them to appropriate step
+        // ImGui.Image(ItemHelper.GetItemIcon(weaponData.ItemIds[relicItemStage-1]).Handle, new Vector2(24, 24));
+        //
+        // if (ImGui.IsItemClicked())
+        // {
+        //     Plugin.ChatGui.Print(new XivChatEntry
+        //     {
+        //         Type = XivChatType.Echo,
+        //         Message = SeString.CreateItemLink(weaponData.ItemIds[displayedStep])
+        //     });
+        // }
+        //
+        // if (ImGui.IsItemHovered())
+        // {
+        //     ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+        //     ImGui.SetTooltip("Click to link the item in chat");
+        // }
+        // ImGui.SameLine();
+        // ImGui.TextUnformatted(ItemHelper.GetItemName(weaponData.ItemIds[relicItemStage-1]));
+        // ImGui.SameLine();
         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetContentRegionAvail().X - ImGui.CalcTextSize("Next >").X - 16);
         if (ImGui.Button("Next >"))
         {
@@ -192,7 +224,7 @@ public class MainWindow : Window, IDisposable
         //todo what did this todo mean ?? 
         // TODO temp
         FGui.DrawSeparatorText("Details");
-        if(relicItemStage <= weaponData.ItemIds.Count-1) {
+        if (relicItemStage <= weaponData.ItemIds.Count-1) {
             var hints = expansionData.Steps[displayedStep].Hints;
             if (hints is not null)
             {
@@ -273,7 +305,7 @@ public class MainWindow : Window, IDisposable
             if (ImGui.CollapsingHeader(title))
             {
                 ImGui.PopStyleColor();
-                if (questStep.QuestIdRepeating != 0)
+                if (questStep.Prerequsites.Quests.Count > 0 || questStep.QuestIdRepeating != 0 || questStep.QuestIdJob is not null)
                 {
                     DrawQuestStatus(questStep);
                 }
@@ -294,6 +326,14 @@ public class MainWindow : Window, IDisposable
                 ImGui.PopStyleColor();
             }
         }
+    }
+
+    private unsafe void DrawRelicNoteSection()
+    {
+        if (RelicNote.Instance() is null) return;
+        if (!(selectedExpansion.Equals("ARR") && relicQuestStage == 4)) return;
+        FGui.DrawSeparatorText("Relic Note");
+        ImGui.TextUnformatted("You can use the Relic Note to track your progress in the relic quest.");
     }
 
     private void DrawItemTable(List<ItemQuantity> items, int i)
@@ -330,6 +370,7 @@ public class MainWindow : Window, IDisposable
             var shop = ShopHelper.GetFirstShopForItem(item.ItemId);
             if (shop is null)
             {
+                Plugin.PluginLog.Debug("shop null");
                 if (item.Hints.Count > 0)
                 {
                     foreach (var hint in item.Hints)
@@ -378,7 +419,7 @@ public class MainWindow : Window, IDisposable
         ImGui.EndTable();
     }
 
-    private static void DrawQuestStatus(RelicStep step)
+    private void DrawQuestStatus(RelicStep step)
     {
         if (step.Prerequsites.Quests.Count > 0)
         {
@@ -389,13 +430,30 @@ public class MainWindow : Window, IDisposable
             }
         }
 
-        FGui.DrawSeparatorText("Relic Quest");
-        DrawQuestLink(QuestManager.IsQuestComplete(step.QuestIdFirst) ? step.QuestIdRepeating : step.QuestIdFirst);
+        
+        uint questId = 0;
+        if (step.QuestIdFirst is not null)
+        {
+            questId = QuestManager.IsQuestComplete(step.QuestIdFirst.Value) ? step.QuestIdRepeating!.Value : step.QuestIdFirst.Value;
+        } else if (step.QuestIdJob is not null)
+        {
+            if (step.QuestIdJob.TryGetValue(selectableJobs[selectedJob], out var jobQuestId))
+            {
+                questId = jobQuestId;
+            }
+        }
+
+        if (questId > 0)
+        {
+            FGui.DrawSeparatorText("Relic Quest");
+            DrawQuestLink(questId);
+        }
+
     }
 
     private static void DrawNpcInfo(RelicStep step, int i)
     {
-        if (step.Npc is null && step.Object is null) return;
+        if (step.Npcs.Length + step.Objects.Length == 0) return;
         FGui.DrawSeparatorText("Location");
         ImGui.BeginTable($"LocationTable#LTableStep{i}", 3, ImGuiTableFlags.SizingStretchProp);
         ImGui.TableSetupColumn("Link");
@@ -403,11 +461,11 @@ public class MainWindow : Window, IDisposable
         ImGui.TableSetupColumn("Map");
         ImGui.TableHeadersRow();
         
-        if (step.Npc is not null)
+        foreach(var npcId in step.Npcs)
         {
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
-            var npc = NpcHelper.GetNpc(step.Npc!.Value);
+            var npc = NpcHelper.GetNpc(npcId);
             var level = NpcHelper.GetNpcLevel(npc);
             if(level is not null) {
                 FGui.DrawAetheryteLink(level.Value);
@@ -429,22 +487,16 @@ public class MainWindow : Window, IDisposable
             ImGui.TableNextColumn();
             ImGui.TextWrapped(npc.Singular.ExtractText());
             ImGui.TableNextColumn();
-            if(level is not null) {
-                ImGui.TextWrapped(level.Value.Map.Value.PlaceName.Value.Name.ExtractText());
-            }
-            else
-            {
-                ImGui.TextWrapped("Unknown");
-            }
+            ImGui.TextWrapped(level is not null ? level.Value.Map.Value.PlaceName.Value.Name.ExtractText() : "Unknown");
         }
 
-        if (step.Object is not null)
+        foreach(var objectId in step.Objects)
         {
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
             ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().Handle,
                         new Vector2(24, 24));
-            var obj = NpcHelper.GetObj(step.Object!.Value)!;
+            var obj = NpcHelper.GetObj(objectId)!;
             if (ImGui.IsItemHovered())
             {
                 ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
@@ -515,6 +567,7 @@ public class MainWindow : Window, IDisposable
         plugin.Configuration.SelectedJob = selectedJob;
         plugin.Configuration.Save();
         resetQuestingColumn = true;
+        showSearchFailedHint = false;
     }
 
     private void DrawItemSourceCol(uint itemId)
