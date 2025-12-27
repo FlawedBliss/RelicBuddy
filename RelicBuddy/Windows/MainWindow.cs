@@ -14,6 +14,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
+using Lumina.Extensions;
 using RelicBuddy.Helpers;
 using RelicBuddy.Helpers.FGui;
 using RelicBuddy.Helpers.Strings;
@@ -139,7 +140,12 @@ public class MainWindow : Window, IDisposable
         }
 
         var stepCount = expansionData.Steps.Count(i => !i.IsOneTime);
-        var finishedRelics = relicStages.Where(s => s.Value == stepCount).ToList();
+        Plugin.PluginLog.Info("StepCount: {0}", stepCount);
+        var finishedRelics = relicStages.Where(s => s.Value == expansionData.Relics.FirstOrNull()!.Value.Value.ItemIds.Count).ToList();
+        foreach (var item in relicStages)
+        {
+            Plugin.PluginLog.Info("{0}: {1}", item.Key, item.Value);
+        }
         var newRelics = relicStages.Where(s => s.Value == 0).ToList();
         var wipRelics = relicStages.Where(s => s.Value > 0 && s.Value < stepCount).ToList();
         

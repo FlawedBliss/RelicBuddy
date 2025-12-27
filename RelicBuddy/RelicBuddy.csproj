@@ -16,4 +16,13 @@
     <None Remove="Data\relic_data.json" />
     <EmbeddedResource Include="Data\relic_data.json" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\arr.xml" />
+    <Content Include="Data\RelicStage.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\expansions\arr\" />
+  </ItemGroup>
 </Project>

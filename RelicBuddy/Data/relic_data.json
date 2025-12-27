@@ -149,7 +149,7 @@
                     "This quest involves many steps, most of which are easily completes by following the questline.",
                     "{bullet:0} Loot a treasure coffer indicated by your quest",
                     "{bullet:0} Buy or craft the Barbarian's weapon or your job",
-                    "{bullet:0} Enhance the weapon with two grade 3 materia of the type given by your quest",
+                    "{bullet:0} Enhance the weapon with two grade 3 materia of the type indicated by your quest",
                     "{bullet:0} Complete {duty:74} as your chosen job",
                     "{bullet:0} Complete {duty:14} as your chosen job",
                     "murder stuff",
@@ -171,7 +171,7 @@
                     ]
                 },
                 "hints": [
-                    "Buy three {item:6268} and use it to upgrade your weapon by interacting with {obj:2002555}"
+                    "Buy three {item:6268} and use them to upgrade your weapon by interacting with {obj:2002555}"
                 ]
             },
             {
@@ -329,7 +329,7 @@
                     1009151
                 ],
                 "hints": [
-                    "After completing {quest:Celestial Radiance}, you need to trade 3 {item:7885} to exchange for a scroll from {npc:1009151}. You can then continue with {quest:66676} and {quest:67000}.",
+                    "After completing {quest:66998}, you need to trade 3 {item:7885} to exchange for a scroll from {npc:1009151}. You can then continue with {quest:66676} and {quest:67000}.",
                     "You will need 75 {item:7883} to infuse 75 materia into the scroll. You need to infuse grade 1 to 4 materia, the exact amount can vary depending on your luck.",
                     "The alexandrite can be gained from various means, check the table on the right for more information. {item:7884} are the recommended way to get them quickly.",
                     "After you have completed the infusion, return to {npc:1008948} to upgrade your weapon."

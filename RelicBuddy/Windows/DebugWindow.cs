@@ -65,7 +65,7 @@ public class DebugWindow : Window, IDisposable
 
         DrawLeveInfo();
         DrawObjectTable();
-        
+        DrawInventoryInfo();
     }
 
     private ExcelSheet<SpecialShop> shopSheet = RelicBuddy.Plugin.DataManager.GetExcelSheet<SpecialShop>();
@@ -209,6 +209,21 @@ public class DebugWindow : Window, IDisposable
             ImGui.TextUnformatted($"{marker.MapMarker.GetType()} | {marker.MapMarker.X},{marker.MapMarker.Y} | {marker.MapMarker.IconId} | {marker.MapMarker.Subtext.ExtractText()}");
         }
         ImGui.EndTable();
+    }
+
+    private uint infoItemId = 0;
+    private unsafe void DrawInventoryInfo()
+    {
+        if(ImGui.CollapsingHeader("Inventory")) {
+            ImGui.InputUInt("Item Id", ref infoItemId);
+            if (infoItemId > 0)
+            {
+                ImGui.TextUnformatted($"Retainer: {inventoryHelper.GetRetainerItemCount(infoItemId)}");
+                ImGui.TextUnformatted($"Saddlebag: {inventoryHelper.GetSaddlebagItemCount(infoItemId)}");
+                ImGui.TextUnformatted($"Inventory: {inventoryHelper.GetInventoryItemCount(infoItemId)}");
+                ImGui.TextUnformatted($"Total: {inventoryHelper.GetItemCount(infoItemId)}");
+            }
+        }
     }
     private void DrawRelicOverview()
     {
