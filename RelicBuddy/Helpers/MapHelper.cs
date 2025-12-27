@@ -113,7 +113,7 @@ public class MapHelper
             return false;
         }
 
-        if (Plugin.ClientState.LocalPlayer == null) return false;
+        if (Plugin.ObjectTable.LocalPlayer == null) return false;
         telepo->UpdateAetheryteList();
         foreach (var teleportInfo in telepo->TeleportList)
         {

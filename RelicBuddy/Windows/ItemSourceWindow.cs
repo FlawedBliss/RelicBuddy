@@ -13,7 +13,7 @@ namespace RelicBuddy.Windows;
 public class ItemSourceWindow : Window, IDisposable
 {
     private uint displayItem;
-    private List<ShopInfo> shopInfos;
+    private List<ShopInfo> shopInfos = [];
     private Item itemInfo;
     private readonly ShopHelper ShopHelper = Helpers.ShopHelper.Instance;
     private readonly ItemHelper ItemHelper = Helpers.ItemHelper.Instance;

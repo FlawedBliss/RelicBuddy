@@ -198,7 +198,7 @@ public class DebugWindow : Window, IDisposable
         ImGui.EndTable();
         MapMarkerStatus();
         // AetheryteTable();+
-        var pos = Plugin.ClientState.LocalPlayer?.Position ?? new(0,0,0);
+        var pos = Plugin.ObjectTable.LocalPlayer?.Position ?? new(0,0,0);
         ImGui.TextUnformatted($"PlayerPos: {pos.X} {pos.Y} {pos.Z}");
         ImGui.Spacing();
     }
