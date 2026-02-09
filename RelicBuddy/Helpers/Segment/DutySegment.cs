@@ -25,7 +25,7 @@ public class DutySegment : BaseSegment
 
     public override void Draw()
     {
-        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(condition.ContentType.Value.Icon)).GetWrapOrDefault()!.Handle, new(iconSize, iconSize));
+        ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(condition.ContentType.Value.Icon)).GetWrapOrEmpty().Handle, new(iconSize, iconSize));
         if (ImGui.IsItemHovered())
         {
             ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
