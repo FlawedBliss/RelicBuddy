@@ -18,7 +18,7 @@ public class NpcHelper
     private readonly ExcelSheet<EObjName> objNameSheet;
 
     private Dictionary<uint, Level?> npcLevelCache = new();
-    private Dictionary<uint, Level> objLevelCache = new();
+    private Dictionary<uint, Level?> objLevelCache = new();
     public NpcHelper()
     {
         levelSheet = Plugin.DataManager.GetExcelSheet<Level>()!;
@@ -70,13 +70,13 @@ public class NpcHelper
         return npcLevelCache[npc.RowId];
     }
 
-    public Level GetObjLevel(EObj obj)
+    public Level? GetObjLevel(EObj obj)
     {
         if (objLevelCache.TryGetValue(obj.RowId, value: out var level))
         {
             return level;
         }
-        objLevelCache[obj.RowId] = levelSheet.First(l => l.Object.RowId == obj.RowId);
+        objLevelCache[obj.RowId] = levelSheet.FirstOrNull(l => l.Object.RowId == obj.RowId);
         return objLevelCache[obj.RowId];
     }
 }

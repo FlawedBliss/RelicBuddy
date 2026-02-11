@@ -500,23 +500,33 @@ public class MainWindow : Window, IDisposable
         {
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
-            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().Handle,
-                        new Vector2(24, 24));
             var obj = NpcHelper.GetObj(objectId)!;
-            if (ImGui.IsItemHovered())
+            var level = NpcHelper.GetObjLevel(obj.Value);
+            if (level != null)
             {
-                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-            }
+                ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(114054)).GetWrapOrEmpty().Handle,
+                            new Vector2(24, 24));
+                if (ImGui.IsItemHovered())
+                {
+                    ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                }
 
-            if (ImGui.IsItemClicked())
-            {
-                MapHelper.ShowFlag(NpcHelper.GetObjLevel(obj.Value));
+                if (ImGui.IsItemClicked())
+                {
+                    MapHelper.ShowFlag(level.Value);
+                }
             }
 
             ImGui.TableNextColumn();
             ImGui.TextWrapped(NpcHelper.GetObjName(obj.Value).Singular.ExtractText());
             ImGui.TableNextColumn();
-            ImGui.TextWrapped(NpcHelper.GetObjLevel(obj.Value).Map.Value.PlaceName.Value.Name.ExtractText());
+            if(level != null) {
+                ImGui.TextWrapped(level.Value.Map.Value.PlaceName.Value.Name.ExtractText());
+            }
+            else
+            {
+                ImGui.TextWrapped("Location not found");
+            }
         }
 
         ImGui.EndTable();
