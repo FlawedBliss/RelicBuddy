@@ -12,6 +12,7 @@ using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Textures.Internal;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using RelicBuddy.Helpers;
@@ -66,6 +67,7 @@ public class DebugWindow : Window, IDisposable
         DrawLeveInfo();
         DrawObjectTable();
         DrawInventoryInfo();
+        DrawMapThing();
     }
 
     private ExcelSheet<SpecialShop> shopSheet = RelicBuddy.Plugin.DataManager.GetExcelSheet<SpecialShop>();
@@ -204,7 +206,7 @@ public class DebugWindow : Window, IDisposable
         {
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
-            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(marker.MapMarker.IconId).GetWrapOrDefault().Handle, new(32, 32));
+            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(marker.MapMarker.IconId).GetWrapOrEmpty().Handle, new(32, 32));
             ImGui.SameLine();
             ImGui.TextUnformatted($"{marker.MapMarker.GetType()} | {marker.MapMarker.X},{marker.MapMarker.Y} | {marker.MapMarker.IconId} | {marker.MapMarker.Subtext.ExtractText()}");
         }
@@ -489,4 +491,61 @@ public class DebugWindow : Window, IDisposable
     }
 
     public void Dispose() { }
+
+    public unsafe void DrawMapThing()
+    {
+        var map = AgentMap.Instance();
+        if (map == null) return;
+        if (ImGui.CollapsingHeader("AgentMap"))
+        {
+            ImGui.TextUnformatted($"EventMarkers: {map->EventMarkers.Count}");
+            var i = 0;
+            foreach (var marker in map->EventMarkers)
+            {
+                if (ImGui.CollapsingHeader($"EventMarker {i++}##evmk{i}"))
+                {
+                    ImGui.TextUnformatted($"Pos: {marker.Position}");
+                    ImGui.TextUnformatted($"EventState: {marker.EventState}");
+                    ImGui.TextUnformatted($"Flags: {marker.Flags}");
+                    ImGui.TextUnformatted($"DataId: {marker.DataId}");
+                    ImGui.TextUnformatted($"Icon: {marker.IconId}");
+                    try
+                    {
+                        ImGui.SameLine();
+                        ImGui.Image(
+                            Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(marker.IconId)).GetWrapOrEmpty()
+                                  .Handle, new(16, 16));
+                    }
+                    catch (IconNotFoundException ignored)
+                    {
+                        ImGui.TextUnformatted("(icon not found)");
+                    }
+                }
+            }
+        }
+        if (ImGui.CollapsingHeader("AgentMap2"))
+        {
+            ImGui.TextUnformatted($"tMarkers: {map->MapMarkers.Length}");
+            var i = 0;
+            foreach (var marker in map->MapMarkers)
+            {
+                if (ImGui.CollapsingHeader($"EventMarker {i++}##evmk{i}"))
+                {
+                    ImGui.TextUnformatted($"Pos: {marker.MapMarker.X} {marker.MapMarker.Y}");
+                    ImGui.TextUnformatted($"Icon: {marker.MapMarker.IconId}");
+                    try
+                    {
+                        ImGui.SameLine();
+                        ImGui.Image(
+                            Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(marker.MapMarker.IconId)).GetWrapOrEmpty()
+                                  .Handle, new(16, 16));
+                    }
+                    catch (IconNotFoundException ignored)
+                    {
+                        ImGui.TextUnformatted("(icon not found)");
+                    }
+                }
+            }
+        }
+    }
 }
