@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
-using Dalamud.Game.Text;
-using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Interface;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
 using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Colors;
-using Dalamud.Interface.Utility.Raii;
 using Lumina.Extensions;
 using RelicBuddy.Helpers;
 using RelicBuddy.Helpers.FGui;
+using RelicBuddy.Helpers.Segment;
 using RelicBuddy.Helpers.Strings;
 using RelicBuddy.Models;
 
@@ -33,6 +30,7 @@ public class MainWindow : Window, IDisposable
     private static readonly QuestHelper QuestHelper = QuestHelper.Instance;
     private static readonly NpcHelper NpcHelper = NpcHelper.Instance;
     private static readonly StringsDict StringsDict = StringsDict.Instance;
+    private static readonly RelicNoteHelper RelicNoteHelper = RelicNoteHelper.Instance;
 
     public MainWindow(Plugin plugin) : base("RelicBuddy##rb_mw")
     {
@@ -326,6 +324,11 @@ public class MainWindow : Window, IDisposable
                         DrawItemTable(questStep.Requirements.Item, i);
                     }
                 }
+
+                if (selectedExpansion == "ARR" && i == 3)
+                {
+                    DrawARRBookInfo();
+                }
             }
             else
             {
@@ -333,14 +336,7 @@ public class MainWindow : Window, IDisposable
             }
         }
     }
-
-    private unsafe void DrawRelicNoteSection()
-    {
-        if (RelicNote.Instance() is null) return;
-        if (!(selectedExpansion.Equals("ARR") && relicQuestStage == 4)) return;
-        FGui.DrawSeparatorText("Relic Note");
-        ImGui.TextUnformatted("You can use the Relic Note to track your progress in the relic quest.");
-    }
+    
 
     private void DrawItemTable(List<ItemQuantity> items, int i)
     {
@@ -601,5 +597,136 @@ public class MainWindow : Window, IDisposable
         {
             FGui.DrawItemShopRow(itemId, npcs[0], false);
         }
+    }
+
+    private void DrawARRBookInfo()
+    {
+        FGui.DrawSeparatorText("Current Book");
+        var check = RelicNoteHelper.GetCurrentNoteData();
+        if (check is null)
+        {
+            ImGui.TextWrapped("You currently do not possess a book.");
+            return;
+        }
+
+        var noteData = check.Value;
+        ImGui.BeginTable("RelicNote##Duty", 2, ImGuiTableFlags.SizingStretchSame);
+        ImGui.TableSetupColumn("Duty");
+        ImGui.TableSetupColumn("Completed");
+        ImGui.TableHeadersRow();
+        for (var i = 0; i < noteData.MonsterNoteTargetNM.Count; ++i)
+        {
+            var nm = noteData.MonsterNoteTargetNM[i];
+            ImGui.TableNextRow();
+            ImGui.TableNextColumn();
+            var condition =
+                DutyHelper.Instance.GetContentFinderConditionByName(
+                    nm.Value.PlaceNameLocation.First().Value.Name.ExtractText());
+            if (condition is not null)
+            {
+                new DutySegment(condition.Value.RowId).Draw();
+            }
+            else
+            {
+                ImGui.TextUnformatted(nm.Value.PlaceNameLocation.First().Value.Name.ExtractText());
+            }
+            
+            ImGui.TableNextColumn();
+            ImGui.PushStyleColor(ImGuiCol.Text, RelicNoteHelper.IsDutyComplete((int) nm.Value.RowId) ? ImGuiColors.HealerGreen : ImGuiColors.DalamudRed);
+            ImGui.TextUnformatted(RelicNoteHelper.IsDutyComplete((int) nm.Value.RowId) ? "Yes" : "No");
+            ImGui.PopStyleColor();
+        }
+        ImGui.EndTable();
+        
+        // FGui.DrawSeparatorText("Enemies");
+
+        ImGui.BeginTable("RelicNote##Monsters", 3, ImGuiTableFlags.SizingStretchSame);
+        ImGui.TableSetupColumn("Enemy");
+        ImGui.TableSetupColumn("Location");
+        ImGui.TableSetupColumn("Completed");
+        ImGui.TableHeadersRow();
+        for (var i = 0; i < noteData.MonsterNoteTargetCommon.Count; ++i)
+        {
+            var monster = noteData.MonsterNoteTargetCommon[i];
+            var monsterMap = MapHelper.GetMapByPlaceNameId(monster.Value.PlaceNameZone.First().RowId);
+            var progress = RelicNoteHelper.GetMonsterProgress(i);
+
+            if (MapHelper.GetPlayerCurrentMapId() == monsterMap.RowId)
+            {
+                ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
+            }
+            
+
+            ImGui.TableNextRow();
+            ImGui.TableNextColumn();
+            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(60004)).GetWrapOrEmpty().Handle, new Vector2(16, 16));
+            ImGui.SameLine();
+            ImGui.TextUnformatted($"{monster.Value.BNpcName.Value.Singular.ExtractText()}");
+            ImGui.TableNextColumn();
+            
+            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(60453)).GetWrapOrEmpty().Handle, new Vector2(16, 16));
+            if(ImGui.IsItemHovered())
+            {
+                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+            }
+            if (ImGui.IsItemClicked())
+            {
+                MapHelper.OpenMap(monsterMap.RowId);
+            }
+            
+            ImGui.SameLine();
+            ImGui.TextUnformatted($"{monster.Value.PlaceNameLocation.First().Value.Name.ExtractText()}");
+            if (MapHelper.GetPlayerCurrentMapId() == monsterMap.RowId)
+            {
+                ImGui.PopStyleColor();
+            }
+            ImGui.TableNextColumn();
+            ImGui.PushStyleColor(ImGuiCol.Text,
+                                 progress < noteData.MonsterCount[i]
+                                     ? ImGuiColors.DalamudGrey
+                                     : ImGuiColors.HealerGreen);
+            ImGui.TextUnformatted($"{progress} / {noteData.MonsterCount[i]}");
+            ImGui.PopStyleColor();
+            
+        }
+        ImGui.EndTable();
+        
+        // FGui.DrawSeparatorText("FATEs");
+        ImGui.BeginTable("RelicNote##FATE", 3, ImGuiTableFlags.SizingStretchSame);
+        ImGui.TableSetupColumn("FATE");
+        ImGui.TableSetupColumn("Location");
+        ImGui.TableSetupColumn("Completed");
+        ImGui.TableHeadersRow();
+        for (var i = 0; i < noteData.Fate.Count; ++i)
+        {
+            var fateMap = MapHelper.GetFateMapByPlaceNameSubtext(noteData.PlaceNameFate[i].RowId);
+            var fateName = noteData.Fate[i].Value.Name.ExtractText();
+            
+            ImGui.TableNextRow();
+            ImGui.TableNextColumn();
+            if (MapHelper.GetPlayerCurrentMapId() == fateMap.RowId)
+            {
+                ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
+            }
+            
+            ImGui.Image(Plugin.TextureProvider.GetFromGameIcon(new GameIconLookup(Icons.Fate)).GetWrapOrEmpty().Handle, new Vector2(16, 16));
+            ImGui.SameLine();
+            ImGui.TextWrapped(fateName);
+            ImGui.TableNextColumn();
+            ImGui.TextWrapped("TODO");
+            if (MapHelper.GetPlayerCurrentMapId() == fateMap.RowId)
+            {
+                ImGui.PopStyleColor();
+            }
+            
+            ImGui.TableNextColumn();
+            ImGui.PushStyleColor(ImGuiCol.Text, RelicNoteHelper.IsFateComplete(i)
+                                     ? ImGuiColors.HealerGreen
+                                     : ImGuiColors.DalamudGrey);
+            ImGui.TextUnformatted($"{(RelicNoteHelper.IsFateComplete(i) ? "Yes" : "No")}");
+            ImGui.PopStyleColor();
+            
+        }
+        ImGui.EndTable();
     }
 }

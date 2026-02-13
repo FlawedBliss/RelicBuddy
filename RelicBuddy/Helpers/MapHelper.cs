@@ -154,4 +154,15 @@ public class MapHelper
         var y = a.Y - b.Y;
         return x * x + y * y;
     }
+
+    public unsafe uint GetPlayerCurrentMapId()
+    {
+        return AgentMap.Instance()->CurrentMapId;
+    }
+
+    public Map GetFateMapByPlaceNameSubtext(uint id)
+    {
+        var marker = mapMarkerSheet.Flatten().First(x => x.PlaceNameSubtext.RowId == id);
+        return mapSheet.GetRow(marker.RowId);
+    }
 }

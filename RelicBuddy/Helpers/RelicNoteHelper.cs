@@ -18,8 +18,22 @@ public class RelicNoteHelper
 
     public unsafe Lumina.Excel.Sheets.RelicNote? GetCurrentNoteData()
     {
-        var note = RelicNote.Instance();
-        if (note is null) return null;
-        return relicNoteSheet.GetRow(note->RelicNoteId);
+        if (RelicNote.Instance() is null) return null;
+        return relicNoteSheet.GetRow(RelicNote.Instance()->RelicNoteId);
+    }
+
+    public unsafe bool IsDutyComplete(int dutyId)
+    {
+        return RelicNote.Instance() is not null && RelicNote.Instance()->IsDungeonComplete(dutyId);
+    }
+
+    public unsafe int GetMonsterProgress(int index)
+    {
+        return RelicNote.Instance() is null ? 0 : RelicNote.Instance()->GetMonsterProgress(index);
+    }
+
+    public unsafe bool IsFateComplete(int index)
+    {
+        return RelicNote.Instance() is not null && RelicNote.Instance()->IsFateComplete(index);
     }
 }
