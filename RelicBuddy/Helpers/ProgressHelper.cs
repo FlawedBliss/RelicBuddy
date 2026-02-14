@@ -60,7 +60,7 @@ public class ProgressHelper
             {
                 if (progress > i) continue;
                 var step = expansionData.Steps[i];
-                if (step.IsOneTime && QuestManager.IsQuestComplete(expansionData.Steps[i].QuestIdFirst)) continue;
+                if (step.IsOneTime && QuestManager.IsQuestComplete(expansionData.Steps[i].QuestIdFirst!.Value)) continue;
                 foreach (var item in step.Requirements?.Item ?? [])
                 {
                     dict.TryGetValue(item.ItemId, out var count);
