@@ -144,6 +144,14 @@
                         66241
                     ]
                 },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 6267,
+                            "quantity": 3
+                        }
+                    ]
+                },
                 "hints": [
                     "To start your Zodiac weapon, you need to have finished A Realm Reborn's main story questline and all of your job's job quests up to level 50.",
                     "This quest involves many steps, most of which are easily completes by following the questline.",
@@ -152,10 +160,10 @@
                     "{bullet:0} Enhance the weapon with two grade 3 materia of the type indicated by your quest",
                     "{bullet:0} Complete {duty:74} as your chosen job",
                     "{bullet:0} Complete {duty:14} as your chosen job",
-                    "murder stuff",
-                    "do arr: the hydra",
-                    "do trials",
-                    "tome oil"
+                    "{bullet:0} Defeat 24 enemies in the overworld",
+                    "{bullet:0} Complete {duty:75}",
+                    "{bullet:0} Complete {duty:59} {duty:61} {duty:60}",
+                    "{bullet:0} Buy 3 {item:6267}"
                 ]
             },
             {
