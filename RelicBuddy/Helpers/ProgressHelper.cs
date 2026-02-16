@@ -58,7 +58,7 @@ public class ProgressHelper
             var progress = GetCurrentRelicQuestStage(relic.Value, expansionData);
             for (var i = 0; i < expansionData.Steps.Count; i++)
             {
-                if (progress >= i) continue;
+                if (progress > i) continue;
                 var step = expansionData.Steps[i];
                 if (step.IsOneTime && QuestManager.IsQuestComplete(expansionData.Steps[i].QuestIdFirst)) continue;
                 foreach (var item in step.Requirements?.Item ?? [])
