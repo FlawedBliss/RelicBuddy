@@ -140,10 +140,6 @@ public class MainWindow : Window, IDisposable
         var stepCount = expansionData.Steps.Count(i => !i.IsOneTime);
         Plugin.PluginLog.Info("StepCount: {0}", stepCount);
         var finishedRelics = relicStages.Where(s => s.Value == expansionData.Relics.FirstOrNull()!.Value.Value.ItemIds.Count).ToList();
-        foreach (var item in relicStages)
-        {
-            Plugin.PluginLog.Info("{0}: {1}", item.Key, item.Value);
-        }
         var newRelics = relicStages.Where(s => s.Value == 0).ToList();
         var wipRelics = relicStages.Where(s => s.Value > 0 && s.Value < stepCount).ToList();
         
