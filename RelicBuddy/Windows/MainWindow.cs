@@ -196,26 +196,6 @@ public class MainWindow : Window, IDisposable
         }
         ImGui.SameLine();
         //TODO figure out which relic to display
-        //idea: instead of separate relic item ids, add them to appropriate step
-        // ImGui.Image(ItemHelper.GetItemIcon(weaponData.ItemIds[relicItemStage-1]).Handle, new Vector2(24, 24));
-        //
-        // if (ImGui.IsItemClicked())
-        // {
-        //     Plugin.ChatGui.Print(new XivChatEntry
-        //     {
-        //         Type = XivChatType.Echo,
-        //         Message = SeString.CreateItemLink(weaponData.ItemIds[displayedStep])
-        //     });
-        // }
-        //
-        // if (ImGui.IsItemHovered())
-        // {
-        //     ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-        //     ImGui.SetTooltip("Click to link the item in chat");
-        // }
-        // ImGui.SameLine();
-        // ImGui.TextUnformatted(ItemHelper.GetItemName(weaponData.ItemIds[relicItemStage-1]));
-        // ImGui.SameLine();
         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetContentRegionAvail().X - ImGui.CalcTextSize("Next >").X - 16);
         if (ImGui.Button("Next >"))
         {
@@ -239,22 +219,6 @@ public class MainWindow : Window, IDisposable
             ImGui.TextUnformatted("You have finished this relic!");
         }
 
-        // if (relicItemStage != -1)
-        // {
-        //     var itemLocations = InventoryHelper.GetItemLocations(weaponData.ItemIds[relicItemStage]);
-        //     new WrappedTextSegment("Also, I found your relic in the following locations: ").Draw();
-        //     ImGui.Indent();
-        //     foreach (var location in itemLocations)
-        //     {
-        //         ImGui.BulletText($"{location.InventoryType.ToString()}[{location.Slot}]");
-        //     }
-        //
-        //     ImGui.Unindent();
-        // }
-        // else
-        // {
-        //     new WrappedTextSegment("I did not find the relic in any of your inventories.").Draw();
-        // }
     }
 
     private void DrawJobSelector()
@@ -395,22 +359,6 @@ public class MainWindow : Window, IDisposable
             else
             {
                 DrawItemSourceCol(item.ItemId);
-                // ImGui.Image(
-                //     ShopHelper.GetCurrencyTypeIcon(shop.SpecialShop.UseCurrencyType).GetWrapOrEmpty().Handle,
-                //     new Vector2(20, 20));
-                // if (ImGui.IsItemClicked())
-                // {
-                //     MapHelper.ShowFlag(shop.ShopLevel!.Value);
-                // }
-                //
-                // if (ImGui.IsItemHovered())
-                // {
-                //     ImGui.SetTooltip("Click to show shop location on map");
-                //     ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-                // }
-                //
-                // ImGui.SameLine();
-                // ImGui.TextUnformatted(shop.ShopResident.Singular.ExtractText());
             }
         }
 
@@ -634,7 +582,6 @@ public class MainWindow : Window, IDisposable
         }
         ImGui.EndTable();
         
-        // FGui.DrawSeparatorText("Enemies");
 
         ImGui.BeginTable("RelicNote##Monsters", 3, ImGuiTableFlags.SizingStretchSame);
         ImGui.TableSetupColumn("Enemy");
@@ -687,7 +634,6 @@ public class MainWindow : Window, IDisposable
         }
         ImGui.EndTable();
         
-        // FGui.DrawSeparatorText("FATEs");
         ImGui.BeginTable("RelicNote##FATE", 3, ImGuiTableFlags.SizingStretchSame);
         ImGui.TableSetupColumn("FATE");
         ImGui.TableSetupColumn("Location");
