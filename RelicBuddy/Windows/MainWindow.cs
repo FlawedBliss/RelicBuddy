@@ -122,7 +122,7 @@ public class MainWindow : Window, IDisposable
         DrawJobSelector();
         FGui.DrawColumnSeparator();
 
-        var relicStages = new Dictionary<string, int>();
+        var relicItems = new Dictionary<string, int>();
         foreach (var relic in expansionData.Relics)
         {
             var stage = 0;
@@ -134,14 +134,14 @@ public class MainWindow : Window, IDisposable
                     stage = i+1;
                 }
             }
-            relicStages[relic.Key] = stage;
+            relicItems[relic.Key] = stage;
         }
 
-        var stepCount = expansionData.Steps.Count(i => !i.IsOneTime);
-        Plugin.PluginLog.Info("StepCount: {0}", stepCount);
-        var finishedRelics = relicStages.Where(s => s.Value == expansionData.Relics.FirstOrNull()!.Value.Value.ItemIds.Count).ToList();
-        var newRelics = relicStages.Where(s => s.Value == 0).ToList();
-        var wipRelics = relicStages.Where(s => s.Value > 0 && s.Value < stepCount).ToList();
+        var relicItemCount = expansionData.Relics.FirstOrNull()!.Value.Value.ItemIds.Count;
+        var finishedRelics = relicItems
+                             .Where(s => s.Value == relicItemCount).ToList();
+        var newRelics = relicItems.Where(s => s.Value == 0).ToList();
+        var wipRelics = relicItems.Where(s => s.Value > 0 && s.Value < relicItemCount).ToList();
         
         ImGui.TextUnformatted($"You have finished {finishedRelics.Count} relics.");
         if (finishedRelics.Count > 0 && ImGui.IsItemHovered())
@@ -156,7 +156,7 @@ public class MainWindow : Window, IDisposable
         ImGui.TextUnformatted($"The following relics are in progress: ");
         foreach(var job in wipRelics)
         {
-            ImGui.BulletText($"{job.Key} {relicStages[job.Key]}/{expansionData.Steps.Count(s => !s.IsOneTime)}");
+            ImGui.BulletText($"{job.Key} {relicItems[job.Key]}/{expansionData.Steps.Count(s => !s.IsOneTime)}");
         }
         ImGui.Spacing();
         ImGui.TextUnformatted("The table on the right shows how many items you still need to finish all relics of this expansion.");
