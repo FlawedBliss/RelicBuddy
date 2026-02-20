@@ -90,7 +90,7 @@ public class InventoryHelper
             if (!retainerManager->Retainers[i].Available)
             {
                 _activeRetainers = i;
-                break;
+                return;
             }
         }
         _activeRetainers = retainerManager->Retainers.Length;
