@@ -52,7 +52,7 @@ public class QuestHelper
         {
             if (QuestManager.IsQuestComplete(step.QuestIdFirst.Value))
             {
-                questId = step.QuestIdRepeating!.Value;
+                questId = step.QuestIdRepeating ?? step.QuestIdFirst!.Value;
             }
             else
             {
