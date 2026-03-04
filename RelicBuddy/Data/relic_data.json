@@ -2798,5 +2798,304 @@
                 }
             }
         ]
+    },
+    {
+        "expansion": "DT",
+        "name": "Phantom Weapons",
+        "relics": {
+            "PLD": {
+                "item_ids": [
+                    47869,
+                    47006
+                ]
+            },
+            "WAR": {
+                "item_ids": [
+                    47884,
+                    47008
+                ]
+            },
+            "DRK": {
+                "item_ids": [
+                    47879,
+                    47016
+                ]
+            },
+            "GNB": {
+                "item_ids": [
+                    47884,
+                    47021
+                ]
+            },
+            "DRG": {
+                "item_ids": [
+                    47872,
+                    47009
+                ]
+            },
+            "RPR": {
+                "item_ids": [
+                    47886,
+                    47023
+                ]
+            },
+            "MNK": {
+                "item_ids": [
+                    47870,
+                    47007
+                ]
+            },
+            "SAM": {
+                "item_ids": [
+                    47882,
+                    47019
+                ]
+            },
+            "NIN": {
+                "item_ids": [
+                    47878,
+                    47015
+                ]
+            },
+            "VPR": {
+                "item_ids": [
+                    47888,
+                    47025
+                ]
+            },
+            "BRD": {
+                "item_ids": [
+                    47879,
+                    47010
+                ]
+            },
+            "MCH": {
+                "item_ids": [
+                    47880,
+                    47017
+                ]
+            },
+            "DNC": {
+                "item_ids": [
+                    47885,
+                    47022
+                ]
+            },
+            "BLM": {
+                "item_ids": [
+                    47875,
+                    47012
+                ]
+            },
+            "SMN": {
+                "item_ids": [
+                    47876,
+                    47013
+                ]
+            },
+            "RDM": {
+                "item_ids": [
+                    47883,
+                    47020
+                ]
+            },
+            "PCT": {
+                "item_ids": [
+                    47889,
+                    47026
+                ]
+            },
+            "WHM": {
+                "item_ids": [
+                    47874,
+                    47011
+                ]
+            },
+            "SCH": {
+                "item_ids": [
+                    47877,
+                    47014
+                ]
+            },
+            "AST": {
+                "item_ids": [
+                    47881,
+                    47018
+                ]
+            },
+            "SGE": {
+                "item_ids": [
+                    47887,
+                    47024
+                ]
+            }
+        },
+        "steps": [
+            {
+                "is_one_time": true,
+                "quest_id_first": 70855,
+                "quest_id_repeating": 70855,
+                "prerequisites": {
+                    "quests": [
+                        70495,
+                        70847
+                    ]
+                },
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 47744,
+                            "quantity": 3,
+                            "hints": [
+                                "{icon:60501} FATEs and CEs in Southeastern South Horn",
+                                "{icon:60501} FATEs in {map:857}"
+                            ]
+                        },
+                        {
+                            "item_id": 47745,
+                            "quantity": 3,
+                            "hints": [
+                                "{icon:60501} FATEs and CEs in Southwestern South Horn",
+                                "{icon:60501} FATEs in {map:858}"
+                            ]
+                        },
+                        {
+                            "item_id": 47746,
+                            "quantity": 3,
+                            "hints": [
+                                "{icon:60501} FATEs and CEs in Western South Horn",
+                                "{icon:60501} FATEs in {map:859}"
+                            ]
+                        },
+                        {
+                            "item_id": 47747,
+                            "quantity": 3,
+                            "hints": [
+                                "{icon:60501} FATEs and CEs in Northern South Horn",
+                                "{icon:60501} FATEs in {map:860}"
+                            ]
+                        },
+                        {
+                            "item_id": 47748,
+                            "quantity": 3,
+                            "hints": [
+                                "{icon:60501} FATEs and CEs in Eastern South Horn",
+                                "{icon:60501} FATEs in {map:861}"
+                            ]
+                        },
+                        {
+                            "item_id": 47749,
+                            "quantity": 3,
+                            "hints": [
+                                "{icon:60501} FATEs and CEs in Central South Horn",
+                                "{icon:60501} FATEs in {map:862}"
+                            ]
+                        }
+                    ]
+                },
+                "hints": [
+                    "It has been 10 year since you farmed candies for ARR relics so Gerolt thinks it is time for a reboot",
+                    "Do FATEs and CEs in Occult Crescent or FATEs in Dawntrail areas to get these."
+                ]
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 70856,
+                "quest_id_repeating": 70856,
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 47750,
+                            "quantity": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "is_one_time": true,
+                "quest_id_first": 70916,
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 4685,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 46852,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 46855,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 46856,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 46857,
+                            "quantity": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "is_one_time": true,
+                "quest_id_first": 70917,
+                "quest_id_repeating": 70917,
+                "hints": [
+                    "Do Duty Roulettes to fill your gauges. There is a daily bonus for every roulette, and each duty also gives a fixed amount of aether on each completion.",
+                    "Duty Roulette: High-level Dungeons for green aether",
+                    "Duty Roulette: Alliance Raids for blue aether",
+                    "Duty Roulette: Trials for red aether",
+                    "Duty Roulette: Normal Raids for yellow aether"
+                ]
+            },
+            {
+                "is_one_time": false,
+                "quest_id_first": 70918,
+                "quest_id_repeating": 70918,
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 46850,
+                            "quantity": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "is_one_time": true,
+                "quest_id_first": 70990,
+                "quest_id_repeating": 70990,
+                "requirements": {
+                    "item": [
+                        {
+                            "item_id": 50054,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 50055,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 50056,
+                            "quantity": 1
+                        },
+                        {
+                            "item_id": 50057,
+                            "quantity": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "is_one_time": true,
+                "quest_id_first": 70991,
+                "hints": [
+                    "paste farm"
+                ]
+            }
+        ]
     }
 ]
