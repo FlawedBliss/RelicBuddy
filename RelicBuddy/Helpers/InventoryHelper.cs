@@ -138,7 +138,7 @@ public class InventoryHelper
 
     public unsafe List<InventoryLocation> GetInventoryItemLocations(uint itemId)
     {
-        if (Plugin.ClientState.LocalPlayer is null) return [];
+        if (Plugin.ObjectTable.LocalPlayer is null) return [];
         var locations = new List<InventoryLocation>();
         foreach (var invType in playerInventories.Concat(gearchestInventories))
         {

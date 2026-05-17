@@ -54,7 +54,7 @@ public class DebugWindow : Window, IDisposable
 
         ImGui.Spacing();
         MapMarkerStatus();
-        var pos = Plugin.ClientState.LocalPlayer?.Position ?? new(0, 0, 0);
+        var pos = Plugin.ObjectTable.LocalPlayer?.Position ?? new(0, 0, 0);
         ImGui.TextUnformatted($"PlayerPos: {pos.X} {pos.Y} {pos.Z}");
         ImGui.Spacing();
         DrawRelicNoteInfo();
@@ -174,11 +174,11 @@ public class DebugWindow : Window, IDisposable
 
     private unsafe void DrawObjectTable()
     {
-        var target = Plugin.ClientState.LocalPlayer?.TargetObject;
+        var target = Plugin.ObjectTable.LocalPlayer?.TargetObject;
         if (target is not null)
         {
             ImGui.TextUnformatted(target.Name.TextValue);
-            ImGui.TextUnformatted($"{target.DataId}");
+            ImGui.TextUnformatted($"{target.BaseId}");
             ImGui.TextUnformatted($"{target.ObjectKind}");
             ImGui.TextUnformatted($"{target.GetType()}");
             if (target is IBattleNpc bnpc)
